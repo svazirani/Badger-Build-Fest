@@ -1,0 +1,5 @@
+qwen3-next-80b-a3b-instruct: 339 to run (994 done)
+gemma-3-12b: 339 to run (1020 done)
+qwen3-next-80b-a3b-instruct: bad_output 22, ok 317
+gemma-3-12b: bad_output 1, ok 338
+all models finished

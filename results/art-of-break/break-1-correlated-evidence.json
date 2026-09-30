@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "break": "correlated-evidence-amplification",
+  "claim": "One task or shared cause must not masquerade as many independent successes.",
+  "method": "deterministic synthetic stress test; no model calls and no Jira data",
+  "policy": {
+    "target": 0.9,
+    "family_alpha": 0.05,
+    "relations": 3,
+    "alpha_per_relation": 0.016666666666666666
+  },
+  "attack": {
+    "description": "One underlying task emits 50 correct-looking outputs.",
+    "raw_outputs": 50,
+    "unique_tasks": 1,
+    "early_row_counter": {
+      "evidence_n": 50,
+      "correct_k": 50,
+      "precision": 1.0,
+      "lower_bound": 0.921376,
+      "decision": "auto"
+    },
+    "hardened_receipt": {
+      "evidence_n": 1,
+      "correct_k": 1,
+      "precision": 1.0,
+      "lower_bound": 0.016667,
+      "decision": "suggest",
+      "can_act": "suggest",
+      "can_act_reason": "Action is outside the receipt's AUTO scope.",
+      "excluded": {
+        "unknown_or_missing_label": 0,
+        "dependent_sibling_action": 0,
+        "below_threshold_or_other_action": 0
+      },
+      "receipt_id": "eaf5a5d54a1006c7e0a27b3151f247a9a273a50de12ac8f1c9e1b6bb37e08846"
+    },
+    "passed": true
+  },
+  "independent_control": {
+    "description": "Fifty independent tasks each emit one correct action.",
+    "raw_outputs": 50,
+    "unique_tasks": 50,
+    "hardened_receipt": {
+      "evidence_n": 50,
+      "correct_k": 50,
+      "precision": 1.0,
+      "lower_bound": 0.921376,
+      "decision": "auto",
+      "can_act": "auto",
+      "can_act_reason": "Authorized by receipt 0e9ae03c4f2d.",
+      "excluded": {
+        "unknown_or_missing_label": 0,
+        "dependent_sibling_action": 0,
+        "below_threshold_or_other_action": 0
+      },
+      "receipt_id": "0e9ae03c4f2dc2f8c7cc7f0a5f645a2cf4d6de810f479eed9305018cc2300f20"
+    },
+    "passed": true
+  },
+  "shared_cause_attack": {
+    "description": "Eighty tasks share one underlying cause/umbrella.",
+    "raw_tasks": 80,
+    "unique_clusters": 1,
+    "hardened_receipt": {
+      "evidence_n": 1,
+      "correct_k": 1,
+      "precision": 1.0,
+      "lower_bound": 0.016667,
+      "decision": "suggest",
+      "can_act": "suggest",
+      "can_act_reason": "Action is outside the receipt's AUTO scope.",
+      "excluded": {
+        "unknown_or_missing_label": 0,
+        "dependent_sibling_action": 79,
+        "below_threshold_or_other_action": 0
+      },
+      "receipt_id": "7c21f5fdfbded0901075109b0534c2a5be186579ecd52120d3938aa0344e3370"
+    },
+    "passed": true
+  }
+}

@@ -1,0 +1,52 @@
+{
+ "14ff89f6d5b6196d7037641c4d27e4d588afd5a5c7ba8eb895b1176214279bc7": {
+  "correct": false,
+  "reason": "Same regeneration chore at a later version; successive version updates are separate chores, not a link.",
+  "reviewer": "ai:claude-opus-5-5"
+ },
+ "6d1a72a78233178c2476637a01ba79e938ec051cad05e147ac5837ad1afbe95b": {
+  "correct": false,
+  "reason": "Earlier ticket is a finished to_xml subtask, not an umbrella; new work is nanosecond test coverage.",
+  "reviewer": "ai:claude-opus-5-5"
+ },
+ "7944c1a70b916e0c01ec7df0669e4b99d8fef2d197925a68410f4854a68d5cd3": {
+  "correct": false,
+  "reason": "Different target versions (4.1.0-preview2 vs 4.1.0): separate work, not the same request.",
+  "reviewer": "ai:claude-opus-5-5"
+ },
+ "0357e56dffc7daab27124459c4dd9737c7c8e593654f92c4778f404a41ddfa07": {
+  "correct": null,
+  "reason": "Same family of ThrottledChannelReaper thread leak, different reaper; may share a fix. Cannot tell.",
+  "reviewer": "ai:claude-opus-5-5"
+ },
+ "de87844567a2926a5f52bb708f2b0c209e64e374435f2356b29aa9c72fd3516d": {
+  "correct": false,
+  "reason": "Both are subtasks about the same test file; the earlier is not an umbrella.",
+  "reviewer": "ai:claude-opus-5-5"
+ },
+ "74fa430093eaa47367c1148d76597411ae06a873948b3d1ebcc39b6c344f163d": {
+  "correct": false,
+  "reason": "Different docker-java versions; successive upgrades are separate work.",
+  "reviewer": "ai:claude-opus-5-5"
+ },
+ "011d515b1611bf16cb574e75699f0638cd530dd63e4ba65c506238cdbdba3dd2": {
+  "correct": false,
+  "reason": "Siblings: two Catalog APIs; the earlier is not the parent.",
+  "reviewer": "ai:claude-opus-5-5"
+ },
+ "f46f6fe9eb7ecc7281c45091e9bba479162c51e7d7158a97703c22e6301db0f4": {
+  "correct": true,
+  "reason": "Only earlier Volcano version bumps; successive bumps are separate chores, so no link is right.",
+  "reviewer": "ai:claude-opus-5-5"
+ },
+ "79b8dabf86b9329ab4604afeb3f9a5d9d09fb47e57368da7628f5ebb20060ae4": {
+  "correct": false,
+  "reason": "Different Ruby dependency chores; no concrete technical link.",
+  "reviewer": "ai:claude-opus-5-5"
+ },
+ "05cbb650025d92f663d5058fabafd4920e09b9d4879a935cca357e8946433b70": {
+  "correct": false,
+  "reason": "Different sbt versions; a later upgrade is not the same request.",
+  "reviewer": "ai:claude-opus-5-5"
+ }
+}

@@ -6,3 +6,5 @@ openai
 anthropic
 databricks-sdk
 pytest
+fastapi
+uvicorn

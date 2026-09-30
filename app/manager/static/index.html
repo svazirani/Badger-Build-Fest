@@ -1,0 +1,1129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assay Agent Manager</title>
+<meta name="description" content="Assay: evidence-based oversight for AI agents, running on Databricks.">
+<link rel="icon" type="image/png" href="static/brand/favicon.png">
+<link rel="apple-touch-icon" href="static/brand/mark-128.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --ground:#F3F5F1; --panel:#FFFFFF; --panel-2:#EBEFE8; --ink:#17262B; --ink-2:#4A5A5E; --line:#D5DCD3;
+  --accent:#3A5BA0; --accent-ink:#FFFFFF; --accent-soft:#E3E9F6;
+  --go:#1F7A52; --go-soft:#DDF1E6; --ask:#8A5A00; --ask-soft:#FBEFD2; --stop:#B23A27; --stop-soft:#F8E0DB;
+  --shade:rgba(10,20,24,.62); --shadow:0 1px 2px rgba(20,30,30,.06),0 10px 28px rgba(20,30,30,.10);
+  --display:"Bricolage Grotesque","Public Sans",system-ui,sans-serif; --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --gold:#9A6B12; --gold-soft:#FFF4DA; --gold-line:#D9A93F;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme:dark;--ground:#121A1C;--panel:#1A2427;--panel-2:#223034;--ink:#E7EDEA;--ink-2:#A9B7B6;--line:#2E3D41;
+  --accent:#8EA8E6;--accent-ink:#0F1A2E;--accent-soft:#223050;--go:#57C28F;--go-soft:#173A2A;--ask:#E3B04B;--ask-soft:#3A2E12;
+  --stop:#EE7D69;--stop-soft:#3F1E18;--shade:rgba(0,0,0,.7);--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+  --gold:#E8C26A;--gold-soft:#3A2E12;--gold-line:#B88A2E}}
+:root[data-theme="dark"]{
+  color-scheme:dark;--ground:#121A1C;--panel:#1A2427;--panel-2:#223034;--ink:#E7EDEA;--ink-2:#A9B7B6;--line:#2E3D41;
+  --accent:#8EA8E6;--accent-ink:#0F1A2E;--accent-soft:#223050;--go:#57C28F;--go-soft:#173A2A;--ask:#E3B04B;--ask-soft:#3A2E12;
+  --stop:#EE7D69;--stop-soft:#3F1E18;--shade:rgba(0,0,0,.7);--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+  --gold:#E8C26A;--gold-soft:#3A2E12;--gold-line:#B88A2E}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+[data-tour]{scroll-margin-top:90px}
+body{background:var(--ground);color:var(--ink);font:15px/1.55 var(--body);margin:0}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:clamp(26px,3.6vw,36px);font-weight:700;letter-spacing:-.015em}
+h2{font-size:19px;font-weight:700}
+h3{font-size:15.5px;font-weight:600}
+p{margin:0}
+a{color:inherit}
+.muted{color:var(--ink-2)}
+.small{font-size:13.5px}
+svg.i{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-3px}
+button{font:inherit;cursor:pointer;color:inherit}
+button:disabled{cursor:not-allowed;opacity:.55}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--panel);border-radius:9px;padding:9px 14px;font-weight:600;min-height:40px}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.yes{background:var(--go);color:#fff;border-color:var(--go)}
+.btn.no{background:var(--panel);color:var(--stop);border-color:var(--stop)}
+.btn.ghost{background:transparent}
+.btn:hover:not(:disabled){filter:brightness(.95)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.yes{color:#0B1F15}}
+:root[data-theme="dark"] .btn.yes{color:#0B1F15}
+/* header */
+.top{position:sticky;top:0;z-index:20;background:var(--panel);border-bottom:1px solid var(--line)}
+.top-in{max-width:1480px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:19px}
+.logo i{width:30px;height:30px;display:inline-block;flex:none;background:var(--accent);-webkit-mask:url(static/brand/mark-128.png) center/contain no-repeat;mask:url(static/brand/mark-128.png) center/contain no-repeat}
+.top .spacer{flex:1}
+/* page */
+.page{max-width:1480px;margin:0 auto;padding:26px 20px 64px;display:grid;gap:20px}
+.hero{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px}
+.hero p{margin-top:6px;font-size:16px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.kpis .stat{padding:20px 22px;border-radius:14px}
+.kpis .stat .n{font-size:clamp(34px,4vw,46px);letter-spacing:-.02em}
+.kpis .stat .l{font-size:15px;font-weight:600;color:var(--ink);margin-top:4px}
+.kpis .stat .sub{font-size:13px;color:var(--ink-2);margin-top:2px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;position:relative}
+.stat .n{font-family:var(--display);font-size:30px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat .l{font-size:13.5px;color:var(--ink-2);display:flex;align-items:center;gap:6px}
+.stat.warn .n{color:var(--stop)}
+.stat.good .n{color:var(--go)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;position:relative}
+.panel-h{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.panel-h h2{display:flex;align-items:center;gap:8px}
+.panel-h .meta{font-size:13px;color:var(--ink-2)}
+.cols2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+.tag{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.tag.ask{background:var(--ask-soft);color:var(--ask)} .tag.stop{background:var(--stop-soft);color:var(--stop)} .tag.go{background:var(--go-soft);color:var(--go)} .tag.info{background:var(--accent-soft);color:var(--accent)}
+.num{font-variant-numeric:tabular-nums;font-weight:600}
+.num small{display:block;font-weight:400;color:var(--ink-2);font-size:12px}
+/* info tips: hover 1 s, tap or focus; expanded inline during the tour */
+.tip{width:20px;height:20px;border-radius:50%;border:1px solid var(--line);background:var(--panel-2);color:var(--ink-2);font-size:12px;font-weight:700;line-height:1;display:inline-grid;place-items:center;padding:0;flex:none}
+.tip:hover{border-color:var(--accent);color:var(--accent)}
+.info{display:none}
+.explain .info{display:block;margin:4px 0 12px;padding:10px 12px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;font-size:13.5px;color:var(--ink)}
+.explain .detail{display:block}
+#pop{position:fixed;z-index:80;max-width:360px;background:var(--ink);color:var(--ground);border-radius:10px;padding:10px 12px;font-size:13.5px;line-height:1.5;box-shadow:var(--shadow)}
+#pop b{color:inherit}
+.detail{display:none}
+/* model table */
+.mrow{display:grid;grid-template-columns:minmax(150px,1.25fr) minmax(110px,.85fr) minmax(190px,1.5fr) repeat(4,minmax(78px,.7fr));gap:12px;align-items:center;padding:11px 4px;border-top:1px solid var(--line);font-size:14px}
+.mrow.head{border-top:0;font-size:13px;color:var(--ink);font-weight:700;padding-top:0}
+.mrow.head span{display:flex;align-items:center;gap:6px}
+.mrow .nm b{display:block;font-size:15px}
+.mrow .nm small{color:var(--ink-2);font-size:12.5px}
+.mrow .detail{grid-column:1/-1;font-size:13px;color:var(--ink-2);margin-top:-4px}
+.pbar{height:10px;background:var(--panel-2);border-radius:5px;overflow:hidden;position:relative;margin-bottom:3px}
+.pbar span{position:absolute;top:0;bottom:0;left:0;border-radius:5px}
+.pbar i{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--ink)}
+.policy-line{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+/* replay */
+.replay{display:grid;grid-template-columns:auto minmax(220px,1fr) minmax(220px,1.1fr);gap:16px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.rp-top{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.rp-top b{font-family:var(--display);font-size:17px}
+.replay input[type=range]{width:100%;accent-color:var(--accent)}
+.rp-events{display:flex;flex-wrap:wrap;gap:6px;min-height:26px}
+.rp-events .tag{font-weight:600}
+.pbar span{transition:width .25s linear}
+.replaying #sec-models,.replaying .kpis{box-shadow:0 0 0 2px var(--accent-soft)}
+/* collapsible panels */
+.fold-h{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:12px;width:100%;cursor:pointer;flex-wrap:wrap}
+.fold-h:focus-visible{outline:3px solid var(--accent);outline-offset:4px;border-radius:8px}
+.fold-h h2{display:flex;align-items:center;gap:8px}
+.fold-h .sum{font-size:13.5px;color:var(--ink-2)}
+.fold-h .chev{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--accent)}
+.fold-h .chev svg{transition:transform .2s}
+.fold-h[aria-expanded="true"] .chev svg{transform:rotate(90deg)}
+.fold-lead{font-size:14px;color:var(--ink-2);margin-top:6px;max-width:80ch}
+.fold-b{margin-top:16px;display:grid;gap:20px}
+.subpanel{border-top:1px solid var(--line);padding-top:16px}
+.subpanel:first-child{border-top:0;padding-top:0}
+.subpanel h3{font-size:16.5px;font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:10px}
+/* false positive causes */
+.fpgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px;align-items:start}
+.fprow{all:unset;box-sizing:border-box;display:grid;grid-template-columns:minmax(150px,1fr) 1.2fr 64px;gap:12px;align-items:center;width:100%;padding:9px 10px;border-radius:9px;cursor:pointer;font-size:14px}
+.fprow:hover{background:var(--panel-2)}
+.fprow[aria-pressed="true"]{background:var(--stop-soft)}
+.fprow:focus-visible{outline:3px solid var(--accent)}
+.fprow .bar{height:10px;background:var(--panel-2);border-radius:5px;overflow:hidden}
+.fprow .bar span{display:block;height:100%;background:var(--stop);border-radius:5px}
+.fpex{border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:10px;font-size:13.5px}
+.fpex .conf{font-family:var(--display);font-size:28px;font-weight:700;color:var(--stop);line-height:1}
+/* routing flow */
+.flow{display:flex;height:34px;border-radius:9px;overflow:hidden;background:var(--panel-2)}
+.flow span{display:flex;align-items:center;justify-content:center;color:#fff;font-size:12.5px;font-weight:700;white-space:nowrap;overflow:hidden}
+.flowkey{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:10px}
+.flowkey div{font-size:13px;color:var(--ink-2)}
+.flowkey b{display:block;font-size:20px;font-family:var(--display);color:var(--ink);font-variant-numeric:tabular-nums}
+.flowkey i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+.rstats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:14px}
+.rstats .stat{background:var(--panel-2);border:0}
+.rstats .stat .n{font-size:26px}
+/* cause rows */
+.fprow2{display:grid;grid-template-columns:minmax(220px,1.5fr) minmax(140px,1fr) 70px minmax(150px,1fr) 80px;gap:14px;align-items:center;padding:12px 4px;border-top:1px solid var(--line);font-size:14px}
+.fprow2:first-child{border-top:0}
+.fprow2 .t b{display:block;font-size:14.5px}
+.fprow2 .t small{color:var(--ink-2);font-size:13px}
+.fprow2 .bar{height:10px;background:var(--panel-2);border-radius:5px;overflow:hidden}
+.fprow2 .bar span{display:block;height:100%;background:var(--stop);border-radius:5px}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chip2{font-size:11.5px;background:var(--panel-2);color:var(--ink-2);border-radius:999px;padding:2px 8px;white-space:nowrap}
+.exlink{font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;white-space:nowrap}
+.exlink:hover{text-decoration:underline}
+/* suggestion anatomy: during the tour the guide sits beside the first card */
+.explain .qwrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+.explain .qwrap .queue{grid-template-columns:1fr}
+.explain .qwrap .sugg:not(:first-child){display:none}
+.explain .qwrap .guide{margin:0}
+.explain #more-wrap{display:none}
+.anat{margin:8px 0 0;padding-left:0;list-style:none;counter-reset:a;display:grid;gap:6px}
+.anat li{counter-increment:a;display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;align-items:start}
+.anat li::before{content:counter(a);width:20px;height:20px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:11.5px;font-weight:700;display:grid;place-items:center}
+.mark{display:none;width:20px;height:20px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:11.5px;font-weight:700;place-items:center;flex:none}
+.explain .mark{display:inline-grid}
+.sby{font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.sby b{color:var(--ink)}
+.conf{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink)}
+/* model choice */
+.choice-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.choice-c{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:4px;font-size:13.5px;color:var(--ink-2)}
+.choice-c b{font-family:var(--display);font-size:19px;color:var(--ink)}
+.choice-c.go{border:2px solid var(--go);background:var(--go-soft)}
+.choice-c.info{border:2px solid var(--accent)}
+.choice-c .tag{justify-self:start}
+/* price vs performance */
+#pp svg{width:100%;max-width:1360px;height:auto;display:block}
+#pp .pt circle{transition:none}
+#pp text{font-family:var(--body);font-size:12px;fill:var(--ink-2)}
+#pp .lbl{font-size:12.5px;fill:var(--ink);font-weight:600}
+#pp .ax{stroke:var(--line)}
+.ppkey{display:flex;gap:14px;font-size:12.5px;color:var(--ink-2);margin-top:6px}
+.ppkey i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+/* calibration */
+.crow{display:grid;grid-template-columns:130px 1fr;gap:10px;align-items:center;padding:6px 0;font-size:13.5px}
+.track{position:relative;height:24px}
+.track .ln{position:absolute;left:0;right:0;top:11px;height:2px;background:var(--panel-2)}
+.track .gap{position:absolute;top:10px;height:4px;background:var(--stop-soft)}
+.track .said{position:absolute;top:5px;width:13px;height:13px;background:var(--ink-2);transform:translateX(-6px) rotate(45deg)}
+.track .real{position:absolute;top:4px;width:15px;height:15px;border-radius:50%;transform:translateX(-7px);border:2px solid var(--panel)}
+.track .lbl{position:absolute;top:-3px;font-size:12px;color:var(--ink-2);white-space:nowrap}
+.axis{display:flex;justify-content:space-between;font-size:11.5px;color:var(--ink-2);margin-left:140px}
+.key{display:flex;gap:14px;font-size:12.5px;color:var(--ink-2);margin-top:8px}
+.key i{display:inline-block;width:10px;height:10px;margin-right:5px;vertical-align:0}
+/* ambiguity */
+.drow{display:grid;grid-template-columns:130px 1fr 48px;gap:10px;align-items:center;padding:5px 0;font-size:13.5px}
+.sbar{display:flex;height:20px;border-radius:5px;overflow:hidden;background:var(--panel-2)}
+.sbar span{height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--ink-2);margin-top:10px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+/* false positives */
+.exgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ex{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:8px;font-size:13.5px}
+.ex .hd{display:flex;justify-content:space-between;gap:8px;font-weight:700}
+.ex .rec{border-left:3px solid var(--stop);padding-left:10px;color:var(--ink-2)}
+.tk{background:var(--panel-2);border-radius:8px;padding:8px 10px;font-size:13.5px;min-width:0;overflow-wrap:anywhere}
+.tk small{display:block;font-family:var(--mono);font-size:11.5px;color:var(--ink-2);margin-top:2px}
+.pair{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center}
+.arrow{color:var(--ink-2)}
+/* coverage */
+.cov{display:grid;grid-template-columns:minmax(0,1fr) 100px 150px 120px;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line);font-size:14px}
+.cov.head{border-top:0;font-size:13px;color:var(--ink);font-weight:700}
+.ci{position:relative;height:10px;background:var(--panel-2);border-radius:5px}
+.ci span{position:absolute;top:0;bottom:0;background:var(--accent);border-radius:5px;opacity:.75}
+.ci i{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink)}
+/* review queue */
+.queue{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.sugg{border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:10px;transition:opacity .28s,transform .28s;align-content:start}
+.sugg.gone{opacity:0;transform:translateX(24px)}
+.sugg.fresh{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.kind{display:flex;align-items:center;gap:8px;font-weight:700;flex-wrap:wrap}
+.kind .ico{width:26px;height:26px;border-radius:7px;display:inline-grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
+.badge{font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 8px}
+.badge.new{background:var(--accent);color:var(--accent-ink)}
+.badge.by{background:var(--panel-2);color:var(--ink-2);font-weight:600}
+.why{font-size:13.5px;color:var(--ink-2)}
+.hist-wrap{display:flex;gap:6px;align-items:start}
+.pair .mark{position:absolute;left:-10px;top:-10px;z-index:1}
+.pair{position:relative}
+.hist{font-size:13px;color:var(--ink-2)}
+.hist b{color:var(--ink)}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.more{display:flex;justify-content:center;margin-top:12px}
+.empty{text-align:center;padding:26px 10px;color:var(--ink-2);grid-column:1/-1}
+/* routing */
+.rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.pm{border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13.5px}
+.pm b{display:block;font-size:14.5px;margin:4px 0 2px}
+.loads{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+.lg{display:grid;grid-template-columns:110px 1fr;gap:4px 12px;font-size:13.5px;padding:8px 0;border-top:1px solid var(--line)}
+.lg .k{font-family:var(--mono);font-size:12.5px;color:var(--ink-2)}
+/* cost */
+.cost{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.cost .stat .n{font-size:32px}
+.cost .stat{background:var(--panel-2);border:0}
+.ctable{display:grid;margin-top:14px}
+.crow2{display:grid;grid-template-columns:minmax(140px,1.4fr) repeat(4,minmax(80px,1fr));gap:10px;padding:7px 4px;border-top:1px solid var(--line);font-size:13.5px;align-items:center}
+.crow2.head{border-top:0;font-size:13px;color:var(--ink);font-weight:700}
+.est{font-size:12.5px;color:var(--ink-2);margin-top:10px}
+/* live demo */
+.btn.gold{background:var(--gold-line);border-color:var(--gold-line);color:#1C1406}
+#demo{position:fixed;inset:0;z-index:75;background:var(--shade);display:grid;place-items:center;padding:16px}
+.demo-box{background:var(--panel);border:2px solid var(--gold-line);border-radius:18px;box-shadow:var(--shadow);width:min(1180px,100%);max-height:calc(100vh - 32px);overflow:auto;padding:22px}
+.demo-h{display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:16px}
+.demo-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:22px}
+.demo-form{display:grid;gap:12px;align-content:start}
+.demo-form label{display:grid;gap:4px;font-weight:600;font-size:13.5px}
+.demo-form input,.demo-form select,.demo-form textarea{font:inherit;font-weight:400;border:1px solid var(--line);border-radius:9px;padding:9px 11px;background:var(--panel);color:var(--ink)}
+.tpls{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tpl{all:unset;box-sizing:border-box;cursor:pointer;border:1px solid var(--line);border-radius:10px;padding:9px 11px;font-size:13px;display:grid;gap:2px}
+.tpl b{font-size:13.5px}
+.tpl:hover,.tpl:focus-visible{border-color:var(--gold-line);background:var(--gold-soft);outline:none}
+.pipe{list-style:none;margin:0;padding:0;display:grid;gap:10px;align-content:start}
+.pipe li{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:6px;font-size:13.5px;opacity:.45;transition:opacity .3s}
+.pipe li.on{opacity:1}
+.pipe .ph{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px}
+.pipe .n{width:22px;height:22px;border-radius:50%;background:var(--panel-2);display:grid;place-items:center;font-size:12px}
+.pipe li.on .n{background:var(--gold-line);color:#1C1406}
+.outcome{border-width:2px !important}
+.outcome.auto{border-color:var(--go) !important;background:var(--go-soft)}
+.outcome.interrupt{border-color:var(--stop) !important;background:var(--stop-soft)}
+.outcome.review{border-color:var(--gold-line) !important;background:var(--gold-soft)}
+.outcome .big{font-family:var(--display);font-size:20px;font-weight:700}
+.sugg.demo{border:2px solid var(--gold-line);background:linear-gradient(0deg,var(--gold-soft),var(--gold-soft)) padding-box}
+.badge.demo{background:var(--gold-line);color:#1C1406}
+/* misc */
+.banner{border:1px solid var(--stop);background:var(--stop-soft);border-radius:12px;padding:12px 14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.loading{padding:40px 10px;text-align:center;color:var(--ink-2)}
+.spin{width:22px;height:22px;border:3px solid var(--line);border-top-color:var(--accent);border-radius:50%;display:inline-block;animation:spin 1s linear infinite;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+#toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--ground);border-radius:10px;padding:10px 14px;display:flex;gap:12px;align-items:center;z-index:60;box-shadow:var(--shadow);max-width:calc(100% - 32px);font-size:14px}
+#toast button{background:none;border:0;color:var(--ground);text-decoration:underline;font-weight:700}
+.foot{font-size:12.5px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:14px}
+.foot code{font-family:var(--mono);font-size:12px}
+#welcome{position:fixed;inset:0;z-index:70;background:var(--shade);display:grid;place-items:center;padding:16px}
+#welcome .box{background:var(--panel);border-radius:16px;padding:24px;max-width:480px;box-shadow:var(--shadow);display:grid;gap:12px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);font-weight:600}
+#tour-ring{position:fixed;border-radius:14px;box-shadow:0 0 0 4px var(--accent),0 0 0 9999px var(--shade);transition:all .25s ease;z-index:41;pointer-events:none}
+#tour-tip{position:fixed;z-index:42;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow)}
+#tour-tip .step{font-size:12px;color:var(--ink-2);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+#tour-tip h3{margin-top:4px;font-size:17px}
+#tour-tip p{margin:6px 0 12px;font-size:14.5px}
+#tour-tip .row{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.tour-live [data-tour-active]{position:relative;z-index:43}
+@media (max-width:1000px){.demo-grid{grid-template-columns:1fr}.choice-grid{grid-template-columns:1fr 1fr}.replay{grid-template-columns:1fr}.explain .qwrap{grid-template-columns:1fr}.flowkey,.rstats{grid-template-columns:repeat(2,minmax(0,1fr))}.fprow2{grid-template-columns:1fr 1fr}.cols2{grid-template-columns:1fr}.kpis,.cost{grid-template-columns:repeat(2,minmax(0,1fr))}.exgrid,.queue,.fpgrid{grid-template-columns:1fr}.rgrid,.loads{grid-template-columns:1fr}
+  .mrow{grid-template-columns:1fr 1fr;row-gap:6px}.mrow.head,.cov.head,.crow2.head{display:none}.cov{grid-template-columns:1fr 1fr}.crow2{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.pair{grid-template-columns:1fr}.arrow{transform:rotate(90deg);justify-self:center}.page{padding:18px 16px 60px}.top-in{padding:10px 16px}.stat .n{font-size:26px}}
+@media (prefers-reduced-motion:reduce){#tour-ring,.sugg{transition:none}.spin{animation:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9l-.8-1.2A2 2 0 0 0 7.9 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.8 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M6 3l14 9-14 9z"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-switch" viewBox="0 0 24 24"><path d="m16 3 4 4-4 4M20 7H4M8 21l-4-4 4-4M4 17h16"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="top-in">
+    <span class="logo"><i role="img" aria-label="Assay logo"></i>Assay</span>
+    <span class="muted small">AI agent manager</span>
+    <span class="spacer"></span>
+    <button class="btn" id="theme" aria-label="Switch theme"><svg class="i" id="theme-i"><use href="#i-moon"/></svg><span id="theme-t">Dark</span></button>
+    <button class="btn" id="help" data-tour="help"><svg class="i"><use href="#i-help"/></svg>Show me around</button>
+  </div>
+</header>
+
+<main class="page" id="page">
+  <section class="hero" data-tour="hello">
+    <div>
+      <h1>AI agents, verified.</h1>
+      <p class="muted" style="display:flex;align-items:center;gap:8px">Model choice, autonomy and corrections, decided on evidence. <button class="tip" data-info="i-hero" aria-label="About Assay">?</button></p>
+      <div class="info" id="i-hero">Assay sits between AI agents and the people who review their work. It evaluates every model and every change against real outcomes, lets an agent act without review only where the record proves it, and routes each request to the cheapest proven model. The example agent triages the public Apache Jira (Spark, Kafka, Flink, Hive); everything runs on Databricks.</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px" data-tour="run"><button class="btn gold" id="open-demo"><svg class="i"><use href="#i-play"/></svg>Live demo</button><button class="tip" data-info="i-run" aria-label="About the live demo">?</button></div>
+    <div class="info" id="i-run">Write a Jira ticket (or pick a template) and watch Assay handle it live on Databricks: known patterns are handled automatically, suggestions known to be wrong are interrupted, and anything uncertain comes to you. Demo tickets carry a gold border and never reach Jira; they do not change the evaluation figures.</div>
+  </section>
+
+  <div id="err" hidden></div>
+  <div id="loading" class="loading"><span class="spin"></span>&nbsp; Loading from Databricks. The first load can take up to a minute while the SQL warehouse starts.</div>
+
+  <div id="content" hidden style="display:grid;gap:20px">
+    <section class="kpis" data-tour="kpis" aria-label="Key figures">
+      <div class="stat"><div class="n" id="k1">–</div><div class="l">Tickets evaluated <button class="tip" data-info="i-k1" aria-label="About this figure">?</button></div><div class="sub" id="k1s"></div><div class="info" id="i-k1"></div></div>
+      <div class="stat"><div class="n" id="k2">–</div><div class="l">Answers verified <button class="tip" data-info="i-k2" aria-label="About this figure">?</button></div><div class="sub" id="k2s"></div><div class="info" id="i-k2"></div></div>
+      <div class="stat warn"><div class="n" id="k3">–</div><div class="l">High-confidence false positives <button class="tip" data-info="i-k3" aria-label="About this figure">?</button></div><div class="sub" id="k3s"></div><div class="info" id="i-k3"></div></div>
+      <div class="stat"><div class="n" id="k4">–</div><div class="l">Claims decided <button class="tip" data-info="i-k4" aria-label="About this figure">?</button></div><div class="sub" id="k4s"></div><div class="info" id="i-k4"></div></div>
+    </section>
+
+    <section class="replay" data-tour="replay" aria-label="Replay the evaluation" id="replay" hidden>
+      <button class="btn primary" id="rp-play" aria-label="Play the replay"><svg class="i"><use href="#i-play"/></svg><span id="rp-play-t">Replay</span></button>
+      <div class="rp-mid">
+        <div class="rp-top"><b id="rp-count">–</b><span class="muted small" id="rp-date"></span><button class="tip" data-info="i-replay" aria-label="About the replay">?</button></div>
+        <input type="range" id="rp-range" min="0" max="0" value="0" aria-label="Tickets processed">
+      </div>
+      <div class="rp-events" id="rp-events" aria-live="polite"></div>
+      <div class="info" id="i-replay">Replays the evaluation in the order the tickets were filed. The key figures and the model table show what Assay knew at each point: roles change, patterns are automated, and automation is revoked when a counterexample arrives. Precomputed from the real runs.</div>
+    </section>
+
+    <section class="panel" data-tour="models" aria-label="Model evaluation" id="sec-models">
+      <div class="panel-h"><h2>Model evaluation <button class="tip" data-info="i-models" aria-label="About the model evaluation">?</button></h2><span class="meta" id="models-meta"></span></div>
+      <div class="info" id="i-models">Every model answered the same tickets. Answers are graded against what the Apache maintainers actually did: duplicate links, parent tickets and how each ticket was closed. No human or AI labels. Hover a role for the reason.</div>
+      <div id="mtable" role="table"></div>
+      <p class="est">Assay's model choice and the cost-quality trade-off: see Detailed statistics.</p>
+    </section>
+
+    <section class="panel fold" data-tour="stats" aria-label="Detailed statistics" id="fold-stats">
+      <button class="fold-h" aria-expanded="false" aria-controls="stats-body">
+        <h2>Detailed statistics</h2><span class="sum" id="stats-meta">Calibration · Definition ambiguity · Evidence coverage</span><span class="chev"><span class="chev-t">Open</span><svg class="i"><use href="#i-arrow"/></svg></span>
+      </button>
+      <div class="fold-b" id="stats-body" hidden>
+        <div class="subpanel choice" data-tour="choice">
+          <h3>Assay's model choice <button class="tip" data-info="i-choice" aria-label="About the model choice">?</button></h3>
+          <div class="info" id="i-choice"></div>
+          <div class="choice-grid" id="choice"></div>
+        </div>
+        <div class="subpanel" data-tour="priceperf">
+          <h3>Price vs performance <button class="tip" data-info="i-pp" aria-label="About price vs performance">?</button> <span class="muted small" style="font-weight:400">moves with the replay</span></h3>
+          <div class="info" id="i-pp">Each model's precision (answers the maintainer record confirms, among those it can settle) against its estimated cost per 1,000 tickets at list price, on a log scale. Color shows the role the selection rule assigns at that point: the primary is the cheapest model that meets the quality floor, so it sits at the left edge of the acceptable band, not necessarily at the top.</div>
+          <div id="pp"></div>
+        </div>
+        <div class="cols2" id="sec-eval2">
+          <div class="subpanel" data-tour="calibration">
+            <h3>Calibration <button class="tip" data-info="i-cal" aria-label="About calibration">?</button></h3>
+            <div class="info" id="i-cal">For each model, the confidence it stated (diamond) against the precision it achieved (dot) on answers rated 95% or higher. The red gap is overconfidence: the reason model confidence never decides on its own.</div>
+            <div id="calib"></div>
+            <div class="key"><span><i style="background:var(--ink-2);transform:rotate(45deg)"></i>Stated</span><span><i style="background:var(--stop);border-radius:50%"></i>Actual</span></div>
+          </div>
+          <div class="subpanel" data-tour="ambiguity" style="border-top:0;padding-top:0">
+            <h3>Definition ambiguity <button class="tip" data-info="i-amb" aria-label="About definition ambiguity">?</button> <span class="muted small" id="amb-meta" style="font-weight:400"></span></h3>
+            <div class="info" id="i-amb">Tickets the maintainers closed as duplicates of an earlier ticket the agent was shown, and how each model labeled them. When models split this way the definition itself is ambiguous, so these cases stay with a reviewer.</div>
+            <div id="dupbars"></div>
+            <div class="legend" id="duplegend"></div>
+          </div>
+        </div>
+        <div class="subpanel" data-tour="coverage" id="sec-coverage">
+          <h3>Evidence coverage <button class="tip" data-info="i-cov" aria-label="About evidence coverage">?</button> <span class="muted small" id="cov-meta" style="font-weight:400"></span></h3>
+          <div class="info" id="i-cov">Each claim is <b>proven</b> (95% interval entirely above the 90% bar), <b>ruled out</b> (entirely below), or reports how many more cases it needs. Kinds of case defined by the parent field are excluded, because the grader uses that field.</div>
+          <div id="coverage"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" data-tour="cost" aria-label="Cost and savings">
+      <div class="panel-h"><h2>Cost &amp; savings <button class="tip" data-info="i-cost" aria-label="About cost and savings">?</button></h2><span class="meta">estimates at list price · actual spend $0</span></div>
+      <div class="info" id="i-cost"></div>
+      <div class="cost" id="cost"></div>
+      <div class="ctable" id="ctable"></div>
+    </section>
+
+    <section class="panel" data-tour="routing" aria-label="Model routing">
+      <div class="panel-h"><h2>Model routing <button class="tip" data-info="i-route" aria-label="About model routing">?</button></h2><span class="meta" id="route-meta"></span></div>
+      <div class="info" id="i-route">Every request goes to the primary model first. If it is rate-limited or returns unusable output, the router switches to the next backup immediately. Backup answers are delivered but held for review; if every model is unavailable, the request is escalated to a person. Figures are from a load test over every stream ticket on Databricks Free Edition, where rate limits are low.</div>
+      <div id="route-flow"></div>
+      <div class="rstats" id="route-stats"></div>
+      <div class="rgrid" id="policy" style="margin-top:14px"></div>
+      <p class="est" id="route-note"></p>
+    </section>
+
+    <section class="panel fold" data-tour="queue" aria-label="Review queue" id="fold-queue">
+      <button class="fold-h" aria-expanded="false" aria-controls="queue-body">
+        <h2>Review queue</h2><span class="sum" id="queue-meta"></span><span class="chev"><span class="chev-t">Open</span><svg class="i"><use href="#i-arrow"/></svg></span>
+      </button>
+      <p class="fold-lead">Suggestions the maintainer record cannot settle, so a person decides. Each decision is saved to Databricks and counts toward automating that kind of case: once a kind is proven, matching suggestions resolve on their own. <button class="tip" data-info="i-queue" aria-label="How to read a suggestion">?</button></p>
+
+      <div class="fold-b" id="queue-body" hidden>
+        <div class="qwrap" data-tour="anatomy">
+          <div class="queue" id="queue"></div>
+          <div class="info guide" id="i-queue"><b>How to read a suggestion</b>
+        <ol class="anat">
+          <li><span><b>Type</b>: what the model proposes: a duplicate, part of a larger effort, or a related ticket.</span></li>
+          <li><span><b>Suggested by</b>: the model, and its self-reported confidence. Confidence is the model's own estimate, not evidence.</span></li>
+          <li><span><b>Tickets</b>: the new ticket and the earlier ticket it points to. IDs open in Jira.</span></li>
+          <li><span><b>Model's reason</b>: in the model's own words.</span></li>
+          <li><span><b>Similar past cases</b>: how reviewers and maintainers decided this kind of case before, and how many more consistent decisions would let Assay resolve it automatically.</span></li>
+          <li><span><b>Your decision</b>: Accept applies the link, Reject keeps the tickets separate, Skip moves it to the end. Saved to the Delta table <code>actions</code>; undo within six seconds.</span></li>
+        </ol></div>
+        </div>
+        <div class="more" id="more-wrap" hidden><button class="btn ghost" id="more">Show more</button></div>
+      </div>
+    </section>
+
+    <section class="panel" data-tour="falsepos" aria-label="Why confident answers fail" id="sec-examples">
+      <div class="panel-h"><h2>Why confident answers fail <button class="tip" data-info="i-fp" aria-label="About this section">?</button></h2><span class="meta" id="fp-meta"></span></div>
+      <div class="info" id="i-fp">Answers a model rated at least 95% confident that the maintainer record contradicts, grouped by what went wrong. This is why Assay never lets a model's confidence decide on its own.</div>
+      <div id="fpcauses"></div>
+    </section>
+
+    <p class="foot" id="foot"></p>
+  </div>
+</main>
+
+<div id="demo" hidden role="dialog" aria-modal="true" aria-labelledby="demo-title">
+  <div class="demo-box">
+    <div class="demo-h"><div><p class="eyebrow" style="color:var(--gold)">Live demo · runs on Databricks now</p><h2 id="demo-title">Write a Jira ticket. See what Assay does with it.</h2></div>
+      <button class="btn ghost" id="demo-close" aria-label="Close the live demo">Close</button></div>
+    <div class="demo-grid">
+      <form class="demo-form" id="demo-form">
+        <p class="small muted">Start from a scenario, or write your own.</p>
+        <div class="tpls" id="tpls"></div>
+        <label>Model<select id="d-model"><option value="">Assay router (cost-optimized primary, with backups)</option>
+          <option value="databricks-meta-llama-3-1-8b-instruct">Force Llama 3.1 8B (cheapest; excluded by Assay)</option>
+          <option value="databricks-gemma-3-12b">Force Gemma 3 12B (excluded by Assay)</option>
+          <option value="databricks-gpt-oss-120b">Force gpt-oss 120B (most precise)</option></select></label>
+        <label>Project<select id="d-project"><option>SPARK</option><option>KAFKA</option><option>FLINK</option><option>HIVE</option></select></label>
+        <label>Title<input id="d-title" required minlength="5" placeholder="e.g. Upgrade Jackson to 2.22.3"></label>
+        <label>Description<textarea id="d-desc" rows="4" placeholder="Optional"></textarea></label>
+        <button class="btn gold" type="submit" id="d-send"><svg class="i"><use href="#i-play"/></svg>Send through Assay</button>
+        <p class="small muted">Demo tickets are marked with a gold border and written to a sandbox table, never to Jira.</p>
+        <button class="btn ghost" type="button" id="run" style="justify-self:start"><svg class="i"><use href="#i-refresh"/></svg>Or process 3 real new Jira tickets</button>
+      </form>
+      <ol class="pipe" id="pipe" aria-live="polite"></ol>
+    </div>
+  </div>
+</div>
+
+<div id="pop" hidden role="tooltip"></div>
+<div id="toast" hidden role="status"><span id="toast-text"></span><button id="toast-undo" hidden>Undo</button></div>
+
+<div id="welcome" hidden role="dialog" aria-modal="true" aria-labelledby="w-title">
+  <div class="box">
+    <p class="eyebrow">Welcome</p>
+    <h2 id="w-title">AI agents, verified.</h2>
+    <p class="muted">A two-minute tour of how Assay evaluates models, decides what an agent may do without review, and routes to the cheapest proven model. You will review one real suggestion yourself.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" id="w-start">Start the tour</button><button class="btn" id="w-skip">Skip</button></div>
+  </div>
+</div>
+
+<div id="tour-ring" hidden></div>
+<div id="tour-tip" hidden role="dialog" aria-live="polite"><div class="step" id="tour-step"></div><h3 id="tour-h"></h3><p id="tour-text"></p>
+  <div class="row"><button class="btn" id="tour-back">Back</button><button class="btn" id="tour-end">Close</button><button class="btn primary" id="tour-next">Next</button></div></div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+// ---------- light / dark theme: starts from the saved choice, else the system setting ----------
+function isDark() { const t = document.documentElement.dataset.theme; return t ? t === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; }
+function paintThemeButton() {
+  const d = isDark();
+  $("theme-i").innerHTML = `<use href="#i-${d ? "sun" : "moon"}"/>`;
+  $("theme-t").textContent = d ? "Light" : "Dark";
+  $("theme").setAttribute("aria-label", `Switch to ${d ? "light" : "dark"} theme`);
+}
+try { const saved = localStorage.getItem("assay-theme"); if (saved) document.documentElement.dataset.theme = saved; } catch (e) {}
+paintThemeButton();
+$("theme").onclick = () => {
+  const next = isDark() ? "light" : "dark";
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem("assay-theme", next); } catch (e) {}
+  paintThemeButton();
+};
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", paintThemeButton);
+const RM = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const icon = id => `<svg class="i"><use href="#i-${id}"/></svg>`;
+const jira = k => `https://issues.apache.org/jira/browse/${encodeURIComponent(k)}`;
+const fmt = n => (n ?? 0).toLocaleString();
+const pct = x => `${Math.round(100 * x)}%`;
+const usd = x => x >= 100 ? `$${Math.round(x).toLocaleString()}` : `$${x.toFixed(2)}`;
+const COLOR = r => r >= 0.9 ? "var(--go)" : r >= 0.5 ? "var(--ask)" : "var(--stop)";
+const MIN_PER_REVIEW = 1.5;   // assumption for effort estimates, stated on the page
+const MONTHLY_TICKETS = 1e6;  // projection volume, stated on the page
+
+const REL = {
+  duplicate: { ico: "copy", title: "Duplicate", yes: "Accept: merge", no: "Reject", done: "Accepted: marked as duplicate.", plain: "duplicate" },
+  part_of:   { ico: "folder", title: "Part of a larger effort", yes: "Accept: file under", no: "Reject", done: "Accepted: filed under the larger effort.", plain: "part of" },
+  related:   { ico: "link", title: "Related", yes: "Accept: link", no: "Reject", done: "Accepted: linked as related.", plain: "related" }
+};
+const KIND = {
+  "bump-same-lib-diff-version": "version upgrades, same library, different versions",
+  "bump-same-lib-same-version": "version upgrades, same library and version",
+  "same-title": "identical titles", "candidate-is-parent": "existing parent ticket",
+  "siblings": "sub-tasks of the same parent", "both-test-failures": "test-failure reports", "other": "no recognised pattern"
+};
+const ROLE = { "main": ["go", "Primary"], "backup": ["ask", "Backup"], "not used": ["stop", "Excluded"] };
+
+let S = null, shown = 6, last = null, busy = false, freshIds = new Set(), skipped = new Set();
+
+async function api(path, body) {
+  const r = await fetch(path, body ? { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } : {});
+  let j = {}; try { j = await r.json(); } catch (e) {}
+  if (!r.ok) throw new Error(j.detail || j.error || `HTTP ${r.status}`);
+  return j;
+}
+async function load(fresh) {
+  try { S = await api("/api/state" + (fresh ? "?fresh=1" : "")); $("err").hidden = true; render(); }
+  catch (e) {
+    $("loading").hidden = true; $("err").hidden = false;
+    $("err").innerHTML = `<div class="banner" role="alert">${icon("x")}<span><b>Databricks is not reachable right now.</b> ${esc(e.message)}</span><button class="btn" id="retry">${icon("refresh")}Retry</button></div>`;
+    $("retry").onclick = () => { $("loading").hidden = false; $("err").hidden = true; load(true); };
+  }
+}
+
+// ---------- rendering ----------
+// ---------- replay: smooth, looping interpolation between precomputed snapshots ----------
+let RP = null;                     // fractional snapshot index being shown, or null for the final state
+let rpPlaying = false, rpRaf = 0, rpLast = 0, rpHoldUntil = 0;
+const RP_SEG_MS = 1600, RP_HOLD_MS = 5000, RP_FROM = 100;
+const lerp = (a, b, f) => (a ?? 0) + ((b ?? 0) - (a ?? 0)) * f;
+function rpStart() { const s = S.eval.replay.snapshots, i = s.findIndex(x => x.tickets >= RP_FROM); return i < 0 ? 0 : i; }
+function snapAt(x) {  // interpolated snapshot at fractional index x
+  const S0 = S.eval.replay.snapshots, i = Math.floor(x), j = Math.min(S0.length - 1, i + 1), f = x - i, a = S0[i], b = S0[j];
+  const bm = Object.fromEntries(b.models.map(m => [m.model, m]));
+  const num = ["confirmed", "contradicted", "hi_confirmed", "hi_contradicted", "unusable", "tasks", "answered", "decided_lower", "usd_per_1k_tasks"];
+  const models = a.models.map(m => { const n = bm[m.model] || m, o = { ...m }; num.forEach(k => o[k] = lerp(m[k], n[k], f)); return o; });
+  const meta = { ...a.meta }; ["tickets", "graded", "hi_wrong", "hi_graded", "calls", "actions"].forEach(k => meta[k] = lerp(a.meta[k], b.meta[k], f));
+  let router = null;
+  if (a.router) {
+    const ra = a.router, rb = b.router || ra, L = k => lerp(ra[k], rb[k], f);
+    const names = new Set([...Object.keys(ra.answered_by || {}), ...Object.keys(rb.answered_by || {})]);
+    const P = k => ({ confirmed: lerp(ra[k].confirmed, rb[k].confirmed, f), contradicted: lerp(ra[k].contradicted, rb[k].contradicted, f) });
+    router = { requests: L("requests"), switches: L("switches"), held_for_review: L("held_for_review"), unanswered: L("unanswered"),
+               busy_events: L("busy_events"), latency_ms_p50: L("latency_ms_p50"), precision_trusted: P("precision_trusted"), precision_held: P("precision_held"),
+               answered_by: Object.fromEntries([...names].map(n => [n, lerp((ra.answered_by || {})[n], (rb.answered_by || {})[n], f)])) };
+  }
+  return { tickets: lerp(a.tickets, b.tickets, f), date: (f < 0.5 ? a : b).date, meta, models, primary: a.primary, idx: i, router };
+}
+function evalView() {
+  const E = S.eval;
+  if (!E || RP == null || !E.replay) return E;
+  const snap = snapAt(RP), by = Object.fromEntries(snap.models.map(m => [m.model, m]));
+  const models = E.models.map(m => by[m.model] ? { ...m, ...by[m.model], role_reason: `Role after ${fmt(Math.round(snap.tickets))} tickets`, vs_main: null }
+                                              : { ...m, confirmed: 0, contradicted: 0, hi_confirmed: 0, hi_contradicted: 0, unusable: 0, answered: 0, tasks: 0, role: null });
+  return { ...E, meta: { ...E.meta, ...snap.meta }, models, router: snap.router ? { ...(E.router || {}), normal: snap.router } : E.router,
+           policy: { ...(E.policy || {}), primary: snap.primary, backups: snap.models.filter(m => m.role === "backup").map(m => m.model), previous_primary: null } };
+}
+function renderReplay() {
+  const R = S.eval && S.eval.replay;
+  $("replay").hidden = !R;
+  if (!R) return;
+  const snaps = R.snapshots, x = RP == null ? snaps.length - 1 : RP, s = snapAt(x);
+  $("rp-range").min = rpStart(); $("rp-range").max = snaps.length - 1; $("rp-range").step = "any";
+  if (document.activeElement !== $("rp-range")) $("rp-range").value = x;
+  $("rp-count").textContent = `${fmt(Math.round(s.tickets))} tickets processed`;
+  $("rp-date").textContent = RP == null ? "final" : `filed up to ${s.date}`;
+  const recent = snaps.slice(0, s.idx + 1).flatMap(y => y.events.map(ev => [y.tickets, ev])).slice(-3).reverse();
+  const html = recent.map(([n, ev]) => `<span class="tag ${/Revoked|excluded/.test(ev) ? "stop" : /Automated|primary/i.test(ev) ? "go" : "info"}">${fmt(n)}: ${esc(ev)}</span>`).join("") || `<span class="muted small">Events appear here as the evidence builds up.</span>`;
+  if ($("rp-events").dataset.h !== html) { $("rp-events").innerHTML = html; $("rp-events").dataset.h = html; }
+  $("rp-play-t").textContent = rpPlaying ? "Pause" : "Play";
+}
+function renderEvalParts() {
+  const E = evalView();
+  if (E) { renderKpis(E); renderModels(E); renderPricePerf(E); }
+  renderRouting(E);
+  renderReplay();
+}
+function rpFrame(now) {
+  if (!rpPlaying) return;
+  const n = S.eval.replay.snapshots.length - 1, dt = Math.min(100, now - (rpLast || now)); rpLast = now;
+  if (rpHoldUntil) {                                  // holding on the final state, then loop
+    if (now >= rpHoldUntil) { rpHoldUntil = 0; RP = rpStart(); }
+  } else {
+    RP = Math.min(n, (RP ?? rpStart()) + dt / RP_SEG_MS);
+    if (RP >= n) { RP = null; rpHoldUntil = now + RP_HOLD_MS; }
+  }
+  renderEvalParts();
+  rpRaf = requestAnimationFrame(rpFrame);
+}
+function playReplay() {
+  if (!S || !S.eval || !S.eval.replay || rpPlaying || RM()) return;
+  rpPlaying = true; rpLast = 0; if (RP == null) RP = rpStart();
+  document.body.classList.add("replaying"); rpRaf = requestAnimationFrame(rpFrame);
+}
+function pauseReplay() { rpPlaying = false; cancelAnimationFrame(rpRaf); rpHoldUntil = 0; renderReplay(); }
+function showFinal() { pauseReplay(); RP = null; document.body.classList.remove("replaying"); renderEvalParts(); }
+$("rp-play").onclick = () => rpPlaying ? pauseReplay() : playReplay();
+$("rp-range").addEventListener("input", e => {
+  pauseReplay(); const v = +e.target.value, n = S.eval.replay.snapshots.length - 1;
+  RP = v >= n ? null : v; document.body.classList.toggle("replaying", RP != null); renderEvalParts();
+});
+
+function render() {
+  $("loading").hidden = true; $("content").hidden = false;
+  $("run").hidden = !S.can_run; $("open-demo").hidden = !S.can_run;
+  const E = S.eval;
+  ["sec-models", "sec-eval2", "sec-examples", "sec-coverage"].forEach(id => $(id).hidden = !E);
+  if (E) { renderCalibration(E); renderAmbiguity(E); renderFalsePositives(E); renderCoverage(E); }
+  renderEvalParts();
+  renderQueue(); renderCost();
+  $("foot").innerHTML = `Source: Unity Catalog <code>${esc(S.catalog)}</code>. Updated ${new Date(S.generated_at).toLocaleTimeString()}. Tickets are public Apache Jira issues; accepted suggestions are written to a sandbox table, never to Jira.`;
+}
+
+function renderKpis(E) {  // during the replay the headline figures step in tens instead of spinning
+  const M = E.meta, sl = M.slices || {};
+  const r = n => fmt(RP == null ? Math.round(n) : Math.floor(n / 10) * 10);
+  $("k1").textContent = r(M.tickets); $("k1s").textContent = `${M.models} models · ${r(M.calls)} calls on Databricks`;
+  $("k2").textContent = r(M.graded); $("k2s").textContent = `checked against the maintainers' actions`;
+  $("k3").textContent = `${r(M.hi_wrong)} / ${r(M.hi_graded)}`; $("k3s").textContent = `${pct(M.hi_wrong / Math.max(1, M.hi_graded))} of answers rated ≥95% confident`;
+  $("k4").textContent = r(M.claims.proven + M.claims.disproven); $("k4s").textContent = `${M.claims.proven} proven · ${M.claims.disproven} ruled out · ${M.claims.undecided} pending`;
+  if (RP != null) return;  // the long explanations only need the final numbers
+  $("i-k1").innerHTML = `${fmt(sl.stream)} random tickets from the live stream (precision is measured on these), plus targeted slices: ${fmt(sl.dups)} known duplicates, ${fmt(sl.bumps)} version upgrades, ${fmt(sl.flaky)} test-failure reports${Object.keys(sl).some(k => k.startsWith("boost")) ? ", and booster slices for rare kinds of case" : ""}.`;
+  $("i-k2").innerHTML = `Answers the maintainer record can settle, out of ${fmt(M.actions)} proposed links. Graded from duplicate links, parent tickets and resolutions; no human or AI labels.`;
+  $("i-k3").innerHTML = `High-confidence false positives: answers rated ≥95% confident that the maintainer record contradicts, across all ${M.models} models.`;
+  $("i-k4").innerHTML = `Claims about models and patterns that reached a verdict: proven (95% interval above the 90% bar) or ruled out (below it). See Evidence coverage.`;
+}
+
+const MHEAD = [["Model", "Databricks-hosted model, and how many of the evaluation tickets it answered."],
+  ["Role", "Assigned by the selection rule: Primary answers first, Backups step in when it is unavailable, Excluded models are never used. Hover a role for the reason."],
+  ["Precision", "Share of answers confirmed by the maintainer record, among answers the record can settle. The marker is the 90% bar for acting without review; the lower bound is the 95% one-sided confidence limit."],
+  ["False positives", "High-confidence false positives: answers rated ≥95% confident that the record contradicts, out of all ≥95% answers the record can settle."],
+  ["Unreadable", "Responses that were not valid structured output and could not be used."],
+  ["Cost / 1k", "Estimated cost per 1,000 tickets at Databricks list price, from measured input and output tokens."],
+  ["Latency", "Median time per ticket, including retries after rate limits."]];
+function renderModels(E) {
+  const key = E.models.map(m => m.model).join();
+  if ($("mtable").dataset.key !== key) {  // structure once; values are filled in place so bars can animate
+    $("mtable").dataset.key = key;
+    $("mtable").innerHTML = `<div class="mrow head" role="row">${MHEAD.map(([h, x]) => `<span role="columnheader">${h} <button class="tip" data-text="${esc(x)}" aria-label="About ${h}">?</button></span>`).join("")}</div>` +
+      E.models.map(m => `<div class="mrow" role="row" data-m="${esc(m.model)}">
+        <span class="nm"><b>${esc(m.name)}</b><small class="f-ans"></small></span>
+        <span><button class="tag tip-host f-role" style="border:0;cursor:help"></button></span>
+        <span><div class="pbar"><span class="f-bar"></span><i style="left:90%"></i></div><span class="num"><span class="f-prec"></span> <small class="f-precsub"></small></span></span>
+        <span class="num"><span class="f-fp"></span><small class="f-fpsub"></small></span>
+        <span class="num"><span class="f-un"></span><small class="f-unsub"></small></span>
+        <span class="num"><span class="f-cost"></span><small class="f-costsub"></small></span>
+        <span class="num f-lat"></span>
+        <span class="detail f-detail"></span></div>`).join("");
+  }
+  fillModels(E);
+}
+const stepN = n => RP == null ? Math.round(n) : Math.floor(n / 10) * 10;  // counts step in tens during the replay
+function renderChoice(E) {  // Assay's model choice: cost-optimized primary vs quality-optimized alternative
+  const PO = E.policy, by = Object.fromEntries(E.models.map(m => [m.model, m])), nm = id => (by[id] || {}).name || id;
+  const acc = m => (m && m.confirmed + m.contradicted) ? m.confirmed / (m.confirmed + m.contradicted) : 0;
+  const prim = by[PO.primary] || {}, reliable = E.models.filter(m => m.role && m.role !== "not used");
+  const best = reliable.slice().sort((a, b) => acc(b) - acc(a))[0] || prim;
+  const card = (tag, cls, name, line) => `<div class="choice-c ${cls}"><span class="tag ${cls}">${tag}</span><b>${esc(name)}</b><span>${line}</span></div>`;
+  $("choice").innerHTML =
+    card("Primary · cost-optimized", "go", nm(PO.primary), `${pct(acc(prim))} precision · $${(prim.usd_per_1k_tasks || 0).toFixed(2)} per 1,000 tickets`) +
+    (best.model && best.model !== PO.primary
+      ? card("Quality-optimized alternative", "info", best.name, `+${Math.round(100 * (acc(best) - acc(prim)))} points precision · ${(best.usd_per_1k_tasks / (prim.usd_per_1k_tasks || 1)).toFixed(1)}× the cost`)
+      : card("Quality-optimized alternative", "info", "same model", "the primary is also the most precise")) +
+    card("Backups, in order", "ask", (PO.backups || []).map(nm).join(" → ") || "none", "used when the primary is unavailable; answers held for review") +
+    card("Autonomy granted", "stop", "None", "no model reaches 90% on any kind of case");
+  if (PO.rule) $("i-choice").innerHTML = `The primary is the <b>cheapest</b> model that is ${esc(PO.rule)}. A more precise model costs more per ticket, so it serves as a backup, or as primary under a quality-first policy. The choice is re-evaluated whenever new evidence arrives. Next candidate: ${esc(PO.what_would_change_it || "none")}.`;
+}
+function rankRows(E) {  // best precision on top; rows slide to their new place (with a small margin against flicker)
+  const acc = m => { const d = m.confirmed + m.contradicted; return d ? m.confirmed / d - (d < 30 ? 2 : 0) : -3; };  // < 30 checkable answers: ranked last
+  const by = Object.fromEntries(E.models.map(m => [m.model, acc(m)]));
+  const box = $("mtable"), rows = [...box.querySelectorAll(".mrow[data-m]")];
+  const inverted = rows.some((r, i) => i && by[r.dataset.m] > by[rows[i - 1].dataset.m] + 0.01);
+  if (!inverted) return;
+  const before = new Map(rows.map(r => [r, r.getBoundingClientRect().top]));
+  rows.slice().sort((a, b) => by[b.dataset.m] - by[a.dataset.m]).forEach(r => box.appendChild(r));
+  rows.forEach(r => {
+    const dy = before.get(r) - r.getBoundingClientRect().top;
+    if (!dy || RM()) return;
+    r.style.transition = "none"; r.style.transform = `translateY(${dy}px)`;
+    requestAnimationFrame(() => { r.style.transition = "transform .6s ease"; r.style.transform = ""; });
+  });
+}
+function fillModels(E) {
+  const M = E.meta, PO = E.policy, by = Object.fromEntries(E.models.map(m => [m.model, m]));
+  $("models-meta").textContent = `${M.models} models · ranked by precision`;
+  rankRows(E);
+  document.querySelectorAll("#mtable .mrow[data-m]").forEach(row => {
+    const m = by[row.dataset.m]; if (!m) return;
+    const q = c => row.querySelector(c);
+    const dec = m.confirmed + m.contradicted, r = dec ? m.confirmed / dec : 0, ro = ROLE[m.role] || ["info", "–"];
+    const vs = m.vs_main && m.vs_main.p != null ? ` Against Llama 3.3 70B on the same tickets: better on ${m.vs_main.better}, worse on ${m.vs_main.worse}${m.vs_main.p < 0.05 ? " (significant)" : " (not significant)"}.` : "";
+    q(".f-ans").textContent = `${fmt(stepN(m.answered))} / ${fmt(stepN(m.tasks))} answered`;
+    const role = q(".f-role"); role.className = `tag tip-host f-role ${ro[0]}`; role.textContent = ro[1]; role.dataset.text = (m.role_reason || "") + "." + vs;
+    const bar = q(".f-bar"); bar.style.width = `${100 * r}%`; bar.style.background = COLOR(r);
+    q(".f-prec").textContent = pct(r);
+    q(".f-precsub").textContent = `${fmt(stepN(m.confirmed))} / ${fmt(stepN(dec))} · lower bound ${pct(m.decided_lower || 0)}`;
+    q(".f-fp").textContent = fmt(stepN(m.hi_contradicted)); q(".f-fpsub").textContent = `of ${fmt(stepN(m.hi_contradicted + m.hi_confirmed))}`;
+    q(".f-un").textContent = fmt(stepN(m.unusable)); q(".f-unsub").textContent = `of ${fmt(stepN(m.tasks))}`;
+    q(".f-cost").textContent = `$${(m.usd_per_1k_tasks ?? 0).toFixed(2)}`; q(".f-costsub").textContent = `${fmt(m.tokens?.per_task)} tok/ticket`;
+    q(".f-lat").textContent = `${((m.latency_ms?.p50 || 0) / 1000).toFixed(1)} s`;
+    q(".f-detail").textContent = `${m.role_reason || ""}.${vs}`;
+  });
+  if (!PO) return;
+  renderChoice(E);
+
+}
+
+function renderPricePerf(E) {
+  const W = 1360, H = 400, L = 70, R = 40, T = 20, B = 48, x0 = Math.log10(0.1), x1 = Math.log10(12);
+  const X = c => L + (Math.log10(Math.max(0.1, c)) - x0) / (x1 - x0) * (W - L - R), Y = p => T + (1 - p) * (H - T - B);
+  const col = { main: "var(--go)", backup: "var(--accent)", "not used": "var(--stop)" };
+  if (!$("pp").dataset.built) {
+    const ticks = [0.1, 0.2, 0.5, 1, 2, 5, 10];
+    $("pp").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Precision against cost per 1,000 tickets for each model">
+      ${[0, 0.25, 0.5, 0.75, 1].map(p => `<line class="ax" x1="${L}" x2="${W - R}" y1="${Y(p)}" y2="${Y(p)}"/><text x="${L - 8}" y="${Y(p) + 4}" text-anchor="end">${p * 100}%</text>`).join("")}
+      <line x1="${L}" x2="${W - R}" y1="${Y(0.9)}" y2="${Y(0.9)}" stroke="var(--go)" stroke-dasharray="5 4"/><text x="${W - R}" y="${Y(0.9) - 6}" text-anchor="end">90%: bar for acting without review</text>
+      ${ticks.map(c => `<text x="${X(c)}" y="${H - B + 18}" text-anchor="middle">$${c}</text>`).join("")}
+      <text x="${(L + W - R) / 2}" y="${H - 6}" text-anchor="middle">Estimated cost per 1,000 tickets (log scale)</text>
+      <text x="14" y="${(T + H - B) / 2}" text-anchor="middle" transform="rotate(-90 14 ${(T + H - B) / 2})">Precision</text>
+      ${E.models.map(m => `<g class="pt" data-m="${esc(m.model)}"><circle r="8"/><text class="lbl" dx="12" dy="4">${esc(m.name)}</text></g>`).join("")}
+    </svg><div class="ppkey"><span><i style="background:var(--go)"></i>Primary</span><span><i style="background:var(--accent)"></i>Backup</span><span><i style="background:var(--stop)"></i>Excluded</span></div>`;
+    $("pp").dataset.built = "1";
+  }
+  const by = Object.fromEntries(E.models.map(m => [m.model, m]));
+  document.querySelectorAll("#pp .pt").forEach(g => {
+    const m = by[g.dataset.m]; if (!m) return;
+    const dec = m.confirmed + m.contradicted, p = dec ? m.confirmed / dec : 0, x = X(m.usd_per_1k_tasks || 0.1), y = Y(p);
+    g.setAttribute("transform", `translate(${x.toFixed(1)},${y.toFixed(1)})`);
+    const lbl = g.querySelector("text"), right = x > W - 200;  // labels near the right edge sit to the left of the dot
+    lbl.setAttribute("text-anchor", right ? "end" : "start"); lbl.setAttribute("dx", right ? -12 : 12);
+    g.querySelector("circle").setAttribute("fill", col[m.role] || "var(--line)");
+    g.querySelector("circle").setAttribute("stroke", m.role === "main" ? "var(--ink)" : "var(--panel)");
+    g.querySelector("circle").setAttribute("stroke-width", m.role === "main" ? 3 : 2);
+    g.style.opacity = dec ? 1 : 0.3;
+  });
+}
+
+function renderCalibration(E) {
+  const rows = E.calibration.filter(b => b.bin.startsWith("0.95") && b.n >= 3)
+    .map(b => ({ name: b.name, said: b.said, real: b.confirmed / b.n, n: b.n })).sort((a, b) => b.real - a.real);
+  $("calib").innerHTML = rows.map(r => `<div class="crow"><span>${esc(r.name)}<br><small class="muted">n = ${r.n}</small></span>
+      <div class="track" role="img" aria-label="${esc(r.name)}: stated ${pct(r.said)}, actual ${pct(r.real)}">
+        <span class="ln"></span><span class="gap" style="left:${100 * r.real}%;width:${Math.max(0, 100 * (r.said - r.real))}%"></span>
+        <span class="said" style="left:${100 * r.said}%"></span><span class="real" style="left:${100 * r.real}%;background:${COLOR(r.real)}"></span>
+        <span class="lbl" style="left:${Math.min(100 * r.real, 72)}%;transform:translateX(12px)">${pct(r.real)}</span></div></div>`).join("")
+    + `<div class="axis"><span>0%</span><span>50%</span><span>100%</span></div>`;
+}
+
+function renderAmbiguity(E) {
+  const D = E.models.filter(m => m.dup_recall && m.dup_recall.n >= 50);
+  const n0 = D.length ? Math.max(...D.map(m => m.dup_recall.n)) : 0;
+  $("amb-meta").textContent = `${n0} known duplicates`;
+  const CATS = [["duplicate (right)", "var(--go)", "Duplicate (correct)"], ["called it part_of", "var(--accent)", "Part of"],
+                ["called it related", "var(--ask)", "Related"], ["picked another ticket", "var(--stop)", "Wrong ticket"], ["said nothing", "var(--line)", "No link"]];
+  $("dupbars").innerHTML = D.sort((a, b) => b.dup_recall.hits / b.dup_recall.n - a.dup_recall.hits / a.dup_recall.n).map(m => {
+    const s = m.dup_recall.said, n = m.dup_recall.n;
+    return `<div class="drow"><span>${esc(m.name)}</span><div class="sbar" role="img" aria-label="${esc(m.name)}: ${m.dup_recall.hits} of ${n} correct">${CATS.map(([k, col]) => s[k] ? `<span style="width:${100 * s[k] / n}%;background:${col}" title="${k}: ${s[k]}"></span>` : "").join("")}</div><span class="num">${pct(m.dup_recall.hits / n)}</span></div>`;
+  }).join("");
+  $("duplegend").innerHTML = CATS.map(([, col, label]) => `<span><i style="background:${col}"></i>${label}</span>`).join("");
+}
+
+const CAUSE = {
+  "Belongs to a different parent": ["Wrong parent project", "Filed under a project the ticket does not belong to; it already sits under another parent."],
+  "Resolved independently": ["Not actually a duplicate", "Called a duplicate, but the ticket was fixed on its own."],
+  "Sibling sub-tasks": ["Sibling tasks, not duplicates", "Two separate pieces of the same project were called duplicates."],
+  "Linked as another relation": ["Wrong kind of link", "The tickets are connected, but not in the way the model said."],
+  "Different project": ["Across projects", "Tickets from different Apache projects cannot be duplicates."],
+  "Duplicate of another ticket": ["Wrong original", "It is a duplicate, but of a different ticket."],
+  "Parent, not a duplicate": ["Parent mistaken for duplicate", "The earlier ticket is its parent project."]
+};
+function renderFalsePositives(E) {
+  const C = E.fp_causes || [], total = C.reduce((a, c) => a + c.n, 0);
+  $("fp-meta").textContent = `${fmt(total)} answers rated ≥95% confident, contradicted by the record`;
+  $("fpcauses").innerHTML = C.filter(c => c.n >= 5).map(c => {
+    const [title, desc] = CAUSE[c.cause] || [c.cause, ""], x = c.example || {};
+    return `<div class="fprow2"><span class="t"><b>${esc(title)}</b><small>${esc(desc)}</small></span>
+      <span class="bar" role="img" aria-label="${pct(c.share)}"><span style="width:${100 * c.n / Math.max(1, C[0].n)}%"></span></span>
+      <span class="num">${pct(c.share)}<small>${fmt(c.n)}</small></span>
+      <span class="chips">${Object.keys(c.models).slice(0, 2).map(m => `<span class="chip2">${esc(m)}</span>`).join("")}</span>
+      ${x.key ? `<a class="exlink" href="${jira(x.key)}" target="_blank" rel="noopener" title="${esc(x.key_summary)}">Example ↗</a>` : "<span></span>"}</div>`;
+  }).join("");
+}
+
+
+
+function renderCoverage(E) {
+  const M = E.meta, C = E.coverage || [];
+  $("cov-meta").textContent = `${M.claims.proven} proven · ${M.claims.disproven} ruled out · ${M.claims.undecided} pending`;
+  const rank = s => ({ proven: 0, disproven: 1, undecided: 2 })[s];
+  const show = C.filter(x => x.n >= 10).sort((a, b) => rank(a.status) - rank(b.status) || b.n - a.n).slice(0, 10);
+  const ST = { proven: ["go", "Proven"], disproven: ["stop", "Ruled out"], undecided: ["ask", "Pending"] };
+  $("coverage").innerHTML = `<div class="cov head"><span>Claim</span><span>Evidence</span><span>95% interval</span><span>Status</span></div>` +
+    show.map(x => `<div class="cov"><span>${esc(x.claim.replace(/"/g, ""))}</span><span class="num">${fmt(x.k)} / ${fmt(x.n)}</span>
+      <span><div class="ci" role="img" aria-label="${pct(x.lower)} to ${pct(x.upper)}"><span style="left:${100 * x.lower}%;width:${Math.max(1, 100 * (x.upper - x.lower))}%"></span><i style="left:90%"></i></div><small class="muted">${pct(x.lower)}–${pct(x.upper)}</small></span>
+      <span><span class="tag ${ST[x.status][0]}">${ST[x.status][1]}${x.needs_more ? ` · ${x.needs_more} more` : ""}</span></span></div>`).join("");
+}
+
+function hist(it) {
+  const p = it.precedent;
+  if (!p) return `<p class="hist">Similar past cases: none yet.</p>`;
+  const said = p.answer === "accept" ? "accepted" : "rejected";
+  const kind = KIND[it.kind] || it.kind_text;
+  const tail = p.enabled ? " · resolved automatically"
+    : it.kind === "other" ? " · no recognised pattern, so it always stays with a person"
+    : p.needs_agreeing ? ` · ${p.needs_agreeing} more agreeing decisions to automate${p.agree < p.n && p.needs_more ? ` (about ${p.needs_more} at today's agreement rate)` : ""}`
+    : " · decisions differ, so this stays with a person";
+  return `<p class="hist">Similar past cases${it.kind === "other" ? "" : ` (${esc(kind)})`}: <b>${said} ${p.agree} of ${p.n}</b>${tail}</p>`;
+}
+function card(it, i) {
+  const k = REL[it.relation], mk = n => i === 0 ? `<span class="mark" aria-hidden="true">${n}</span>` : "";
+  const TYPE = { duplicate: "Possible duplicate", part_of: "Possibly part of a larger effort", related: "Possibly related" };
+  return `<article class="sugg${freshIds.has(it.id) ? " fresh" : ""}${it.demo ? " demo" : ""}" id="c${i}" ${i === 0 ? 'data-tour="card"' : ""}>
+    <div class="kind">${mk(1)}<span class="ico" aria-hidden="true">${icon(k.ico)}</span>${TYPE[it.relation]}${it.demo ? '<span class="badge demo">Demo</span>' : it.new ? '<span class="badge new">New</span>' : ""}</div>
+    <div class="sby">${mk(2)}Suggested by <b>${esc(it.model || "the agent")}</b>${it.confidence != null ? ` · model confidence <span class="conf">${pct(it.confidence)}</span>` : ""}</div>
+    <div class="pair">${mk(3)}<div class="tk">${esc(it.a.title)}<small>${it.demo ? `${esc(it.a.key)} · demo ticket` : `<a href="${jira(it.a.key)}" target="_blank" rel="noopener">${esc(it.a.key)} ↗</a> · new`}</small></div>
+      <span class="arrow" aria-hidden="true">${icon("arrow")}</span>
+      <div class="tk">${esc(it.b.title)}<small><a href="${jira(it.b.key)}" target="_blank" rel="noopener">${esc(it.b.key)} ↗</a> · earlier</small></div></div>
+    ${it.reason ? `<p class="why">${mk(4)} Model's reason: “${esc(it.reason)}”</p>` : ""}
+    <div class="hist-wrap">${mk(5)}${hist(it)}</div>
+    <div class="acts" ${i === 0 ? 'data-tour="buttons"' : ""}>${mk(6)}
+      <button class="btn yes" data-i="${i}" data-a="accept">${icon("check")}${k.yes}</button>
+      <button class="btn no" data-i="${i}" data-a="reject">${icon("x")}${k.no}</button>
+      <button class="btn ghost" data-i="${i}" data-a="skip">Skip</button>
+    </div></article>`;
+}
+function renderQueue() {
+  const items = S.inbox.filter(it => !skipped.has(it.id)).concat(S.inbox.filter(it => skipped.has(it.id)));
+  window._items = items;
+  $("queue").innerHTML = items.slice(0, shown).map(card).join("") || `<div class="empty"><b>Queue clear.</b> Run the agent on new tickets to add suggestions.</div>`;
+  $("queue-meta").textContent = `${fmt(items.length)} open · ${fmt(S.handled.length)} resolved automatically · ${fmt(S.counts.answered)} reviewed`;
+  if (S.eval) { const M = S.eval.meta; $("stats-meta").textContent = `Calibration · Definition ambiguity · Evidence coverage (${M.claims.proven} proven, ${M.claims.disproven} ruled out)`; }
+  $("more-wrap").hidden = items.length <= shown;
+  $("more").textContent = `Show more (${fmt(items.length - shown)})`;
+}
+
+function renderRouting(V) {
+  V = V || S.eval;
+  const P = (S.eval && S.eval.policy) || S.policy || {}, c = S.counts, r0 = n => fmt(Math.round(n));
+  const nm = id => ((S.eval && S.eval.models.find(m => m.model === id)) || {}).name || id;
+  const excluded = S.eval ? S.eval.models.filter(m => m.role === "not used") : [];
+  const RT = (V && V.router) || {}, N = RT.normal, ST = (S.eval && S.eval.router || {}).stress;
+  $("route-meta").textContent = N ? `Load test · ${r0(N.requests)} requests` : "";
+  if (N) {
+    const ab = N.answered_by || {}, prim = nm(P.primary), backs = (P.backups || []).map(nm);
+    const segs = [[prim, ab[prim] || 0, "var(--go)", "Primary"]]
+      .concat(backs.map((b, i) => [b, ab[b] || 0, i ? "#6E8FCB" : "var(--accent)", "Backup"]))
+      .concat([["Escalated to a person", N.unanswered, "var(--stop)", ""]]);
+    $("route-flow").innerHTML = `<p class="small muted" style="margin-bottom:8px">Where ${r0(N.requests)} requests went</p>
+      <div class="flow" role="img" aria-label="${segs.map(s => `${s[0]}: ${s[1]}`).join(", ")}">${segs.map(s => s[1] ? `<span style="width:${100 * s[1] / N.requests}%;background:${s[2]}">${Math.round(100 * s[1] / N.requests)}%</span>` : "").join("")}</div>
+      <div class="flowkey">${segs.map(s => `<div><i style="background:${s[2]}"></i>${esc(s[3] ? `${s[3]}: ${s[0]}` : s[0])}<b>${r0(s[1])}</b></div>`).join("")}</div>`;
+    const dec = p => p.confirmed + p.contradicted;
+    const pt = N.precision_trusted || {}, ph = N.precision_held || {};
+    $("route-stats").innerHTML = `
+      <div class="stat"><div class="n">${pct((N.requests - N.unanswered) / N.requests)}</div><div class="l">answered without a person (${r0(N.requests - N.unanswered)} / ${r0(N.requests)})</div></div>
+      <div class="stat"><div class="n">${r0(N.switches)}</div><div class="l">live switches after ${r0(N.busy_events)} rate-limit responses</div></div>
+      <div class="stat"><div class="n">${dec(ph) ? pct(ph.confirmed / dec(ph)) : "–"}</div><div class="l">precision of backup answers (primary: ${dec(pt) ? pct(pt.confirmed / dec(pt)) : "–"})</div></div>
+      <div class="stat"><div class="n">${(N.latency_ms_p50 / 1000).toFixed(1)} s</div><div class="l">median time per request, switches included</div></div>`;
+  }
+  $("policy").innerHTML = `
+    <div class="pm"><span class="tag go">${icon("check")}Primary</span><b>${esc(nm(P.primary))}</b>Answers first; trusted for this task.</div>
+    <div class="pm"><span class="tag ask">${icon("switch")}Backups, in order</span><b>${(P.backups || []).map(nm).map(esc).join(" → ")}</b>Step in when the primary is unavailable; answers held for review.</div>
+    <div class="pm"><span class="tag stop">${icon("x")}Excluded</span><b>${excluded.length} models</b>${esc(excluded.map(m => m.name).join(", "))}.</div>`;
+  $("route-note").textContent = ST ? `Stress test for comparison (44 concurrent calls, previous backup order): ${fmt(ST.requests - ST.unanswered)} / ${fmt(ST.requests)} answered, ${fmt(ST.unanswered)} escalated. Since launch: ${fmt(c.live_runs)} routed requests, ${fmt(c.switches)} switches.` : "";
+}
+
+function renderCost() {
+  const E = S.eval;
+  if (!E) { $("cost").innerHTML = `<div class="stat"><div class="n">$0</div><div class="l">spent on Databricks Free Edition</div></div>`; return; }
+  const M = E.meta, P = E.policy || {}, rate = M.usd_per_dbu_assumed;
+  const est = M.dbu * rate;
+  const byId = id => E.models.find(m => m.model === id) || {};
+  const prim = byId(P.primary), prev = byId(P.previous_primary);
+  const per1k = prim.usd_per_1k_tasks || 0, per1kPrev = prev.usd_per_1k_tasks || 0;
+  const saving = per1kPrev ? 1 - per1k / per1kPrev : 0;
+  const monthly = (per1kPrev - per1k) * MONTHLY_TICKETS / 1000;
+  const lo = (E.precedents || {}).leave_one_out || {};
+  const share = lo.decisions ? lo.auto_resolved / lo.decisions : 0;
+  const hours = share * 10000 * MIN_PER_REVIEW / 60;
+  $("cost").innerHTML = `
+    <div class="stat"><div class="n">${usd(est)}</div><div class="l">Estimated compute cost of this evaluation</div></div>
+    <div class="stat good"><div class="n">${pct(saving)}</div><div class="l">Lower cost per ticket: ${esc(prim.name || "–")} vs ${esc(prev.name || "–")}</div></div>
+    <div class="stat good"><div class="n">${usd(monthly)}</div><div class="l">Projected monthly saving at ${fmt(MONTHLY_TICKETS)} tickets</div></div>
+    <div class="stat good"><div class="n">${pct(share)}</div><div class="l">Reviews automated by proven patterns (≈${Math.round(hours)} h per 10k suggestions)</div></div>`;
+  $("ctable").innerHTML = `<div class="crow2 head"><span>Model</span><span>Tokens used</span><span>DBU</span><span>Estimated cost</span><span>Per 1,000 tickets</span></div>` +
+    E.models.slice().sort((a, b) => (b.dbu || 0) - (a.dbu || 0)).map(m => `<div class="crow2"><span>${esc(m.name)}</span>
+      <span class="num">${fmt((m.tokens?.in || 0) + (m.tokens?.out || 0))}</span><span class="num">${(m.dbu || 0).toFixed(2)}</span>
+      <span class="num">${usd((m.dbu || 0) * rate)}</span><span class="num">$${(m.usd_per_1k_tasks ?? 0).toFixed(2)}</span></div>`).join("") +
+    `<div class="crow2"><span><b>Total</b></span><span class="num">${fmt(M.tokens)}</span><span class="num">${M.dbu.toFixed(2)}</span><span class="num">${usd(est)}</span><span></span></div>`;
+  $("i-cost").innerHTML = `Token counts are measured on every call. Prices: Databricks' published pay-per-token rates (DBU per million input and output tokens), converted at an assumed $${rate} per DBU. Actual spend on Databricks Free Edition: $0. Projections assume ${fmt(MONTHLY_TICKETS)} tickets a month; review effort assumes ${MIN_PER_REVIEW} minutes per review and the automated share measured by leave-one-out (${fmt(lo.auto_resolved)} of ${fmt(lo.decisions)} past decisions, ${fmt(lo.right)} correct).`;
+}
+
+$("more").onclick = () => { shown += 6; renderQueue(); };
+
+// ---------- collapsible panels ----------
+function setFold(panel, open) {
+  const b = panel.querySelector(".fold-h"), body = $(b.getAttribute("aria-controls"));
+  b.setAttribute("aria-expanded", String(open)); body.hidden = !open;
+  panel.querySelector(".chev-t").textContent = open ? "Close" : "Open";
+}
+document.querySelectorAll(".fold").forEach(p => p.querySelector(".fold-h").addEventListener("click", e => {
+  if (e.target.closest(".tip")) return;
+  setFold(p, p.querySelector(".fold-h").getAttribute("aria-expanded") !== "true");
+}));
+
+// ---------- info tips: 1 s hover, tap, or keyboard focus ----------
+let popTimer = null, popFor = null;
+function showPop(btn, html) {
+  const pop = $("pop"); pop.innerHTML = html; pop.hidden = false; popFor = btn;
+  const r = btn.getBoundingClientRect(), w = Math.min(360, innerWidth - 32);
+  pop.style.maxWidth = w + "px";
+  const left = Math.max(16, Math.min(r.left - 12, innerWidth - pop.offsetWidth - 16));
+  let top = r.bottom + 8; if (top + pop.offsetHeight > innerHeight - 12) top = r.top - pop.offsetHeight - 8;
+  pop.style.left = left + "px"; pop.style.top = Math.max(12, top) + "px";
+}
+function hidePop() { clearTimeout(popTimer); $("pop").hidden = true; popFor = null; }
+const tipHtml = b => b.dataset.info ? ($(b.dataset.info) || {}).innerHTML || "" : esc(b.dataset.text || "");
+document.addEventListener("mouseover", e => {
+  const b = e.target.closest(".tip, .tip-host"); if (!b || b === popFor) return;
+  clearTimeout(popTimer); popTimer = setTimeout(() => showPop(b, tipHtml(b)), 1000);
+});
+document.addEventListener("mouseout", e => { const b = e.target.closest(".tip, .tip-host"); if (b && !b.contains(e.relatedTarget)) hidePop(); });
+document.addEventListener("focusin", e => { const b = e.target.closest(".tip, .tip-host"); if (b) showPop(b, tipHtml(b)); });
+document.addEventListener("focusout", e => { if (e.target.closest(".tip, .tip-host")) hidePop(); });
+document.addEventListener("click", e => {
+  const b = e.target.closest(".tip, .tip-host");
+  if (b) { e.preventDefault(); popFor === b ? hidePop() : showPop(b, tipHtml(b)); } else if (!e.target.closest("#pop")) hidePop();
+});
+addEventListener("scroll", hidePop, { passive: true });
+
+// ---------- review actions ----------
+$("queue").addEventListener("click", async e => {
+  const b = e.target.closest("button[data-a]"); if (!b || busy) return;
+  const it = window._items[+b.dataset.i], a = b.dataset.a, el = $("c" + b.dataset.i);
+  if (a === "skip") { skipped.add(it.id); el.classList.add("gone"); setTimeout(renderQueue, RM() ? 0 : 250); toast("Skipped; moved to the end of the queue."); return; }
+  busy = true; el.classList.add("gone"); el.querySelectorAll("button").forEach(x => x.disabled = true);
+  try {
+    const r = await api("/api/answer", { key: it.key, candidate: it.candidate, relation: it.relation, decision: a });
+    S = r.state; last = it; render();
+    toast((a === "accept" ? REL[it.relation].done : "Rejected: tickets kept separate.") + " Saved to Delta.", true);
+    tourAnswered();
+  } catch (err) { el.classList.remove("gone"); el.querySelectorAll("button").forEach(x => x.disabled = false); toast("Not saved: " + err.message); }
+  busy = false;
+});
+let tt = null;
+function toast(msg, undo) { $("toast-text").textContent = msg; $("toast").hidden = false; $("toast-undo").hidden = !undo; clearTimeout(tt); tt = setTimeout(() => $("toast").hidden = true, 6000); }
+$("toast-undo").onclick = async () => {
+  if (!last) return; const it = last; last = null; $("toast").hidden = true;
+  try { const r = await api("/api/undo", { key: it.key, candidate: it.candidate, relation: it.relation }); S = r.state; render(); toast("Undone; back in the queue."); }
+  catch (err) { toast("Undo failed: " + err.message); }
+};
+$("run").onclick = async () => {
+  const b = $("run"); b.disabled = true;
+  b.innerHTML = `<span class="spin" style="width:16px;height:16px;border-width:2px"></span>Processing 3 tickets (10–40 s)`;
+  try {
+    const r = await api("/api/run", { n: 3 });
+    freshIds = new Set(r.state.inbox.filter(i => i.new && r.tickets.includes(i.key)).map(i => i.id));
+    S = r.state; render();
+    const sw = r.decisions.filter(d => d.switched).length;
+    const who = [...new Set(r.decisions.map(d => d.answered_by || "a person"))].join(", ");
+    toast(`${r.tickets.length} tickets processed by ${who} · ${r.suggestions} new suggestion${r.suggestions === 1 ? "" : "s"}${sw ? ` · ${sw} model switch${sw === 1 ? "" : "es"}` : ""}.`);
+    $("demo").hidden = true;
+    if (r.suggestions) {  // show the new cards: open the queue and scroll to it
+      setFold($("fold-queue"), true);
+      $("fold-queue").scrollIntoView({ block: "start", behavior: RM() ? "auto" : "smooth" });
+    }
+  } catch (err) { toast("Run did not complete: " + err.message); }
+  b.disabled = false; b.innerHTML = `${icon("refresh")}Or process 3 real new Jira tickets`;
+};
+
+// ---------- live demo screen ----------
+const TPL = [  // [name, expected path, project, title, description, model]
+  ["Cheapest model on a version upgrade", "Usually handled automatically", "SPARK", "Upgrade Netty to 4.2.8.Final", "Upgrade Netty from 4.2.7.Final to 4.2.8.Final.", "databricks-meta-llama-3-1-8b-instruct"],  // handled automatically 10 of 10 in testing
+  ["Copy from another project", "Usually interrupted", "KAFKA", "Support TimeType in RowToColumnConverter", "Add TimeType support to the row-to-column converter.", ""],
+  ["Genuinely new request", "Usually sent to you", "SPARK", "Add retry with exponential backoff to the Spark Connect client for transient gRPC failures", "Transient UNAVAILABLE errors fail long-running Spark Connect sessions; retry them with backoff.", ""],
+  ["Blank", "Write your own", "SPARK", "", "", ""]
+];
+$("tpls").innerHTML = TPL.map((x, i) => `<button type="button" class="tpl" data-t="${i}"><b>${x[0]}</b><span class="muted">${x[1]}</span></button>`).join("");
+$("tpls").addEventListener("click", e => { const b = e.target.closest("[data-t]"); if (!b) return; const x = TPL[+b.dataset.t];
+  $("d-project").value = x[2]; $("d-title").value = x[3]; $("d-desc").value = x[4]; $("d-model").value = x[5]; $("d-title").focus(); });
+const STEPS = ["Find earlier look-alikes", "Route to a model", "Model's suggestion", "Assay's decision"];
+function pipe(n, html) {
+  $("pipe").innerHTML = STEPS.map((s, i) => `<li class="${i < n ? "on" : ""}${i === 3 && html[3] ? " outcome " + html[3].cls : ""}"><div class="ph"><span class="n">${i + 1}</span>${s}</div>${i < n ? (html[i] ? html[i].body || html[i] : "") : ""}</li>`).join("");
+}
+$("open-demo").onclick = () => { pauseReplay(); $("demo").hidden = false; pipe(0, []); $("d-title").focus(); };
+$("demo-close").onclick = () => { $("demo").hidden = true; };
+$("demo-form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const b = $("d-send"); b.disabled = true;
+  pipe(1, [`<span><span class="spin" style="width:14px;height:14px;border-width:2px"></span> Working on Databricks (5–40 s)…</span>`]);
+  try {
+    const r = await api("/api/demo", { title: $("d-title").value, description: $("d-desc").value, project: $("d-project").value, model: $("d-model").value });
+    const P = REL2 => ({ duplicate: "the same problem as", part_of: "part of", related: "related to" })[REL2] || REL2;
+    const s1 = r.candidates.length ? `<span>${r.candidates.length} found, e.g. ${r.candidates.slice(0, 3).map(c => `<b>${esc(c.key)}</b> “${esc(c.summary)}”`).join(" · ")}</span>` : "<span>None found.</span>";
+    const rt = r.routing, s2 = rt ? `<span>Answered by <b>${esc(rt.answered_by || "nobody")}</b>${rt.forced ? " (chosen for this demo, bypassing the router)" : ""}${rt.switched ? ` after ${rt.steps.filter(x => x.outcome !== "ok").map(x => `${esc(x.model)} was ${x.outcome === "busy" ? "rate-limited" : "unusable"}`).join(", ")}` : ""} · ${(rt.steps.reduce((a, x) => a + x.ms, 0) / 1000).toFixed(1)} s</span>` : "<span>Not needed.</span>";
+    const m = r.model, s3 = m && m.relation !== "none" ? `<span>This ticket is <b>${P(m.relation)}</b> ${esc(m.candidate.key)} “${esc(m.candidate.summary)}”${m.candidate.project !== r.ticket.project ? ` (${esc(m.candidate.project)})` : ""} · model confidence <b>${pct(m.confidence)}</b></span><span class="muted">Reason: “${esc(m.reason || "")}”</span>` : "<span>No link proposed.</span>";
+    const o = r.outcome, cls = { auto: "auto", interrupt: "interrupt", review: "review", none: "" }[o.path];
+    const s4 = { cls, body: `<span class="big">${esc(o.headline)}</span><span>${esc(o.why)}</span>${o.path === "review" ? `<button class="btn gold" id="to-queue" type="button" style="justify-self:start">Open it in the Review queue</button>` : ""}` };
+    const parts = [s1, s2, s3, s4];
+    for (let n = 1; n <= 4; n++) { pipe(n, parts); await new Promise(res => setTimeout(res, RM() ? 0 : 650)); }
+    if (r.state) { S = r.state; render(); }
+    const q = $("to-queue"); if (q) q.onclick = () => { $("demo").hidden = true; setFold($("fold-queue"), true); $("fold-queue").scrollIntoView({ block: "start" }); };
+  } catch (err) { pipe(1, [`<span>Did not complete: ${esc(err.message)}</span>`]); }
+  b.disabled = false;
+});
+
+// ---------- guided tour: the highlighted section's explanations are expanded ----------
+const TOUR = [
+  ["hello", "Assay", "Evidence-based oversight for AI agents: which model to use, what an agent may do without review, and whether a change helped. The example agent triages the public Apache Jira."],
+  ["kpis", "Key figures", "Scale of the evaluation, answers verified against the maintainer record, and how often high confidence was wrong."],
+  ["replay", "Replay", "Press play to watch the verdicts form as tickets arrive: roles change, patterns are automated, and automation is revoked when a counterexample appears."],
+  ["models", "Model evaluation", "Eight models on the same tickets: role, precision, false positives, reliability, cost and latency. The cheapest proven model is primary."],
+  ["stats", "Detailed statistics", "Calibration, definition ambiguity and evidence coverage: the analysis behind the model decisions."],
+  ["cost", "Cost & savings", "Estimated cost of every token used, and the savings from routing and automated reviews."],
+  ["routing", "Model routing", "Where requests went in the load test: the primary, each backup, or a person. Backup answers are held for review."],
+  ["queue", "Review queue", "Suggestions the record cannot settle; only these need a person. Next: how to read one."],
+  ["anatomy", "How to read a suggestion", "The numbers on the card match the guide beside it: type, who suggested it and how confident it was, the two tickets, the model's reason, similar past cases, and your decision."],
+  ["buttons", "Try it", "Accept or reject this suggestion. The decision is written to a Delta table and can be undone.", "try"],
+  ["falsepos", "Why confident answers fail", "The most common mistakes behind high-confidence false positives, and the models that make them."],
+  ["run", "Live demo", "Write a Jira ticket, or pick a template, and watch Assay handle it live: known patterns are handled automatically, known-wrong suggestions are interrupted, and uncertain ones come to you."],
+  ["help", "Tour", "Restart the tour at any time. Hover ? for one second for details."]
+];
+let ti = -1;
+function tourEl(key) { const el = document.querySelector(`[data-tour="${key}"]`); return el && el.offsetParent !== null ? el : null; }
+function place() {
+  const [key, h, text, mode] = TOUR[ti];
+  const target = document.querySelector(`[data-tour="${key}"]`);
+  const fold = target && target.closest(".fold");
+  if (fold) setFold(fold, true);
+  const el = tourEl(key);
+  if (!el) { ti < TOUR.length - 1 ? (ti++, place()) : endTour(); return; }
+  document.querySelectorAll("[data-tour-active]").forEach(x => x.removeAttribute("data-tour-active"));
+  document.querySelectorAll(".explain").forEach(x => x.classList.remove("explain"));
+  (el.closest(".panel, .kpis, .hero") || el).classList.add("explain");
+  document.body.classList.toggle("tour-live", mode === "try");
+  if (mode === "try") el.setAttribute("data-tour-active", "");
+  el.scrollIntoView({ block: el.offsetHeight > innerHeight * 0.6 ? "start" : "center", behavior: "auto" });
+  $("tour-step").textContent = `Step ${ti + 1} of ${TOUR.length}`; $("tour-h").textContent = h; $("tour-text").textContent = text;
+  $("tour-back").disabled = ti === 0;
+  $("tour-next").textContent = mode === "try" ? "Skip this step" : ti === TOUR.length - 1 ? "Done" : "Next";
+  position();
+  if (mode !== "try") $("tour-next").focus({ preventScroll: true });
+}
+function position() {  // follows the element; the tip takes whichever side has room, or docks when the target is taller than the screen
+  if (ti < 0) return;
+  const el = tourEl(TOUR[ti][0]); if (!el) return;
+  const r = el.getBoundingClientRect(), ring = $("tour-ring"), tip = $("tour-tip"), vw = innerWidth, vh = innerHeight;
+  const top = Math.max(8, r.top - 6), bottom = Math.min(vh - 8, r.bottom + 6);
+  Object.assign(ring.style, { left: r.left - 6 + "px", top: top + "px", width: r.width + 12 + "px", height: Math.max(0, bottom - top) + "px" });
+  const tw = Math.min(360, vw - 32); tip.style.width = tw + "px";
+  const th = tip.offsetHeight || 190, gap = 14;
+  const spots = [
+    [r.bottom + gap + th <= vh - 12, Math.max(16, Math.min(r.left, vw - tw - 16)), r.bottom + gap],   // below
+    [r.top - gap - th >= 12, Math.max(16, Math.min(r.left, vw - tw - 16)), r.top - gap - th],         // above
+    [r.right + gap + tw <= vw - 16, r.right + gap, Math.max(12, Math.min(r.top, vh - th - 12))],       // right
+    [r.left - gap - tw >= 16, r.left - gap - tw, Math.max(12, Math.min(r.top, vh - th - 12))]          // left
+  ];
+  const s = spots.find(x => x[0]) || [true, vw - tw - 16, vh - th - 16];                              // docked
+  tip.style.left = s[1] + "px"; tip.style.top = s[2] + "px";
+}
+new ResizeObserver(position).observe(document.body);
+addEventListener("scroll", position, { passive: true });
+addEventListener("resize", position);
+function tourAnswered() { if (ti >= 0 && TOUR[ti][3] === "try") { ti++; setTimeout(place, 400); } }
+function startTour() {
+  $("welcome").hidden = true;
+  if (!S) { toast("Still loading; try again in a moment."); return; }
+  showFinal();
+  ti = 0; $("tour-ring").hidden = false; $("tour-tip").hidden = false; place();
+}
+function endTour() {
+  setTimeout(playReplay, 800);
+  ti = -1; $("tour-ring").hidden = true; $("tour-tip").hidden = true; document.body.classList.remove("tour-live");
+  document.querySelectorAll("[data-tour-active]").forEach(x => x.removeAttribute("data-tour-active"));
+  document.querySelectorAll(".explain").forEach(x => x.classList.remove("explain"));
+  try { localStorage.setItem("assay-toured", "1"); } catch (e) {}
+}
+$("tour-next").onclick = () => { ti >= TOUR.length - 1 ? endTour() : (ti++, place()); };
+$("tour-back").onclick = () => { if (ti > 0) { ti--; place(); } };
+$("tour-end").onclick = endTour;
+$("help").onclick = startTour;
+$("w-start").onclick = startTour;
+$("w-skip").onclick = () => { $("welcome").hidden = true; playReplay(); try { localStorage.setItem("assay-toured", "1"); } catch (e) {} };
+addEventListener("keydown", e => { if (e.key === "Escape") { endTour(); hidePop(); $("welcome").hidden = true; $("demo").hidden = true; } });
+
+load(false).then(() => {
+  let toured = false; try { toured = localStorage.getItem("assay-toured") === "1"; } catch (e) {}
+  if (location.hash === "#play") { playReplay(); return; }  // #play starts the looping replay straight away
+  const rp = location.hash.match(/^#replay=(\d+)$/);  // #replay=3 opens the replay paused at snapshot 3
+  if (rp && S && S.eval && S.eval.replay) { RP = Math.min(+rp[1], S.eval.replay.snapshots.length - 1); document.body.classList.add("replaying"); renderEvalParts(); return; }
+  const m = location.hash.match(/^#tour(?:=(\d+))?$/);  // #tour or #tour=5 opens the tour (at a step)
+  if (m && S) { startTour(); if (m[1]) { ti = Math.min(TOUR.length, +m[1]) - 1; place(); } }
+  else if (!toured && S) { $("welcome").hidden = false; $("w-start").focus(); }
+  else playReplay();
+});
+setInterval(() => { if (!busy && ti < 0 && !rpPlaying && RP == null && document.visibilityState === "visible") load(false); }, 60000);
+</script>
+</body>
+</html>

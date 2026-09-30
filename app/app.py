@@ -246,8 +246,12 @@ def _search(st, ctx, text: str, k: int) -> list[dict]:
 
 
 def _judge_backend() -> tuple[str, str]:
-    backend = os.environ.get("ASSAY_JUDGE_BACKEND") or ("databricks" if os.environ.get("DATABRICKS_HOST") else "cli")
-    model = os.environ.get("ASSAY_JUDGE_MODEL") or ("databricks-claude-haiku-4-5" if backend == "databricks" else "haiku")
+    default_backend = ("openai" if os.environ.get("OPENAI_API_KEY") else
+                       "databricks" if os.environ.get("DATABRICKS_HOST") else "cli")
+    backend = os.environ.get("ASSAY_JUDGE_BACKEND") or default_backend
+    default_model = (os.environ.get("OPENAI_MODEL", "gpt-5-mini") if backend == "openai" else
+                     "databricks-claude-haiku-4-5" if backend == "databricks" else "haiku")
+    model = os.environ.get("ASSAY_JUDGE_MODEL") or default_model
     if backend == "databricks" and not os.environ.get("DATABRICKS_TOKEN"):
         try:  # inside a Databricks App: borrow the app's own OAuth token from the SDK
             from databricks.sdk import WorkspaceClient

@@ -1,0 +1,4820 @@
+{
+  "schema": 2,
+  "seed": 37,
+  "requested_n": 30,
+  "k": 5,
+  "eligible_n": 735,
+  "min_top_score": 0.4575,
+  "slice_pattern": "\\b(upgrade|bump|update)\\b.*\\d",
+  "scope": "honest-stream-confirmation",
+  "selection": "uniform over eligible keys; no outcome or truth used",
+  "injected": false,
+  "limitations": [
+    "Maintainer links are incomplete and are not used as negative labels.",
+    "Ticket fields are a present-day snapshot; historical leakage must be disclosed."
+  ],
+  "source_hashes": {
+    "tickets": "1c598274283aaa1b34b57a68d90878fc1bbca86ec42fe96037c3c4f983b9cdae",
+    "candidates": "4a85daef4c386cbc4372208a5399ae2552999ca56a4e991b2ed2a0a1833bcd8d"
+  },
+  "jobs": [
+    {
+      "key": "SPARK-58956",
+      "ticket": {
+        "key": "SPARK-58956",
+        "project": "SPARK",
+        "created": "2026-08-23T18:56:36.000+0000",
+        "updated": "2026-08-24T03:08:35.000+0000",
+        "summary": "Upgrade `swift-system` to 1.8.1",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Connect"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-58257",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-58091",
+            "project": "SPARK",
+            "created": "2026-07-10T20:51:05.000+0000",
+            "updated": "2026-07-10T21:24:04.000+0000",
+            "summary": "Upgrade `swift-system` to 1.7.4",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-56376",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-58091",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-56725",
+            "project": "SPARK",
+            "created": "2026-05-05T16:08:05.000+0000",
+            "updated": "2026-05-05T17:18:08.000+0000",
+            "summary": "Upgrade Swift to 6.3.1",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-56376",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-56725",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-57299",
+            "project": "SPARK",
+            "created": "2026-06-07T03:20:07.000+0000",
+            "updated": "2026-06-07T05:08:09.000+0000",
+            "summary": "Upgrade `Swift System` to 1.6.5",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-56376",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-57299",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-56857",
+            "project": "SPARK",
+            "created": "2026-05-13T21:50:44.000+0000",
+            "updated": "2026-05-22T20:37:42.000+0000",
+            "summary": "Upgrade Swift to 6.3.2",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-56376",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-56857",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-57431",
+            "project": "SPARK",
+            "created": "2026-06-14T03:53:00.000+0000",
+            "updated": "2026-06-14T04:08:20.000+0000",
+            "summary": "Upgrade `Swift System` to 1.7.2",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-56376",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-57431",
+            "score": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-57431",
+      "ticket": {
+        "key": "SPARK-57431",
+        "project": "SPARK",
+        "created": "2026-06-14T03:53:00.000+0000",
+        "updated": "2026-06-14T04:08:20.000+0000",
+        "summary": "Upgrade `Swift System` to 1.7.2",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Connect"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-56376",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-57299",
+            "project": "SPARK",
+            "created": "2026-06-07T03:20:07.000+0000",
+            "updated": "2026-06-07T05:08:09.000+0000",
+            "summary": "Upgrade `Swift System` to 1.6.5",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-56376",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-57299",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-56857",
+            "project": "SPARK",
+            "created": "2026-05-13T21:50:44.000+0000",
+            "updated": "2026-05-22T20:37:42.000+0000",
+            "summary": "Upgrade Swift to 6.3.2",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-56376",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-56857",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-56725",
+            "project": "SPARK",
+            "created": "2026-05-05T16:08:05.000+0000",
+            "updated": "2026-05-05T17:18:08.000+0000",
+            "summary": "Upgrade Swift to 6.3.1",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-56376",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-56725",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-52084",
+            "project": "SPARK",
+            "created": "2025-05-12T14:50:47.000+0000",
+            "updated": "2025-05-12T18:37:22.000+0000",
+            "summary": "Upgrade `gRPC Swift` to 2.2.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-51999",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-52084",
+            "score": 0.488
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-56051",
+            "project": "SPARK",
+            "created": "2026-03-18T19:41:33.000+0000",
+            "updated": "2026-03-18T19:58:07.000+0000",
+            "summary": "Upgrade `grpc-swift-2` to 2.3.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54095",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-56051",
+            "score": 0.488
+          }
+        }
+      ]
+    },
+    {
+      "key": "HIVE-29387",
+      "ticket": {
+        "key": "HIVE-29387",
+        "project": "HIVE",
+        "created": "2025-12-29T06:21:30.000+0000",
+        "updated": "2026-08-10T09:00:06.000+0000",
+        "summary": "Upgrade commons-lang3 version from 3.14.0 to 3.17.0",
+        "description": "",
+        "issuetype": "Improvement",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": null,
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "HIVE-27051",
+            "project": "HIVE",
+            "created": "2023-02-07T08:31:25.000+0000",
+            "updated": "2024-05-09T15:02:12.000+0000",
+            "summary": "Backport HIVE-22132: Upgrade commons-lang3 version to 3.9 in branch-3",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Won't Fix",
+            "components": [],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "HIVE-27051",
+            "score": 0.6158
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-49483",
+            "project": "SPARK",
+            "created": "2024-09-01T01:56:07.000+0000",
+            "updated": "2025-01-12T18:51:09.000+0000",
+            "summary": " Upgrade `commons-lang3` to 3.17.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-47046",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-49483",
+            "score": 0.5678
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-48932",
+            "project": "SPARK",
+            "created": "2024-07-18T00:02:44.000+0000",
+            "updated": "2024-08-08T04:48:27.000+0000",
+            "summary": "Upgrade `commons-lang3` to 3.15.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-47046",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-48932",
+            "score": 0.5521
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-54591",
+            "project": "SPARK",
+            "created": "2025-12-04T06:39:20.000+0000",
+            "updated": "2025-12-05T03:39:50.000+0000",
+            "summary": "Upgrade commons-lang3 to 3.20.0 ",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54137",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-54591",
+            "score": 0.5488
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-46089",
+            "project": "SPARK",
+            "created": "2023-11-24T09:12:43.000+0000",
+            "updated": "2023-11-28T02:31:43.000+0000",
+            "summary": "Upgrade commons-lang3 to 3.14.0",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-46089",
+            "score": 0.5304
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-57633",
+      "ticket": {
+        "key": "SPARK-57633",
+        "project": "SPARK",
+        "created": "2026-06-23T07:11:52.000+0000",
+        "updated": "2026-06-24T05:30:19.000+0000",
+        "summary": "Update concurrent-ruby gem version to 1.3.7",
+        "description": "",
+        "issuetype": "Improvement",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Documentation"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": null,
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-53653",
+            "project": "SPARK",
+            "created": "2025-09-21T20:22:40.000+0000",
+            "updated": "2025-11-14T18:14:30.000+0000",
+            "summary": "Update rexml gem version to 3.4.4",
+            "description": "[CVE-2025-58767|https://www.cve.org/CVERecord?id=CVE-2025-58767]",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Documentation"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54360",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-53653",
+            "score": 0.462
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-56631",
+            "project": "SPARK",
+            "created": "2026-04-27T03:03:06.000+0000",
+            "updated": "2026-04-27T06:49:12.000+0000",
+            "summary": "Update addressable gem from 2.8.7 to 2.9.0",
+            "description": "",
+            "issuetype": "Bug",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Documentation"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-56631",
+            "score": 0.3393
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-48222",
+            "project": "SPARK",
+            "created": "2024-05-09T17:26:00.000+0000",
+            "updated": "2024-05-10T05:40:05.000+0000",
+            "summary": "Sync Ruby Bundler to 2.4.22 and refresh Gem lock file",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build",
+              "Documentation"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-48222",
+            "score": 0.3005
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-53514",
+            "project": "SPARK",
+            "created": "2025-09-08T00:07:01.000+0000",
+            "updated": "2025-11-14T18:13:56.000+0000",
+            "summary": "Update `Gemfile` to allow Ruby 3.0+ explicitly",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Documentation"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54360",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-53514",
+            "score": 0.264
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-46626",
+            "project": "SPARK",
+            "created": "2024-01-08T18:03:55.000+0000",
+            "updated": "2024-05-09T17:24:11.000+0000",
+            "summary": "Bump jekyll version to support Ruby 3.3",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Documentation"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-46626",
+            "score": 0.2213
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-58665",
+      "ticket": {
+        "key": "SPARK-58665",
+        "project": "SPARK",
+        "created": "2026-08-08T22:43:03.000+0000",
+        "updated": "2026-08-10T04:14:47.000+0000",
+        "summary": "Upgrade `lz4-java` to 1.11.2",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Build"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-56880",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-57984",
+            "project": "SPARK",
+            "created": "2026-07-07T01:49:21.000+0000",
+            "updated": "2026-07-09T20:16:36.000+0000",
+            "summary": "Upgrade `lz4-java` to 1.11.1",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-56880",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-57984",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-56441",
+            "project": "SPARK",
+            "created": "2026-04-10T15:34:01.000+0000",
+            "updated": "2026-04-11T18:28:14.000+0000",
+            "summary": "Upgrade `lz4-java` to 1.11.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54137",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-56441",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-55189",
+            "project": "SPARK",
+            "created": "2026-01-26T04:49:15.000+0000",
+            "updated": "2026-02-20T17:31:12.000+0000",
+            "summary": "Upgrade lz4-java to 1.10.3",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54137",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-55189",
+            "score": 0.6746
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-54597",
+            "project": "SPARK",
+            "created": "2025-12-04T22:48:20.000+0000",
+            "updated": "2025-12-22T23:01:10.000+0000",
+            "summary": "Upgrade `lz4-java` to 1.10.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54137",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-54597",
+            "score": 0.6746
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-54611",
+            "project": "SPARK",
+            "created": "2025-12-05T18:31:56.000+0000",
+            "updated": "2025-12-05T20:38:53.000+0000",
+            "summary": "Upgrade `lz4-java` to 1.10.1",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54137",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-54611",
+            "score": 0.6746
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-57992",
+      "ticket": {
+        "key": "SPARK-57992",
+        "project": "SPARK",
+        "created": "2026-07-07T07:57:09.000+0000",
+        "updated": "2026-07-08T13:40:42.000+0000",
+        "summary": "Upgrade sbt to 1.12.13",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Build"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-56880",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-56357",
+            "project": "SPARK",
+            "created": "2026-04-05T11:14:58.000+0000",
+            "updated": "2026-04-15T03:30:48.000+0000",
+            "summary": "Upgrade SBT to 1.12.8",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-56357",
+            "score": 0.7473
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-54904",
+            "project": "SPARK",
+            "created": "2026-01-05T11:10:52.000+0000",
+            "updated": "2026-02-20T17:31:57.000+0000",
+            "summary": "Upgrade SBT to `1.12.0`",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54137",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-54904",
+            "score": 0.7473
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-55618",
+            "project": "SPARK",
+            "created": "2026-02-20T10:11:39.000+0000",
+            "updated": "2026-02-23T14:17:43.000+0000",
+            "summary": "Upgrade sbt to 1.12.3",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54137",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-55618",
+            "score": 0.7473
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-55684",
+            "project": "SPARK",
+            "created": "2026-02-25T11:07:53.000+0000",
+            "updated": "2026-02-25T14:27:28.000+0000",
+            "summary": "Upgrade sbt to `1.12.4`",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54137",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-55684",
+            "score": 0.7473
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-55272",
+            "project": "SPARK",
+            "created": "2026-01-29T08:15:47.000+0000",
+            "updated": "2026-02-20T17:33:29.000+0000",
+            "summary": "Upgrade SBT to 1.12.1",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54137",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-55272",
+            "score": 0.7473
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-56183",
+      "ticket": {
+        "key": "SPARK-56183",
+        "project": "SPARK",
+        "created": "2026-03-24T10:46:02.000+0000",
+        "updated": "2026-03-25T04:26:57.000+0000",
+        "summary": "Upgrade Oracle JDBC to version 23.26.1.0.0",
+        "description": "This change upgrades the Oracle JDBC driver to version 23.26.1.0.0, which officially supports Oracle Database 26ai.",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Build"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-54137",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-54393",
+            "project": "SPARK",
+            "created": "2025-11-18T04:31:26.000+0000",
+            "updated": "2025-11-19T02:09:05.000+0000",
+            "summary": "Upgrade oracle-free to 23.26.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build",
+              "Tests"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54137",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-54393",
+            "score": 0.5046
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-45850",
+            "project": "SPARK",
+            "created": "2023-11-09T08:34:33.000+0000",
+            "updated": "2024-03-14T15:53:01.000+0000",
+            "summary": "Upgrade oracle jdbc driver to 23.3.0.23.09 ",
+            "description": "Attempt to stabilize `OracleIntegrationSuite ` by upgrading the oracle jdbc driver version.",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Project Infra"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-47361",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-45850",
+            "score": 0.4724
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-55498",
+            "project": "SPARK",
+            "created": "2026-02-12T11:48:58.000+0000",
+            "updated": "2026-02-20T17:28:08.000+0000",
+            "summary": "Upgrade oracle-free docker image to `23.26.1`",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build",
+              "Tests"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-55581",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-55498",
+            "score": 0.4342
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-50268",
+            "project": "SPARK",
+            "created": "2024-11-07T23:39:14.000+0000",
+            "updated": "2024-11-11T16:23:18.000+0000",
+            "summary": "Upgrade oracle jdbc driver to 23.6.0.24.10",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "SQL",
+              "Tests"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-44111",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-50268",
+            "score": 0.4171
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-48289",
+            "project": "SPARK",
+            "created": "2024-05-15T13:11:33.000+0000",
+            "updated": "2024-05-16T02:10:33.000+0000",
+            "summary": "Clean up Oracle JDBC tests by skipping redundant SYSTEM password reset",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Tests"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-48289",
+            "score": 0.2605
+          }
+        }
+      ]
+    },
+    {
+      "key": "FLINK-38875",
+      "ticket": {
+        "key": "FLINK-38875",
+        "project": "FLINK",
+        "created": "2026-01-08T12:42:04.000+0000",
+        "updated": "2026-01-14T15:58:50.000+0000",
+        "summary": "Bump Java Operator SDK to version 5.2.2",
+        "description": "Bump Java Operator SDK to version 5.2.2",
+        "issuetype": "Improvement",
+        "status": "Closed",
+        "resolution": "Fixed",
+        "components": [
+          "Kubernetes Operator"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": null,
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-54964",
+            "project": "SPARK",
+            "created": "2026-01-08T12:38:30.000+0000",
+            "updated": "2026-01-09T04:29:03.000+0000",
+            "summary": "Bump Java Operator SDK to version 5.2.2",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Kubernetes"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54093",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-54964",
+            "score": 0.9738
+          }
+        },
+        {
+          "ticket": {
+            "key": "FLINK-38437",
+            "project": "FLINK",
+            "created": "2025-09-25T08:58:38.000+0000",
+            "updated": "2025-09-26T10:20:44.000+0000",
+            "summary": "Bump Java Operator SDK version to 5.1.3 in Flink Kubernetes Operator",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Open",
+            "resolution": null,
+            "components": [
+              "Kubernetes Operator"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "FLINK-38437",
+            "score": 0.8618
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-53245",
+            "project": "SPARK",
+            "created": "2025-08-11T16:01:15.000+0000",
+            "updated": "2025-08-28T02:44:51.000+0000",
+            "summary": "Update Java Operator SDK version to 5.1.2",
+            "description": "It contains an important fix for issue:\r\n[operator-framework/java-operator-sdk#2869|https://github.com/operator-framework/java-operator-sdk/issues/2869]",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Kubernetes"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-52604",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-53245",
+            "score": 0.5227
+          }
+        },
+        {
+          "ticket": {
+            "key": "FLINK-38521",
+            "project": "FLINK",
+            "created": "2025-10-14T11:29:19.000+0000",
+            "updated": "2025-11-04T09:54:34.000+0000",
+            "summary": "Update Kubernetes Operator to Java Operator SDK v5.1.4",
+            "description": "https://github.com/operator-framework/java-operator-sdk/releases/tag/v5.1.4",
+            "issuetype": "Improvement",
+            "status": "Closed",
+            "resolution": "Fixed",
+            "components": [
+              "Kubernetes Operator"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "FLINK-38521",
+            "score": 0.3926
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-53899",
+            "project": "SPARK",
+            "created": "2025-10-14T11:08:44.000+0000",
+            "updated": "2025-10-14T19:51:35.000+0000",
+            "summary": "Update `Operator SDK` to 5.1.4",
+            "description": "see JOSDK release: https://github.com/operator-framework/java-operator-sdk/releases/tag/v5.1.4",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Kubernetes"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-53726",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-53899",
+            "score": 0.3661
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-57970",
+      "ticket": {
+        "key": "SPARK-57970",
+        "project": "SPARK",
+        "created": "2026-07-06T18:51:27.000+0000",
+        "updated": "2026-07-13T15:06:15.000+0000",
+        "summary": "Upgrade ASM to 9.10.1",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Build"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-56880",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-49965",
+            "project": "SPARK",
+            "created": "2024-10-15T00:20:13.000+0000",
+            "updated": "2025-01-12T18:55:07.000+0000",
+            "summary": "Upgrade ASM to 9.7.1",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-47046",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-49965",
+            "score": 0.7477
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-45591",
+            "project": "SPARK",
+            "created": "2023-10-18T08:23:19.000+0000",
+            "updated": "2023-10-20T02:33:56.000+0000",
+            "summary": "Upgrade ASM to 9.6",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-45591",
+            "score": 0.7477
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-47893",
+            "project": "SPARK",
+            "created": "2024-04-17T23:34:40.000+0000",
+            "updated": "2024-05-09T17:59:05.000+0000",
+            "summary": "Upgrade ASM to 9.7",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-47046",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-47893",
+            "score": 0.7477
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-53962",
+            "project": "SPARK",
+            "created": "2025-10-20T21:29:00.000+0000",
+            "updated": "2025-11-10T03:52:39.000+0000",
+            "summary": "Upgrade ASM to 9.9",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-51167",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-53962",
+            "score": 0.7477
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-55233",
+            "project": "SPARK",
+            "created": "2026-01-27T03:46:56.000+0000",
+            "updated": "2026-01-29T00:21:08.000+0000",
+            "summary": "Upgrade ASM to 9.9.1",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-51167",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-55233",
+            "score": 0.7477
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-54642",
+      "ticket": {
+        "key": "SPARK-54642",
+        "project": "SPARK",
+        "created": "2025-12-08T21:32:08.000+0000",
+        "updated": "2025-12-09T00:06:22.000+0000",
+        "summary": "Upgrade AWS SDK v2 to 2.35.4",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Build"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-54137",
+        "subtasks": [],
+        "links": [
+          {
+            "type": "Reference",
+            "direction": "outward",
+            "key": "HADOOP-19654"
+          }
+        ]
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-50859",
+            "project": "SPARK",
+            "created": "2025-01-16T22:51:31.000+0000",
+            "updated": "2025-02-04T14:37:44.000+0000",
+            "summary": "Upgrade AWS SDK v2 to 2.25.53",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-44124",
+            "subtasks": [],
+            "links": [
+              {
+                "type": "Reference",
+                "direction": "outward",
+                "key": "HADOOP-19195"
+              }
+            ]
+          },
+          "retrieval": {
+            "key": "SPARK-50859",
+            "score": 0.7953
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-51929",
+            "project": "SPARK",
+            "created": "2025-04-27T07:19:52.000+0000",
+            "updated": "2025-11-10T18:53:21.000+0000",
+            "summary": "Upgrade AWS SDK v2 to 2.29.52",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54284",
+            "subtasks": [],
+            "links": [
+              {
+                "type": "Reference",
+                "direction": "outward",
+                "key": "HADOOP-19485"
+              }
+            ]
+          },
+          "retrieval": {
+            "key": "SPARK-51929",
+            "score": 0.7018
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-47695",
+            "project": "SPARK",
+            "created": "2024-04-02T16:57:51.000+0000",
+            "updated": "2024-04-12T17:34:54.000+0000",
+            "summary": "Upgrade AWS SDK v2 to 2.24.6",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-44124",
+            "subtasks": [],
+            "links": [
+              {
+                "type": "Reference",
+                "direction": "outward",
+                "key": "HADOOP-19082"
+              }
+            ]
+          },
+          "retrieval": {
+            "key": "SPARK-47695",
+            "score": 0.6976
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-44124",
+            "project": "SPARK",
+            "created": "2023-06-20T21:29:16.000+0000",
+            "updated": "2025-09-22T17:41:59.000+0000",
+            "summary": "Upgrade AWS SDK to v2",
+            "description": "Here is a design doc:\r\nhttps://docs.google.com/document/d/1nGWbGTqxuFBG2ftfYYXxzrkipINILfWCOwse36yg7Ig/edit?usp=sharing",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [],
+            "parent": null,
+            "subtasks": [
+              "SPARK-45719",
+              "SPARK-45721",
+              "SPARK-47632",
+              "SPARK-47675",
+              "SPARK-47695",
+              "SPARK-50859"
+            ],
+            "links": [
+              {
+                "type": "Reference",
+                "direction": "outward",
+                "key": "HADOOP-18886"
+              },
+              {
+                "type": "Reference",
+                "direction": "outward",
+                "key": "HADOOP-18073"
+              },
+              {
+                "type": "Reference",
+                "direction": "inward",
+                "key": "SPARK-45720"
+              },
+              {
+                "type": "Reference",
+                "direction": "inward",
+                "key": "SPARK-44111"
+              }
+            ]
+          },
+          "retrieval": {
+            "key": "SPARK-44124",
+            "score": 0.6471
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-45720",
+            "project": "SPARK",
+            "created": "2023-10-30T09:32:32.000+0000",
+            "updated": "2026-02-25T22:33:14.000+0000",
+            "summary": "Upgrade AWS SDK to v2 for Spark Kinesis connector",
+            "description": "Sub-task of [SPARK-44124|https://issues.apache.org/jira/browse/SPARK-44124]. In this issue, we focus on the AWS SDK v2 upgrade in Kinesis connector",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54137",
+            "subtasks": [],
+            "links": [
+              {
+                "type": "Reference",
+                "direction": "outward",
+                "key": "SPARK-44124"
+              }
+            ]
+          },
+          "retrieval": {
+            "key": "SPARK-45720",
+            "score": 0.5085
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-55392",
+      "ticket": {
+        "key": "SPARK-55392",
+        "project": "SPARK",
+        "created": "2026-02-06T11:03:46.000+0000",
+        "updated": "2026-02-11T10:06:57.000+0000",
+        "summary": "Upgrade Python 3.14 test image to Ubuntu 24.04",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Project Infra",
+          "PySpark"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-55482",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-55358",
+            "project": "SPARK",
+            "created": "2026-02-04T10:31:00.000+0000",
+            "updated": "2026-02-11T10:08:46.000+0000",
+            "summary": "Upgrade Python 3.12 test image to Ubuntu 24.04",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Project Infra",
+              "PySpark"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-55482",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-55358",
+            "score": 0.7814
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-55391",
+            "project": "SPARK",
+            "created": "2026-02-06T10:57:31.000+0000",
+            "updated": "2026-02-11T10:07:11.000+0000",
+            "summary": "Upgrade Python 3.13 test image to Ubuntu 24.04",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Project Infra",
+              "PySpark"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-55482",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-55391",
+            "score": 0.7712
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-49920",
+            "project": "SPARK",
+            "created": "2024-10-10T07:16:13.000+0000",
+            "updated": "2024-10-10T12:56:15.000+0000",
+            "summary": "Install R for ubuntu 24.04",
+            "description": "",
+            "issuetype": "Bug",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Project Infra",
+              "Tests"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-49920",
+            "score": 0.5442
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-51783",
+            "project": "SPARK",
+            "created": "2025-04-12T12:07:04.000+0000",
+            "updated": "2025-04-12T21:25:41.000+0000",
+            "summary": " Support `ubuntu-24.04-arm` in `build-test` test pipeline",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Project Infra",
+              "Tests"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-45923",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-51783",
+            "score": 0.3481
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-55188",
+            "project": "SPARK",
+            "created": "2026-01-26T03:40:11.000+0000",
+            "updated": "2026-01-27T00:31:10.000+0000",
+            "summary": "Remove unused packages from python 3.14 test images",
+            "description": "",
+            "issuetype": "Bug",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Project Infra",
+              "PySpark"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-55188",
+            "score": 0.3304
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-56344",
+      "ticket": {
+        "key": "SPARK-56344",
+        "project": "SPARK",
+        "created": "2026-04-02T22:08:02.000+0000",
+        "updated": "2026-04-03T07:13:11.000+0000",
+        "summary": "Update outdated PyArrow minimum version in arrow_pandas.rst documentation (branch-4.1)",
+        "description": "The documentation in `python/docs/source/tutorial/sql/arrow_pandas.rst` on branch-4.1 states the minimum supported PyArrow version is 11.0.0, but the actual minimum version is 15.0.0.\n\nThis PR also adds `arrow_pandas.rst` to the version-change reminder comments in setup.py files so this file does not get missed in future version bumps.",
+        "issuetype": "Improvement",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Documentation",
+          "PySpark"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": null,
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-56341",
+            "project": "SPARK",
+            "created": "2026-04-02T21:45:17.000+0000",
+            "updated": "2026-04-03T07:11:57.000+0000",
+            "summary": "Update outdated PyArrow minimum version in arrow_pandas.rst documentation",
+            "description": "The documentation in `python/docs/source/tutorial/sql/arrow_pandas.rst` states the minimum supported PyArrow version is 11.0.0, but the actual minimum version has been raised to 18.0.0 (as defined in `setup.py` and `utils.py`).\n\nThis PR also adds `arrow_pandas.rst` to the version-change reminder comments in `setup.py` so this file does not get missed in future version bumps.",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Documentation",
+              "PySpark"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-56341",
+            "score": 0.9343
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-44183",
+            "project": "SPARK",
+            "created": "2023-06-25T21:53:28.000+0000",
+            "updated": "2026-02-15T19:31:35.000+0000",
+            "summary": "Increase PyArrow minimum version to 4.0.0",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Closed",
+            "resolution": "Fixed",
+            "components": [
+              "PySpark"
+            ],
+            "labels": [],
+            "parent": null,
+            "subtasks": [],
+            "links": [
+              {
+                "type": "Reference",
+                "direction": "inward",
+                "key": "SPARK-47737"
+              },
+              {
+                "type": "Reference",
+                "direction": "inward",
+                "key": "SPARK-44111"
+              }
+            ]
+          },
+          "retrieval": {
+            "key": "SPARK-44183",
+            "score": 0.3186
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-54885",
+            "project": "SPARK",
+            "created": "2026-01-02T11:47:48.000+0000",
+            "updated": "2026-02-20T17:57:41.000+0000",
+            "summary": "Remove unreachable code after upgrading pyarrow minimum version to 18.0.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "PySpark"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54137",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-54885",
+            "score": 0.2115
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-50657",
+            "project": "SPARK",
+            "created": "2024-12-24T09:31:41.000+0000",
+            "updated": "2025-03-28T01:10:41.000+0000",
+            "summary": "Upgrade the minimum version of `pyarrow` to 11.0.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "PySpark"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-44111",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-50657",
+            "score": 0.1972
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-45168",
+            "project": "SPARK",
+            "created": "2023-09-14T12:58:49.000+0000",
+            "updated": "2023-09-18T00:11:53.000+0000",
+            "summary": "Increate Pandas minimum version to 1.4.4",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "PySpark"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-45168",
+            "score": 0.1931
+          }
+        }
+      ]
+    },
+    {
+      "key": "HIVE-30095",
+      "ticket": {
+        "key": "HIVE-30095",
+        "project": "HIVE",
+        "created": "2026-09-24T17:53:54.000+0000",
+        "updated": "2026-09-25T20:55:46.000+0000",
+        "summary": "Upgrade Thrift dependencies to 0.24",
+        "description": "Upgrade thrift to 0.24 in Hive https://mvnrepository.com/artifact/org.apache.thrift/libthrift/0.24.0",
+        "issuetype": "Improvement",
+        "status": "Open",
+        "resolution": null,
+        "components": [
+          "HiveServer2",
+          "Standalone Metastore"
+        ],
+        "labels": [],
+        "parent": null,
+        "subtasks": [],
+        "links": [
+          {
+            "type": "Blocked",
+            "direction": "inward",
+            "key": "IMPALA-15384"
+          }
+        ]
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "HIVE-30041",
+            "project": "HIVE",
+            "created": "2026-09-11T06:32:19.000+0000",
+            "updated": "2026-09-18T07:14:46.000+0000",
+            "summary": "Upgrade thrift to 0.24.0",
+            "description": "",
+            "issuetype": "Task",
+            "status": "Open",
+            "resolution": null,
+            "components": [],
+            "labels": [],
+            "parent": null,
+            "subtasks": [],
+            "links": [
+              {
+                "type": "Reference",
+                "direction": "inward",
+                "key": "IMPALA-15367"
+              }
+            ]
+          },
+          "retrieval": {
+            "key": "HIVE-30041",
+            "score": 0.6604
+          }
+        },
+        {
+          "ticket": {
+            "key": "KAFKA-18607",
+            "project": "KAFKA",
+            "created": "2025-01-20T19:31:32.000+0000",
+            "updated": "2025-08-04T08:38:02.000+0000",
+            "summary": "Update jfreechart dependency",
+            "description": "We currently use the maven artifact `jfreechart` from [https://mvnrepository.com/artifact/jfreechart/jfreechart] which has since been moved to a different namespace `https://mvnrepository.com/artifact/org.jfree/jfreechart`.\r\n\r\n\r\nThis task is to update the code and the dependency with the latest namespace and version",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [],
+            "labels": [
+              "newbie"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "KAFKA-18607",
+            "score": 0.2412
+          }
+        },
+        {
+          "ticket": {
+            "key": "HIVE-28592",
+            "project": "HIVE",
+            "created": "2024-10-28T10:10:23.000+0000",
+            "updated": "2024-10-30T03:03:22.000+0000",
+            "summary": "Upgrade thrift to 0.19 or later",
+            "description": "Thrift 0.16 uses OpenSSL 1.1 which is out of support  since 12th September 2019.\r\n\r\n\r\n*OpenSSL 1.1.0 is out of support since 12th September 2019 and no longer receiving updates.*\r\n\r\nhttps://openssl-library.org/news/vulnerabilities-1.1.0/\r\n\r\n\r\nHomebrew disabled OpenSSL 1.1 on October 24, 2024 so it is not possible to install with brew anymore. ",
+            "issuetype": "Improvement",
+            "status": "Open",
+            "resolution": null,
+            "components": [],
+            "labels": [],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "HIVE-28592",
+            "score": 0.2357
+          }
+        },
+        {
+          "ticket": {
+            "key": "FLINK-36440",
+            "project": "FLINK",
+            "created": "2024-10-08T10:44:07.000+0000",
+            "updated": "2024-10-12T17:40:09.000+0000",
+            "summary": "Bump log4j from 2.17.1 to 2.24.1",
+            "description": "Bumping *log4j* to the latest version (2.24.1) - this will remediate a lot of vulnerabilities in dependant packages.\r\n\r\nPackage details:\r\n # [https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-1.2-api/2.24.1]\r\n # [https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j2-impl/2.24.1]\r\n # [https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api/2.24.1]\r\n # [https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core/2.24.1]\r\n\r\nRelease notes:\r\n\r\n[https://logging.apache.org/log4j/2.x/release-notes.html]\r\n\r\n \r\n\r\nLot of bug fixes has been done in the newer versions and I don't see any breaking changes as such.",
+            "issuetype": "Improvement",
+            "status": "Closed",
+            "resolution": "Fixed",
+            "components": [],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "FLINK-36440",
+            "score": 0.224
+          }
+        },
+        {
+          "ticket": {
+            "key": "KAFKA-21032",
+            "project": "KAFKA",
+            "created": "2026-09-04T13:35:40.000+0000",
+            "updated": "2026-09-04T13:42:24.000+0000",
+            "summary": "Please update kafka-clients.jar to address CVE-2026-59949",
+            "description": "kafka-clients.jar depends on lz4-java which has the mentioned CVE [https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients/4.3.1/dependencies  |https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients/4.3.1/dependencies]\r\n\r\nPlease update the kafka-clients.jar to ship with lz4-java 1.11.1 or greater to satisfy security scans.",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Duplicate",
+            "components": [
+              "security"
+            ],
+            "labels": [],
+            "parent": null,
+            "subtasks": [],
+            "links": [
+              {
+                "type": "Duplicate",
+                "direction": "outward",
+                "key": "KAFKA-20936"
+              }
+            ]
+          },
+          "retrieval": {
+            "key": "KAFKA-21032",
+            "score": 0.1906
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-58957",
+      "ticket": {
+        "key": "SPARK-58957",
+        "project": "SPARK",
+        "created": "2026-08-23T18:57:27.000+0000",
+        "updated": "2026-08-24T03:09:18.000+0000",
+        "summary": "Upgrade `gRPC Swift NIO Transport` to 2.9.2",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Connect"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-58257",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-56077",
+            "project": "SPARK",
+            "created": "2026-03-19T17:24:54.000+0000",
+            "updated": "2026-03-19T18:10:26.000+0000",
+            "summary": "Upgrade `gRPC Swift NIO Transport` to 2.4.5",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54095",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-56077",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-55316",
+            "project": "SPARK",
+            "created": "2026-02-02T20:57:56.000+0000",
+            "updated": "2026-02-03T10:19:48.000+0000",
+            "summary": "Upgrade `gRPC Swift NIO Transport` to 2.4.1",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54095",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-55316",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-57733",
+            "project": "SPARK",
+            "created": "2026-06-28T03:05:19.000+0000",
+            "updated": "2026-06-28T03:39:30.000+0000",
+            "summary": "Upgrade `gRPC Swift NIO Transport` to 2.9.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-56376",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-57733",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-54779",
+            "project": "SPARK",
+            "created": "2025-12-19T12:36:58.000+0000",
+            "updated": "2025-12-19T20:41:35.000+0000",
+            "summary": "Upgrade `gRPC Swift NIO Transport` to 2.4.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-53749",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-54779",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-56288",
+            "project": "SPARK",
+            "created": "2026-03-30T18:19:42.000+0000",
+            "updated": "2026-03-30T18:31:38.000+0000",
+            "summary": "Upgrade `gRPC Swift NIO Transport` to 2.6.2",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54095",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-56288",
+            "score": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-55511",
+      "ticket": {
+        "key": "SPARK-55511",
+        "project": "SPARK",
+        "created": "2026-02-13T02:47:43.000+0000",
+        "updated": "2026-02-13T04:07:35.000+0000",
+        "summary": "Upgrade Volcano to 1.14.0",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Documentation",
+          "Kubernetes",
+          "Project Infra"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-54137",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-46755",
+            "project": "SPARK",
+            "created": "2024-01-18T04:18:23.000+0000",
+            "updated": "2024-09-05T15:56:54.000+0000",
+            "summary": "Upgrade `Volcano` to 1.8.2",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Documentation",
+              "Kubernetes",
+              "Project Infra"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-49524",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-46755",
+            "score": 0.6501
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-51238",
+            "project": "SPARK",
+            "created": "2025-02-17T03:53:31.000+0000",
+            "updated": "2025-02-17T04:56:37.000+0000",
+            "summary": "Upgrade Volcano to 1.11.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Documentation",
+              "Kubernetes",
+              "Project Infra"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-49524",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-51238",
+            "score": 0.6375
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-49154",
+            "project": "SPARK",
+            "created": "2024-08-08T02:58:49.000+0000",
+            "updated": "2024-09-05T15:56:54.000+0000",
+            "summary": "Upgrade `Volcano` to 1.9.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Documentation",
+              "Kubernetes",
+              "Project Infra",
+              "Tests"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-49524",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-49154",
+            "score": 0.6238
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-50495",
+            "project": "SPARK",
+            "created": "2024-12-05T02:48:17.000+0000",
+            "updated": "2024-12-05T15:40:23.000+0000",
+            "summary": "Upgrade Volcano to 1.10.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Documentation",
+              "Project Infra"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-49524",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-50495",
+            "score": 0.5734
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-42150",
+            "project": "SPARK",
+            "created": "2023-01-21T16:06:15.000+0000",
+            "updated": "2026-02-15T19:43:24.000+0000",
+            "summary": "Upgrade Volcano to 1.7.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Closed",
+            "resolution": "Fixed",
+            "components": [
+              "Documentation",
+              "Kubernetes"
+            ],
+            "labels": [],
+            "parent": "SPARK-42802",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-42150",
+            "score": 0.5729
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-57273",
+      "ticket": {
+        "key": "SPARK-57273",
+        "project": "SPARK",
+        "created": "2026-06-05T03:55:51.000+0000",
+        "updated": "2026-06-05T15:53:21.000+0000",
+        "summary": "Upgrade jackson to 2.21.4",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Build"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-56880",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-55841",
+            "project": "SPARK",
+            "created": "2026-03-04T19:05:07.000+0000",
+            "updated": "2026-03-05T07:20:54.000+0000",
+            "summary": "Upgrade jackson to 2.21.1",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54137",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-55841",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-55116",
+            "project": "SPARK",
+            "created": "2026-01-21T11:06:40.000+0000",
+            "updated": "2026-02-20T17:31:34.000+0000",
+            "summary": "Upgrade Jackson to 2.21.0 ",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54137",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-55116",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-57019",
+            "project": "SPARK",
+            "created": "2026-05-22T21:45:04.000+0000",
+            "updated": "2026-05-24T15:33:24.000+0000",
+            "summary": "Upgrade jackson to 2.21.3",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-56880",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-57019",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-56156",
+            "project": "SPARK",
+            "created": "2026-03-23T16:38:46.000+0000",
+            "updated": "2026-03-23T20:29:19.000+0000",
+            "summary": "Upgrade jackson to 2.21.2",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54137",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-56156",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-43904",
+            "project": "SPARK",
+            "created": "2023-06-01T01:16:24.000+0000",
+            "updated": "2026-02-15T19:33:52.000+0000",
+            "summary": "Upgrade jackson to 2.15.2",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Closed",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [],
+            "parent": null,
+            "subtasks": [],
+            "links": [
+              {
+                "type": "Reference",
+                "direction": "inward",
+                "key": "ORC-1576"
+              }
+            ]
+          },
+          "retrieval": {
+            "key": "SPARK-43904",
+            "score": 0.431
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-53370",
+      "ticket": {
+        "key": "SPARK-53370",
+        "project": "SPARK",
+        "created": "2025-08-25T17:37:45.000+0000",
+        "updated": "2025-08-26T15:44:36.000+0000",
+        "summary": "Upgrade `gRPC Swift Protobuf` to 2.1.1",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Connect"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-52377",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-52247",
+            "project": "SPARK",
+            "created": "2025-05-21T15:37:28.000+0000",
+            "updated": "2025-05-21T17:41:38.000+0000",
+            "summary": "Upgrade `gRPC Swift Protobuf` to 1.3.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-52204",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-52247",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-51846",
+            "project": "SPARK",
+            "created": "2025-04-18T10:49:11.000+0000",
+            "updated": "2025-04-18T14:08:23.000+0000",
+            "summary": "Upgrade `gRPC Swift Protobuf` to 1.2 and `gRPC Swift NIO Transport` to 1.0.3",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-51448",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-51846",
+            "score": 0.7265
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-52360",
+            "project": "SPARK",
+            "created": "2025-05-30T22:09:04.000+0000",
+            "updated": "2025-05-30T23:56:49.000+0000",
+            "summary": "Upgrade `gRPC Swift` to 2.2.2",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-52204",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-52360",
+            "score": 0.6709
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-52913",
+            "project": "SPARK",
+            "created": "2025-07-21T20:51:50.000+0000",
+            "updated": "2025-08-26T16:42:32.000+0000",
+            "summary": "Upgrade `grpc-swift-2` to 2.1.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-52377",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-52913",
+            "score": 0.6709
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-52084",
+            "project": "SPARK",
+            "created": "2025-05-12T14:50:47.000+0000",
+            "updated": "2025-05-12T18:37:22.000+0000",
+            "summary": "Upgrade `gRPC Swift` to 2.2.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connect"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-51999",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-52084",
+            "score": 0.6709
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-54677",
+      "ticket": {
+        "key": "SPARK-54677",
+        "project": "SPARK",
+        "created": "2025-12-10T22:11:44.000+0000",
+        "updated": "2025-12-10T23:14:54.000+0000",
+        "summary": "Upgrade `pmd` to 7.19.0 and apply `EnumComparison` rules",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Kubernetes"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-54093",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-52137",
+            "project": "SPARK",
+            "created": "2025-05-14T17:51:16.000+0000",
+            "updated": "2025-05-14T18:27:02.000+0000",
+            "summary": "Upgrade `pmd` to 7.13.0 ",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Kubernetes"
+            ],
+            "labels": [],
+            "parent": "SPARK-52000",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-52137",
+            "score": 0.624
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-52202",
+            "project": "SPARK",
+            "created": "2025-05-17T04:05:25.000+0000",
+            "updated": "2025-05-17T12:13:24.000+0000",
+            "summary": "Reduce PMD exclusion rules",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Kubernetes"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-52000",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-52202",
+            "score": 0.5185
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-53628",
+            "project": "SPARK",
+            "created": "2025-09-17T22:34:47.000+0000",
+            "updated": "2025-09-17T23:29:42.000+0000",
+            "summary": "Upgrade `pmd` and `spotbugs` and enable checking on Java 25",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build",
+              "Kubernetes"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-52604",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-53628",
+            "score": 0.387
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-52201",
+            "project": "SPARK",
+            "created": "2025-05-17T03:10:23.000+0000",
+            "updated": "2025-05-17T03:47:29.000+0000",
+            "summary": "Revisit `PMD` annotations",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Kubernetes"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-52000",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-52201",
+            "score": 0.3283
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-49036",
+            "project": "SPARK",
+            "created": "2024-07-29T02:47:31.000+0000",
+            "updated": "2024-07-29T15:28:03.000+0000",
+            "summary": "Exclude `JUnitAssertionsShouldIncludeMessage/JUnitTestContainsTooManyAsserts` PMD rules and simplify test code",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Kubernetes"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-45923",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-49036",
+            "score": 0.3155
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-55233",
+      "ticket": {
+        "key": "SPARK-55233",
+        "project": "SPARK",
+        "created": "2026-01-27T03:46:56.000+0000",
+        "updated": "2026-01-29T00:21:08.000+0000",
+        "summary": "Upgrade ASM to 9.9.1",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Build"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-51167",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-49965",
+            "project": "SPARK",
+            "created": "2024-10-15T00:20:13.000+0000",
+            "updated": "2025-01-12T18:55:07.000+0000",
+            "summary": "Upgrade ASM to 9.7.1",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-47046",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-49965",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-45591",
+            "project": "SPARK",
+            "created": "2023-10-18T08:23:19.000+0000",
+            "updated": "2023-10-20T02:33:56.000+0000",
+            "summary": "Upgrade ASM to 9.6",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-45591",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-47893",
+            "project": "SPARK",
+            "created": "2024-04-17T23:34:40.000+0000",
+            "updated": "2024-05-09T17:59:05.000+0000",
+            "summary": "Upgrade ASM to 9.7",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-47046",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-47893",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-53962",
+            "project": "SPARK",
+            "created": "2025-10-20T21:29:00.000+0000",
+            "updated": "2025-11-10T03:52:39.000+0000",
+            "summary": "Upgrade ASM to 9.9",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-51167",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-53962",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-43588",
+            "project": "SPARK",
+            "created": "2023-05-19T05:40:43.000+0000",
+            "updated": "2026-02-15T19:31:58.000+0000",
+            "summary": "Upgrade ASM to 9.5",
+            "description": "ASM 9.5 is for Java 21\r\n\r\n \r\n\r\nhttps://asm.ow2.io/versions.html",
+            "issuetype": "Sub-task",
+            "status": "Closed",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [],
+            "parent": "SPARK-43831",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-43588",
+            "score": 0.8334
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-55415",
+      "ticket": {
+        "key": "SPARK-55415",
+        "project": "SPARK",
+        "created": "2026-02-07T09:46:34.000+0000",
+        "updated": "2026-02-11T10:06:07.000+0000",
+        "summary": "Upgrade PyPy images to Ubuntu 24.04",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Project Infra",
+          "PySpark"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-55482",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-55413",
+            "project": "SPARK",
+            "created": "2026-02-07T09:42:03.000+0000",
+            "updated": "2026-02-11T10:05:31.000+0000",
+            "summary": "Upgrade Python minimum dep test images to Ubuntu 24.04",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Project Infra",
+              "PySpark"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-55482",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-55413",
+            "score": 0.6385
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-49920",
+            "project": "SPARK",
+            "created": "2024-10-10T07:16:13.000+0000",
+            "updated": "2024-10-10T12:56:15.000+0000",
+            "summary": "Install R for ubuntu 24.04",
+            "description": "",
+            "issuetype": "Bug",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Project Infra",
+              "Tests"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-49920",
+            "score": 0.5988
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-55414",
+            "project": "SPARK",
+            "created": "2026-02-07T09:44:26.000+0000",
+            "updated": "2026-02-11T10:05:37.000+0000",
+            "summary": "Upgrade Python 3.12 test images for classic-only and pandas 3 to Ubuntu 24.04",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Project Infra",
+              "PySpark"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-55482",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-55414",
+            "score": 0.5407
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-55394",
+            "project": "SPARK",
+            "created": "2026-02-06T12:22:42.000+0000",
+            "updated": "2026-02-11T10:06:28.000+0000",
+            "summary": "Upgrade Python 3.10 test image to Ubuntu 24.04",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Project Infra",
+              "PySpark"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-55482",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-55394",
+            "score": 0.4909
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-55393",
+            "project": "SPARK",
+            "created": "2026-02-06T11:04:09.000+0000",
+            "updated": "2026-02-11T10:06:43.000+0000",
+            "summary": "Upgrade Python 3.11 test image to Ubuntu 24.04",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Project Infra",
+              "PySpark"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-55482",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-55393",
+            "score": 0.4896
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-50951",
+      "ticket": {
+        "key": "SPARK-50951",
+        "project": "SPARK",
+        "created": "2025-01-22T15:39:18.000+0000",
+        "updated": "2025-01-22T20:39:09.000+0000",
+        "summary": "Update OracleDatabaseOnDocker Docker Image Tag to oracle-free:23.6-slim",
+        "description": "Update the Docker image used for testing {{OracleDatabaseOnDocker}} to the latest tag, {{{}oracle-free:23.6-slim{}}}. This update ensures the testing environment is aligned with Oracle Free version 23.6, the most recent release.",
+        "issuetype": "Improvement",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Tests"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": null,
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-49105",
+            "project": "SPARK",
+            "created": "2024-08-04T15:27:21.000+0000",
+            "updated": "2024-08-04T20:10:36.000+0000",
+            "summary": "Upgrade ojdbc11 to 23.5.0.24.07 and OracleDatabaseOnDocker docker image tag to oracle-free:23.5-slim",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build",
+              "Tests"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-49105",
+            "score": 0.6433
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-47203",
+            "project": "SPARK",
+            "created": "2024-02-28T03:25:05.000+0000",
+            "updated": "2024-03-15T03:07:29.000+0000",
+            "summary": "Use gvenzl/oracle-free:23.3-slim to reduce disk usage for docker it",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Spark Docker"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-47361",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-47203",
+            "score": 0.4172
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-48141",
+            "project": "SPARK",
+            "created": "2024-05-06T08:24:08.000+0000",
+            "updated": "2024-05-07T06:52:42.000+0000",
+            "summary": "Update the Oracle docker image version used for test and integration to use Oracle Database 23ai Free",
+            "description": "{color:#0d0d0d}Oracle recently released Oracle Database 23ai Free, specifically version 23.4, as their latest free database version. {color}\r\n\r\n{color:#0d0d0d}We should update our testing infrastructure to utilize this free version, using the Docker image available at{color}[ {color:#0d0d0d} {color}|https://github.com/gvenzl/oci-oracle-free] [https://github.com/gvenzl/oci-oracle-free |https://github.com/gvenzl/oci-oracle-free]\r\n\r\n{color:#0d0d0d}This repository is known for being a reliable and well-maintained source for Oracle Database images.{color}",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Tests"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-48141",
+            "score": 0.2497
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-45336",
+            "project": "SPARK",
+            "created": "2023-09-26T09:12:47.000+0000",
+            "updated": "2023-10-26T03:24:13.000+0000",
+            "summary": "Update the Oracle docker image version used for test and integration to use Oracle Database 23c Free",
+            "description": "This proposes to update the Docker image used for integration tests and builds to Oracle Database 23c Free.\r\n\r\nThe Docker image used for integration tests and builds currently uses Oracle XE version 21.3.0. Oracle 21 support ends in April 2024. The latest Oracle release is 23c, it is a long-term release supported till 2032. With Oracle 23c, Oracle has changed the name of the free version of its database, from Oracle XE (Express Edition) to Oracle Database Free.\r\n\r\n ",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Tests"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-45336",
+            "score": 0.2122
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-48029",
+            "project": "SPARK",
+            "created": "2024-04-28T11:48:33.000+0000",
+            "updated": "2024-04-29T04:44:14.000+0000",
+            "summary": "Update the packages name removed in building the spark docker image",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-48029",
+            "score": 0.131
+          }
+        }
+      ]
+    },
+    {
+      "key": "FLINK-39707",
+      "ticket": {
+        "key": "FLINK-39707",
+        "project": "FLINK",
+        "created": "2026-05-19T11:20:12.000+0000",
+        "updated": "2026-05-27T06:38:20.000+0000",
+        "summary": "Update Flink Connector OpenSearch to Flink Connector Parent POM 2.0",
+        "description": "Now that version 2.0 of the Flink Connector Parent POM has been released, we should update the Flink Connector OpenSearch project to use it. This involves updates to the  japicmp plugin and Checkstyle configuration. Similar to FLINK-39138 for the Kafka connector.",
+        "issuetype": "Improvement",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Connectors / Opensearch"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": null,
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "FLINK-39138",
+            "project": "FLINK",
+            "created": "2026-02-23T11:04:04.000+0000",
+            "updated": "2026-03-17T18:32:05.000+0000",
+            "summary": "Update Flink Connector Kafka to Flink Connector Parent POM 2.0",
+            "description": "Now that version 2.0 of the Flink Connector Kafka POM has been released, we should update the Flink Connector Kafka project to use it.\r\n\r\nThis will drop Java 8 support and involve updates to the Checkstyle and other plugins.",
+            "issuetype": "Improvement",
+            "status": "Closed",
+            "resolution": "Fixed",
+            "components": [
+              "Connectors / Kafka"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "FLINK-39138",
+            "score": 0.6146
+          }
+        },
+        {
+          "ticket": {
+            "key": "FLINK-37652",
+            "project": "FLINK",
+            "created": "2025-04-11T00:57:39.000+0000",
+            "updated": "2026-05-12T06:08:10.000+0000",
+            "summary": "[Connectors/Opensearch] Move to Flink to 2.0.0",
+            "description": "",
+            "issuetype": "Bug",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Connectors / Opensearch"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": [
+              {
+                "type": "Blocked",
+                "direction": "inward",
+                "key": "FLINK-39653"
+              }
+            ]
+          },
+          "retrieval": {
+            "key": "FLINK-37652",
+            "score": 0.3742
+          }
+        },
+        {
+          "ticket": {
+            "key": "FLINK-35140",
+            "project": "FLINK",
+            "created": "2024-04-17T09:12:11.000+0000",
+            "updated": "2026-06-18T07:20:57.000+0000",
+            "summary": "Release flink-connector-opensearch v1.2.0 and v.2.0.0 for Flink 1.19",
+            "description": "[https://github.com/apache/flink-connector-opensearch]\r\n\r\n ",
+            "issuetype": "Sub-task",
+            "status": "In Progress",
+            "resolution": null,
+            "components": [
+              "Connectors / Opensearch"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "FLINK-35131",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "FLINK-35140",
+            "score": 0.3684
+          }
+        },
+        {
+          "ticket": {
+            "key": "FLINK-38289",
+            "project": "FLINK",
+            "created": "2025-08-27T16:36:07.000+0000",
+            "updated": "2026-01-16T07:54:23.000+0000",
+            "summary": "Update Flink Connector Kafka to use Flink 2.1",
+            "description": "Now that Flink 2.1 is released we should update the Flink Connector Kafka to use this new version.",
+            "issuetype": "Improvement",
+            "status": "Closed",
+            "resolution": "Fixed",
+            "components": [
+              "Connectors / Kafka"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "FLINK-38289",
+            "score": 0.2959
+          }
+        },
+        {
+          "ticket": {
+            "key": "FLINK-38790",
+            "project": "FLINK",
+            "created": "2025-12-08T07:47:52.000+0000",
+            "updated": "2026-05-20T14:37:12.000+0000",
+            "summary": "Update Flink Connector Kafka to use Flink 2.2",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Closed",
+            "resolution": "Fixed",
+            "components": [
+              "Connectors / Kafka"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "FLINK-38790",
+            "score": 0.2645
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-55083",
+      "ticket": {
+        "key": "SPARK-55083",
+        "project": "SPARK",
+        "created": "2026-01-17T07:48:03.000+0000",
+        "updated": "2026-01-17T08:01:02.000+0000",
+        "summary": "Upgrade `checkstyle` to 13.0.0",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Build",
+          "Kubernetes",
+          "Tests"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-55000",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-44031",
+            "project": "SPARK",
+            "created": "2023-06-12T20:53:51.000+0000",
+            "updated": "2026-02-15T19:33:46.000+0000",
+            "summary": "Upgrade silencer to 1.7.13",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Closed",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-44031",
+            "score": 0.4854
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-53603",
+            "project": "SPARK",
+            "created": "2025-09-16T22:47:15.000+0000",
+            "updated": "2025-10-24T15:41:57.000+0000",
+            "summary": "Upgrade Checkstyle to 11.0.1",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54017",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-53603",
+            "score": 0.4424
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-52136",
+            "project": "SPARK",
+            "created": "2025-05-14T16:54:58.000+0000",
+            "updated": "2025-05-14T17:29:54.000+0000",
+            "summary": "Upgrade `checkstyle` to 10.23.1",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Kubernetes",
+              "Tests"
+            ],
+            "labels": [],
+            "parent": "SPARK-52000",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-52136",
+            "score": 0.4325
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-48433",
+            "project": "SPARK",
+            "created": "2024-05-27T23:29:09.000+0000",
+            "updated": "2024-06-03T03:03:14.000+0000",
+            "summary": "Upgrade `checkstyle` to 10.17.0",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-48433",
+            "score": 0.4046
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-50218",
+            "project": "SPARK",
+            "created": "2024-11-04T17:51:00.000+0000",
+            "updated": "2024-12-03T07:56:43.000+0000",
+            "summary": "Upgrade checkstyle to 10.20.0",
+            "description": "",
+            "issuetype": "Test",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-50218",
+            "score": 0.4035
+          }
+        }
+      ]
+    },
+    {
+      "key": "HIVE-28882",
+      "ticket": {
+        "key": "HIVE-28882",
+        "project": "HIVE",
+        "created": "2025-04-04T14:51:33.000+0000",
+        "updated": "2025-04-09T20:39:15.000+0000",
+        "summary": "Upgrade Parquet to 1.15.1",
+        "description": "",
+        "issuetype": "Improvement",
+        "status": "Resolved",
+        "resolution": "Duplicate",
+        "components": [],
+        "labels": [],
+        "parent": null,
+        "subtasks": [],
+        "links": [
+          {
+            "type": "Duplicate",
+            "direction": "outward",
+            "key": "HIVE-28895"
+          }
+        ]
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-51549",
+            "project": "SPARK",
+            "created": "2025-03-19T05:43:39.000+0000",
+            "updated": "2025-04-18T10:56:10.000+0000",
+            "summary": "Bump Parquet 1.15.1",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-51549",
+            "score": 0.4913
+          }
+        },
+        {
+          "ticket": {
+            "key": "HIVE-26917",
+            "project": "HIVE",
+            "created": "2023-01-10T02:22:24.000+0000",
+            "updated": "2023-08-15T06:33:30.000+0000",
+            "summary": "Upgrade parquet to 1.12.3",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Closed",
+            "resolution": "Fixed",
+            "components": [],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": [
+              {
+                "type": "Reference",
+                "direction": "inward",
+                "key": "HIVE-26913"
+              }
+            ]
+          },
+          "retrieval": {
+            "key": "HIVE-26917",
+            "score": 0.4343
+          }
+        },
+        {
+          "ticket": {
+            "key": "HIVE-27300",
+            "project": "HIVE",
+            "created": "2023-04-26T16:36:02.000+0000",
+            "updated": "2023-08-15T06:33:30.000+0000",
+            "summary": "Upgrade to Parquet 1.13.0",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Closed",
+            "resolution": "Fixed",
+            "components": [
+              "Parquet"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "HIVE-27300",
+            "score": 0.4216
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-49903",
+            "project": "SPARK",
+            "created": "2024-10-08T01:50:54.000+0000",
+            "updated": "2024-10-09T01:33:33.000+0000",
+            "summary": "Upgrade `Parquet` to 1.14.3",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-44111",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-49903",
+            "score": 0.4178
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-48177",
+            "project": "SPARK",
+            "created": "2024-05-07T20:26:14.000+0000",
+            "updated": "2024-07-08T02:48:12.000+0000",
+            "summary": "Upgrade `Parquet` to 1.14.1",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-44111",
+            "subtasks": [],
+            "links": [
+              {
+                "type": "Duplicate",
+                "direction": "inward",
+                "key": "SPARK-48371"
+              }
+            ]
+          },
+          "retrieval": {
+            "key": "SPARK-48177",
+            "score": 0.4178
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-56531",
+      "ticket": {
+        "key": "SPARK-56531",
+        "project": "SPARK",
+        "created": "2026-04-17T21:11:08.000+0000",
+        "updated": "2026-04-19T23:32:08.000+0000",
+        "summary": "Upgrade `bouncycastle` to 1.84",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Tests"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-54137",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-51063",
+            "project": "SPARK",
+            "created": "2025-02-03T01:20:16.000+0000",
+            "updated": "2025-02-03T04:57:44.000+0000",
+            "summary": "Upgrade `bouncycastle` to 1.80",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-47046",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-51063",
+            "score": 0.7001
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-53218",
+            "project": "SPARK",
+            "created": "2025-08-09T03:30:02.000+0000",
+            "updated": "2025-10-24T15:52:01.000+0000",
+            "summary": "Upgrade `bouncycastle` to 1.81",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54017",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-53218",
+            "score": 0.6957
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-54911",
+            "project": "SPARK",
+            "created": "2026-01-05T23:56:53.000+0000",
+            "updated": "2026-01-06T03:49:06.000+0000",
+            "summary": "Upgrade `bouncycastle` to 1.83",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build",
+              "Tests"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54137",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-54911",
+            "score": 0.678
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-50217",
+            "project": "SPARK",
+            "created": "2024-11-04T17:38:38.000+0000",
+            "updated": "2024-11-04T21:45:42.000+0000",
+            "summary": "Upgrade `bouncycastle` to 1.79",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build",
+              "Tests"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-44111",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-50217",
+            "score": 0.536
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-53661",
+            "project": "SPARK",
+            "created": "2025-09-22T16:09:56.000+0000",
+            "updated": "2025-10-24T15:52:13.000+0000",
+            "summary": "Upgrade `bouncycastle` to 1.82",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build",
+              "Tests"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54017",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-53661",
+            "score": 0.5345
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-53468",
+      "ticket": {
+        "key": "SPARK-53468",
+        "project": "SPARK",
+        "created": "2025-09-03T02:45:24.000+0000",
+        "updated": "2025-09-03T06:09:08.000+0000",
+        "summary": "Update `setup-minikube` to v0.0.20",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Kubernetes",
+          "Project Infra"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-52604",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-53464",
+            "project": "SPARK",
+            "created": "2025-09-03T00:10:29.000+0000",
+            "updated": "2025-11-06T02:04:24.000+0000",
+            "summary": "Update `setup-minikube` to v0.0.20",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Kubernetes",
+              "Project Infra"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54016",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-53464",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-51894",
+            "project": "SPARK",
+            "created": "2025-04-24T06:58:09.000+0000",
+            "updated": "2025-04-24T07:10:53.000+0000",
+            "summary": "Update `setup-minikube` to v0.0.19",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Kubernetes",
+              "Project Infra",
+              "Tests"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-45923",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-51894",
+            "score": 0.6963
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-51908",
+            "project": "SPARK",
+            "created": "2025-04-25T01:15:13.000+0000",
+            "updated": "2025-11-06T02:05:09.000+0000",
+            "summary": "Update `setup-minikube` to v0.0.19",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Kubernetes",
+              "Tests"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-49524",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-51908",
+            "score": 0.6561
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-49339",
+            "project": "SPARK",
+            "created": "2024-08-21T17:06:26.000+0000",
+            "updated": "2024-08-22T15:52:17.000+0000",
+            "summary": "Use `setup-minikube` GitHub Action",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Project Infra"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-49339",
+            "score": 0.3231
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-49331",
+            "project": "SPARK",
+            "created": "2024-08-21T04:22:30.000+0000",
+            "updated": "2024-08-22T16:21:57.000+0000",
+            "summary": "Use `setup-minikube` GitHub Action",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Kubernetes"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-45923",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-49331",
+            "score": 0.3007
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-54447",
+      "ticket": {
+        "key": "SPARK-54447",
+        "project": "SPARK",
+        "created": "2025-11-21T03:59:26.000+0000",
+        "updated": "2026-02-20T17:32:30.000+0000",
+        "summary": "Upgrade icu4j to 78.1",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Build"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-54137",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-47944",
+            "project": "SPARK",
+            "created": "2024-04-23T02:15:09.000+0000",
+            "updated": "2024-08-02T06:48:16.000+0000",
+            "summary": "Upgrade icu4j to 75.1",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Duplicate",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": [
+              {
+                "type": "Duplicate",
+                "direction": "inward",
+                "key": "SPARK-48573"
+              }
+            ]
+          },
+          "retrieval": {
+            "key": "SPARK-47944",
+            "score": 0.6137
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-50189",
+            "project": "SPARK",
+            "created": "2024-10-31T11:18:20.000+0000",
+            "updated": "2024-11-05T00:27:44.000+0000",
+            "summary": "Upgrade ICU4J to `76.1`",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "SQL"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-47046",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-50189",
+            "score": 0.598
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-52038",
+            "project": "SPARK",
+            "created": "2025-05-08T07:21:47.000+0000",
+            "updated": "2025-11-14T17:28:40.000+0000",
+            "summary": "Upgrade icu4j to 77.1",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54284",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-52038",
+            "score": 0.5712
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-47785",
+            "project": "SPARK",
+            "created": "2024-04-09T16:34:14.000+0000",
+            "updated": "2024-04-09T19:53:31.000+0000",
+            "summary": "Upgrade `bouncycastle` to 1.78",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build",
+              "Tests"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-44111",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-47785",
+            "score": 0.3342
+          }
+        },
+        {
+          "ticket": {
+            "key": "HIVE-29198",
+            "project": "HIVE",
+            "created": "2025-09-15T04:42:30.000+0000",
+            "updated": "2025-11-24T17:11:49.000+0000",
+            "summary": "Upgrade bouncycastle from 1.78 to 1.82",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Closed",
+            "resolution": "Fixed",
+            "components": [],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "HIVE-29198",
+            "score": 0.1632
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-58148",
+      "ticket": {
+        "key": "SPARK-58148",
+        "project": "SPARK",
+        "created": "2026-07-15T17:09:24.000+0000",
+        "updated": "2026-07-15T21:28:26.000+0000",
+        "summary": "Upgrade tink to 1.23.0",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Build"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-56880",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-44894",
+            "project": "SPARK",
+            "created": "2023-08-21T11:05:27.000+0000",
+            "updated": "2026-07-09T01:16:50.000+0000",
+            "summary": "Upgrade tink to 1.10",
+            "description": "",
+            "issuetype": "Improvement",
+            "status": "Resolved",
+            "resolution": "Duplicate",
+            "components": [
+              "Build"
+            ],
+            "labels": [],
+            "parent": null,
+            "subtasks": [],
+            "links": [
+              {
+                "type": "Duplicate",
+                "direction": "outward",
+                "key": "SPARK-47658"
+              }
+            ]
+          },
+          "retrieval": {
+            "key": "SPARK-44894",
+            "score": 0.716
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-47658",
+            "project": "SPARK",
+            "created": "2024-03-30T02:51:23.000+0000",
+            "updated": "2026-07-09T01:16:49.000+0000",
+            "summary": "Upgrade `tink` to 1.12.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-47046",
+            "subtasks": [],
+            "links": [
+              {
+                "type": "Duplicate",
+                "direction": "inward",
+                "key": "SPARK-44894"
+              }
+            ]
+          },
+          "retrieval": {
+            "key": "SPARK-47658",
+            "score": 0.7098
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-49486",
+            "project": "SPARK",
+            "created": "2024-09-02T01:40:28.000+0000",
+            "updated": "2024-09-03T23:17:52.000+0000",
+            "summary": "Upgrade tink to 1.15.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-47046",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-49486",
+            "score": 0.6962
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-50632",
+            "project": "SPARK",
+            "created": "2024-12-20T01:19:00.000+0000",
+            "updated": "2025-01-12T18:49:08.000+0000",
+            "summary": "Upgrade tink to 1.16.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-47046",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-50632",
+            "score": 0.6952
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-56008",
+            "project": "SPARK",
+            "created": "2026-03-16T19:33:47.000+0000",
+            "updated": "2026-03-17T03:30:21.000+0000",
+            "summary": "Upgrade `tink` to 1.20.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54137",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-56008",
+            "score": 0.6912
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-59503",
+      "ticket": {
+        "key": "SPARK-59503",
+        "project": "SPARK",
+        "created": "2026-09-14T19:42:52.000+0000",
+        "updated": "2026-09-14T20:32:55.000+0000",
+        "summary": "Upgrade `Kueue` Workload CRD model to `v1beta2`",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Kubernetes"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-58286",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-59486",
+            "project": "SPARK",
+            "created": "2026-09-14T05:38:35.000+0000",
+            "updated": "2026-09-14T07:59:34.000+0000",
+            "summary": "Add Kueue v1beta1 Workload CRD model and constants",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Kubernetes"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-58286",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-59486",
+            "score": 0.6464
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-53874",
+            "project": "SPARK",
+            "created": "2025-10-11T00:04:56.000+0000",
+            "updated": "2025-10-11T07:38:03.000+0000",
+            "summary": "`SparkAppDriverConf` should respect `sparkVersion` of `SparkApplication` CRD",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Kubernetes"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-53726",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-53874",
+            "score": 0.1376
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-53984",
+            "project": "SPARK",
+            "created": "2025-10-22T17:44:13.000+0000",
+            "updated": "2025-10-22T18:00:26.000+0000",
+            "summary": "Use CRD `v1` instead of `v1beta1` in `benchmark` script",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Kubernetes",
+              "Tests"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-53726",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-53984",
+            "score": 0.1283
+          }
+        },
+        {
+          "ticket": {
+            "key": "FLINK-35263",
+            "project": "FLINK",
+            "created": "2024-04-29T08:15:49.000+0000",
+            "updated": "2025-07-04T08:26:17.000+0000",
+            "summary": "FLIP-446: Kubernetes Operator State Snapshot CRD",
+            "description": "Described in [https://cwiki.apache.org/confluence/display/FLINK/FLIP-446%3A+Kubernetes+Operator+State+Snapshot+CRD]\r\n\r\n ",
+            "issuetype": "New Feature",
+            "status": "Closed",
+            "resolution": "Fixed",
+            "components": [
+              "Kubernetes Operator"
+            ],
+            "labels": [],
+            "parent": null,
+            "subtasks": [
+              "FLINK-35265",
+              "FLINK-35266",
+              "FLINK-35267",
+              "FLINK-35492",
+              "FLINK-35493",
+              "FLINK-36037",
+              "FLINK-36109",
+              "FLINK-36110",
+              "FLINK-36145",
+              "FLINK-36162"
+            ],
+            "links": []
+          },
+          "retrieval": {
+            "key": "FLINK-35263",
+            "score": 0.1257
+          }
+        },
+        {
+          "ticket": {
+            "key": "FLINK-31849",
+            "project": "FLINK",
+            "created": "2023-04-19T08:39:24.000+0000",
+            "updated": "2026-07-02T07:57:10.000+0000",
+            "summary": "Enforce some some simple validation directly through the CRD",
+            "description": "The CRD generator allows us to annotate some fields to add basic validation such as required, min/max etc. \r\n\r\nWe should use these to simplify the validation logic.\r\n\r\nhttps://github.com/fabric8io/kubernetes-client/blob/master/doc/CRD-generator.md",
+            "issuetype": "New Feature",
+            "status": "Open",
+            "resolution": null,
+            "components": [
+              "Kubernetes Operator"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": null,
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "FLINK-31849",
+            "score": 0.1161
+          }
+        }
+      ]
+    },
+    {
+      "key": "SPARK-55310",
+      "ticket": {
+        "key": "SPARK-55310",
+        "project": "SPARK",
+        "created": "2026-02-02T13:42:56.000+0000",
+        "updated": "2026-02-02T13:56:31.000+0000",
+        "summary": "Upgrade `Gradle` to 9.3.1",
+        "description": "",
+        "issuetype": "Sub-task",
+        "status": "Resolved",
+        "resolution": "Fixed",
+        "components": [
+          "Kubernetes"
+        ],
+        "labels": [
+          "pull-request-available"
+        ],
+        "parent": "SPARK-55000",
+        "subtasks": [],
+        "links": []
+      },
+      "candidates": [
+        {
+          "ticket": {
+            "key": "SPARK-54097",
+            "project": "SPARK",
+            "created": "2025-10-30T21:10:46.000+0000",
+            "updated": "2025-10-30T21:23:53.000+0000",
+            "summary": "Upgrade `Gradle` to 9.2.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Kubernetes"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-53726",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-54097",
+            "score": 1.0
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-55078",
+            "project": "SPARK",
+            "created": "2026-01-17T02:42:33.000+0000",
+            "updated": "2026-01-17T03:59:31.000+0000",
+            "summary": "Upgrade `Gradle` to 9.3.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build",
+              "Kubernetes"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-55000",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-55078",
+            "score": 0.7971
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-53644",
+            "project": "SPARK",
+            "created": "2025-09-19T03:01:48.000+0000",
+            "updated": "2025-09-21T08:45:21.000+0000",
+            "summary": "Upgrade `Gradle` to 9.1.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build",
+              "Kubernetes"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-52604",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-53644",
+            "score": 0.7971
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-53409",
+            "project": "SPARK",
+            "created": "2025-08-28T04:56:12.000+0000",
+            "updated": "2025-08-28T05:16:59.000+0000",
+            "summary": "Upgrade `Gradle` to 9.0.0",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build",
+              "Kubernetes"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-52604",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-53409",
+            "score": 0.7971
+          }
+        },
+        {
+          "ticket": {
+            "key": "SPARK-54667",
+            "project": "SPARK",
+            "created": "2025-12-10T16:19:51.000+0000",
+            "updated": "2025-12-10T16:47:54.000+0000",
+            "summary": "Upgrade `Gradle` to 9.2.1",
+            "description": "",
+            "issuetype": "Sub-task",
+            "status": "Resolved",
+            "resolution": "Fixed",
+            "components": [
+              "Build",
+              "Kubernetes"
+            ],
+            "labels": [
+              "pull-request-available"
+            ],
+            "parent": "SPARK-54093",
+            "subtasks": [],
+            "links": []
+          },
+          "retrieval": {
+            "key": "SPARK-54667",
+            "score": 0.7971
+          }
+        }
+      ]
+    }
+  ],
+  "plan_id": "23433229142ecacf203fd8a0185a8029f805886ddfa2c2f91d764164c931169b"
+}

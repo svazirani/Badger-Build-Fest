@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "kind": "permission-receipt",
+  "config_id": "7594a65456c57d5d57a304591db75658cd2f6964773e34538c9edc2dac32f33f",
+  "policy": {
+    "unit": "one deterministic action per ticket; one representative per part-of umbrella",
+    "part_of_target": "precision across sampled predicted umbrellas",
+    "cutoff": 0.95,
+    "target": 0.9,
+    "family_alpha": 0.05,
+    "multiplicity": "Bonferroni across three relations",
+    "labels": "independent adjudication; unknown excluded"
+  },
+  "computed_at": "2026-09-26T23:38:56.993415+00:00",
+  "valid_until": "2026-09-27T23:38:56.993415+00:00",
+  "sources": {
+    "judgments_sha256": "671e88333a613b146da49ea73dcc7f10f9338987938a809ef24787c3d99618f2",
+    "labels_sha256": "2ba9fc5ab1461911c9ce5f1d484101fb4b388bc34024cacbcf8071fa7cf54bd1"
+  },
+  "decisions": [
+    {
+      "relation": "duplicate",
+      "mode": "quiet",
+      "threshold": 0.95,
+      "n": 19,
+      "k": 4,
+      "needs_more": null,
+      "precision": 0.21052631578947367,
+      "lower": 0.05353883017847539,
+      "target": 0.9,
+      "alpha": 0.016666666666666666,
+      "evidence_action_ids": [
+        "39ec7e2c01e975b3b1afd1bbfb1148a69f4735944da8e089a95251562ec06866",
+        "ee536be34cbed1f45b26c021241a64111d749e06933f2d1f658c66900192e104",
+        "829dadcf26b9981588cc21e4b566e4f1920941c19f0bde5ef8643ce92cc4b8dd",
+        "9ee3573a5f94a07a708b5fc39abed2fcd51eac4e7e608d1e1bb9e88eb06ba2ca",
+        "5437df843636f6e83ddcec1489b233067fabc2025fbbf6eff2315871917ecaf5",
+        "2c79ff470a62bed0f84b21d7e23e0986936566a16f1f1174ee8025c66c27197d",
+        "3f3471b1202462c9904f121020390a555c1c1591acb26ef476956fc41127ba12",
+        "c1a36a2ce930d0f85253aef8e3958cf7ea9b6f12e3709f2ef3e415fd52ccdab8",
+        "e77bd8d43ccd1bb48c1db5be762b64aba28cd307a4816c10e08026894df71b78",
+        "68d956f0974947ab6c01ce6c1b543a085ecd42228c802a2526da663f9432154b",
+        "ddaf8737ce06e32ce612247698f25227dcaf121b32a0c89674e758212c9be7f0",
+        "ae9425c5c86b4170dc53b01d707005cbdd6e27a55414d007f0b3cd9c5043bfd7",
+        "364ffc527e0746fdcd93f640c6b834c1c3ddb548a36ed7ffe3818044eaec3b5a",
+        "b12f7893364781613c83e896722dfb7aa707842319d5a2e44fcfa5084cd1a8aa",
+        "1ea0fc4d4179641d72008c2750434118f6ec7eb84300f207ba28bb3f24895558",
+        "7b08461aa14f6b3cdb2218e8d367771449884f37d6811e7a7d57eca4eb544d6b",
+        "6b3c62880eaa91b10592054c6f99c5f087bd10861a55dd6dee3c0e4b544164d2",
+        "d9f79ccbddfba929e7ce4e6c9f49df958e299da94dbcf321da5111f5a55398c3",
+        "5a76db122feefec31bcf9bd9dd9b71119e37996624b85922103fee01d74ddb45"
+      ],
+      "excluded": {
+        "unknown_or_missing_label": 1,
+        "dependent_sibling_action": 0,
+        "below_threshold_or_other_action": 60
+      }
+    },
+    {
+      "relation": "part_of",
+      "mode": "quiet",
+      "threshold": 0.95,
+      "n": 8,
+      "k": 3,
+      "needs_more": null,
+      "precision": 0.375,
+      "lower": 0.07330874643485688,
+      "target": 0.9,
+      "alpha": 0.016666666666666666,
+      "evidence_action_ids": [
+        "38ab58b28d582a8c180d7d1f64852730426c374d414e7a2e7821f4b4fb083bb1",
+        "cf261d0466ebd5e9c6d155cb8c351f640e01d4fd8de16612e613af618607fc42",
+        "d3cfe7b8e96057250746cd193b338735b144f0064dd5e0c77d799921500cfe59",
+        "d3915bd27c4d8719b1c4c1a8e4eff738e063347e3a7e42fe23ba1906ef505a9c",
+        "a91d90a8a290c0187c3a8153fa42dbc2213633e22ff17e016047090c51a472a2",
+        "b7f63d22be77e7a1295d65eb7512ec07563c10ab589209306b1fae99b9ffcbf3",
+        "8029cb658683a5ae70f41cda01ed56c7be0ad899ef5202a84b941c09bd29bd22",
+        "42b9cdb69b71e85efe2807aa875aae948c9599d2dffdc67709225e5027dbca73"
+      ],
+      "excluded": {
+        "unknown_or_missing_label": 0,
+        "dependent_sibling_action": 0,
+        "below_threshold_or_other_action": 72
+      }
+    },
+    {
+      "relation": "related",
+      "mode": "suggest",
+      "threshold": 0.95,
+      "n": 2,
+      "k": 2,
+      "needs_more": 37,
+      "precision": 1.0,
+      "lower": 0.12909944487358055,
+      "target": 0.9,
+      "alpha": 0.016666666666666666,
+      "evidence_action_ids": [
+        "e2fe11f3705b529e429afe23b799eb37a3ec444eb350ea8c984daf4f58daa2c9",
+        "f7972a70e4fb1ace4e9ae8ff42f4e62798d6e60ee421c755dcb4fd592cedaedc"
+      ],
+      "excluded": {
+        "unknown_or_missing_label": 0,
+        "dependent_sibling_action": 0,
+        "below_threshold_or_other_action": 78
+      }
+    }
+  ],
+  "receipt_id": "6f7d5c11d818fc23a0acd2835f5f6de156154a7b4a935fc3f1df746125f8f158"
+}

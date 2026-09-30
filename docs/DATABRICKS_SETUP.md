@@ -4,6 +4,53 @@ This is a step-by-step guide for a teammate with a Databricks **Free Edition** a
 Unity Catalog, calling Foundation Model APIs for the judge and embeddings, and deploying the Streamlit app as a
 Databricks App.
 
+## Quick start for a teammate taking over (current, Sat Sep 26 21:45 CDT)
+
+Everything below the line is the original setup guide (written at 15:00, before the workspace existed). The
+workspace, tables, data and the `assay-manager` app **already exist** (the workbench app `assay` was not redeployed after the Sep 27 move); to work on them you only need access and a `.env`.
+
+1. **Get access.** Mohith (`nikesh@wisc.edu`, workspace owner since Sep 27) invites your email to the workspace (Settings → Identity and access → Users → Add user)
+   and runs the grants (USE CATALOG `workspace`; all privileges on schema `workspace.assay_triage`; CAN_USE on the
+   SQL warehouse; CAN_MANAGE on the apps `assay-manager` and `assay`). Anyone who will deploy or run
+   `sync_results.py` also needs `MANAGE` on the schema, granted by name: the deploy script runs `GRANT`s and the sync
+   replaces tables Mohith owns. Before deploying, agree who deploys: the last deploy replaces the app for everyone.
+2. **Make your own token** (never share one): profile → Settings → Developer → Access tokens → Generate new token.
+3. **Set up the repo:**
+   ```bash
+   git clone https://github.com/Ananda-001/Badger-Build-Fest.git && cd Badger-Build-Fest
+   python3 -m venv .venv && source .venv/bin/activate     # Git Bash on Windows: source .venv/Scripts/activate
+   pip install -r requirements.txt
+   cat > .env <<'ENV'
+   DATABRICKS_HOST=https://dbc-d5f34a78-6d29.cloud.databricks.com
+   DATABRICKS_WAREHOUSE_ID=7caadfc08a5174fd
+   DATABRICKS_TOKEN=<your own token>
+   ENV
+   python scripts/fetch_data.py        # data/*.jsonl from the volume (git-ignored, 60 MB)
+   python -m pytest -q                 # 63 passed
+   ```
+4. **What lives where** (Unity Catalog `workspace.assay_triage`):
+
+   | What | Where |
+   |---|---|
+   | Inputs | tables `tickets`, `truth`, `candidates`, `judgments`, `stream`; files in `/Volumes/workspace/assay_triage/data` |
+   | Results (from `scripts/sync_results.py`) | `proposals`, `past_decisions`, `verdicts`; `precedents` (from `scripts/precedents.py --delta`) |
+   | Live, written by the apps | `actions` (every Yes / No), `routing_log` (model switching), `live_proposals` |
+   | Manager dashboard (the demo) | app `assay-manager`, code `app/manager/`, deploy `python scripts/deploy_manager.py` |
+   | Review workbench (technical) | app `assay`, code `app/workbench.py`, deploy `python scripts/databricks_deploy.py` |
+   | Models | Foundation Model APIs: Llama 3.3 70B (main), Llama 3.1 8B (not certified), Qwen3-Next 80B and gpt-oss 120B (backups). No Claude on Free Edition. |
+
+5. **Common jobs:**
+   ```bash
+   python scripts/deploy_manager.py                        # redeploy the dashboard (apps stop 24 h after a deploy)
+   python scripts/sync_results.py                          # after new results in results/: refresh the tables
+   uvicorn app.manager.server:app --port 8000              # dashboard locally, same live tables
+   ASSAY_ALLOW_MODEL_CALLS=1 python scripts/live_route.py --n 12 --delta   # live routing run ($0 on Free Edition)
+   ```
+   Model calls are free on Free Edition but rate-limited (HTTP 429 when many run at once). The full picture is in
+   `docs/ASSAY_REPORT.md` (section 6 = Databricks, 8.8 = dashboard, 11 = commands).
+
+---
+
 Legend: **[verified]** = checked against docs.databricks.com on 2026-09-26. **[confirm with Xorbix]** = we could
 not verify it for Free Edition specifically; ask the Xorbix mentors before relying on it.
 

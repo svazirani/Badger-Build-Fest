@@ -20,3 +20,11 @@
   {key, candidate, relation, decision: "accept"|"reject"|"change", new_relation (str|null), user, ts}
 
 Time rule: learn/tune only on tickets created before 2025-01-01; evaluate on tickets created 2025-01-01 or later.
+
+Stage 2/3 additions:
+
+- A frozen plan contains complete ordered ticket/candidate inputs, source hashes, a `plan_id`, selection rule and limitations. The honest-stream plan contains no truth labels.
+- New judgment rows include `config_id`, `plan_id`, `run_id`, `task_status`, `prompt`, `backend`, `usage`, `task_cost_usd` and `cost_basis`. Task cost and usage repeat on pair rows and must be counted once per `run_id`.
+- An adjudication label is `{action_id, key, candidate|null, relation, config_id, correct: bool|null, reviewer, reason, label_status}`. `null` means unknown and is excluded, never converted to a negative label.
+- A permission receipt binds the action policy, fixed threshold, configuration, family-wise error allocation, evidence action IDs, source hashes and validity interval.
+- A learning-gate receipt compares paired task outcomes using independently adjudicated actions and records fixed, broken, unchanged and unknown counts.

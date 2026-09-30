@@ -1,0 +1,17 @@
+{
+  "task": "jira-triage",
+  "primary": "databricks-meta-llama-3-3-70b-instruct",
+  "cheap": "databricks-meta-llama-3-1-8b-instruct",
+  "backups": [
+    "databricks-qwen3-next-80b-a3b-instruct",
+    "databricks-gpt-oss-120b"
+  ],
+  "cheap_certified": false,
+  "cheap_verdict": "REJECT",
+  "cheap_evidence": "right 4 of 19 when it said 95%+ sure; 11% unusable answers",
+  "trusted": [
+    "databricks-meta-llama-3-3-70b-instruct"
+  ],
+  "computed_at": "2026-09-27T01:35:14.279137+00:00",
+  "cheap_verdict_basis": "permission receipt (duplicate precision at the 0.95 cutoff) and format failures; no paired cost/quality comparison has been run"
+}

@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "kind": "learning-gate",
+  "label": "v1-to-v2",
+  "before_config_id": "c0fa29057ae1e746a6f08bae51c2480296c2ef9ccf0c370c8da10bc6cc3c3208",
+  "after_config_id": "daae2894016b81486b7ce7ed6b30d10fba4aab1644a1d6dad17d9896bf277d70",
+  "method": "exact paired sign test on discordant task outcomes",
+  "family_alpha": 0.05,
+  "comparisons": 2,
+  "alpha": 0.025,
+  "unit": "task, deduplicated by predicted part-of umbrella",
+  "n_common": 60,
+  "n_same_action": 46,
+  "n_adjudicated": 14,
+  "excluded_unknown": 0,
+  "excluded_dependent": 0,
+  "fixed": 3,
+  "broke": 3,
+  "unchanged": 54,
+  "observed_delta": 0.0,
+  "p_keep": 0.65625,
+  "p_discard": 0.65625,
+  "verdict": "UNPROVEN",
+  "fixed_tasks": [
+    "FLINK-37796",
+    "FLINK-39236",
+    "SPARK-58740"
+  ],
+  "broke_tasks": [
+    "KAFKA-18519",
+    "SPARK-53946",
+    "SPARK-57307"
+  ],
+  "sources": {
+    "before_sha256": "cd2ddeb65dbcafc1b2c986cf232b64c93478f63353f097fdd641bdc95909b92e",
+    "after_sha256": "46e6f89e0d781cb10f3c4d45b05ae9b1362a7f74a3e7e2a453fb219b0f1fe966",
+    "labels_sha256": "bad5a9dea7fc5783bfaa72679dd82ce2baa1aeb4e684815faaaa97f4704b075f"
+  },
+  "gate_id": "4145d70dbab0cb547f506c6da15a1f190058fcb1fd2aa6e08ce443475f5da3f8"
+}

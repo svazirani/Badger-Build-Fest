@@ -1,0 +1,12 @@
+llama-3-3-70b-instruct: 360 to run (0 done)
+qwen35-122b-a10b: 360 to run (0 done)
+gemma-3-12b: 360 to run (0 done)
+llama-4-maverick: 360 to run (0 done)
+qwen3-next-80b-a3b-instruct: 360 to run (0 done)
+llama-3-1-8b-instruct: 360 to run (0 done)
+gpt-oss-20b: 360 to run (0 done)
+gpt-oss-120b: 360 to run (0 done)
+llama-4-maverick: bad_output 1, ok 359
+llama-3-1-8b-instruct: bad_output 25, busy 14, ok 321
+gemma-3-12b: busy 14, ok 346
+qwen3-next-80b-a3b-instruct: bad_output 25, busy 20, ok 315

@@ -1,0 +1,78 @@
+{
+  "task": "jira-triage",
+  "primary": "databricks-gpt-oss-20b",
+  "cheap": "databricks-meta-llama-3-1-8b-instruct",
+  "backups": [
+    "databricks-gpt-oss-120b",
+    "databricks-meta-llama-3-3-70b-instruct"
+  ],
+  "cheap_certified": false,
+  "cheap_verdict": "REJECT",
+  "cheap_evidence": "7% unreadable answers (limit 5%); 6% right vs 57% for Llama 70B; worse on the same tickets (158 vs 9)",
+  "trusted": [
+    "databricks-gpt-oss-20b"
+  ],
+  "basis": "graded outcomes (heavy evaluation), cheapest proven model wins",
+  "rule": "within 5 points of the main model's accuracy, not worse on the same tickets, at most 5% unreadable, at least 100 answers",
+  "reasons": {
+    "Gemma 3 12B": [
+      "14% right vs 57% for Llama 70B",
+      "worse on the same tickets (104 vs 3)"
+    ],
+    "gpt-oss 120B": [
+      "meets every rule"
+    ],
+    "gpt-oss 20B": [
+      "meets every rule"
+    ],
+    "Llama 8B": [
+      "7% unreadable answers (limit 5%)",
+      "6% right vs 57% for Llama 70B",
+      "worse on the same tickets (158 vs 9)"
+    ],
+    "Llama 70B": [
+      "meets every rule"
+    ],
+    "Llama 4 Maverick": [
+      "40% right vs 57% for Llama 70B",
+      "worse on the same tickets (50 vs 7)"
+    ],
+    "Qwen 80B": [
+      "6% unreadable answers (limit 5%)",
+      "32% right vs 57% for Llama 70B",
+      "worse on the same tickets (75 vs 6)"
+    ],
+    "Qwen3.5 122B": [
+      "only 46 answers so far (needs 100)"
+    ]
+  },
+  "reasons_by_model": {
+    "databricks-gemma-3-12b": [
+      "14% right vs 57% for Llama 70B",
+      "worse on the same tickets (104 vs 3)"
+    ],
+    "databricks-gpt-oss-120b": [],
+    "databricks-gpt-oss-20b": [],
+    "databricks-meta-llama-3-1-8b-instruct": [
+      "7% unreadable answers (limit 5%)",
+      "6% right vs 57% for Llama 70B",
+      "worse on the same tickets (158 vs 9)"
+    ],
+    "databricks-meta-llama-3-3-70b-instruct": [],
+    "databricks-llama-4-maverick": [
+      "40% right vs 57% for Llama 70B",
+      "worse on the same tickets (50 vs 7)"
+    ],
+    "databricks-qwen3-next-80b-a3b-instruct": [
+      "6% unreadable answers (limit 5%)",
+      "32% right vs 57% for Llama 70B",
+      "worse on the same tickets (75 vs 6)"
+    ],
+    "databricks-qwen35-122b-a10b": [
+      "only 46 answers so far (needs 100)"
+    ]
+  },
+  "what_would_change_it": "Llama 8B would take over ($0.21 vs $0.27 per 1,000 tickets) once: 7% unreadable answers (limit 5%); 6% right vs 57% for Llama 70B; worse on the same tickets (158 vs 9) is fixed",
+  "previous_primary": "databricks-meta-llama-3-3-70b-instruct",
+  "computed_at": "2026-09-27T06:59:13.566177+00:00"
+}

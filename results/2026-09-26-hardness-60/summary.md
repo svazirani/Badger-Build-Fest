@@ -6,6 +6,10 @@ Command (seed 0, backend `cli` = `claude -p` on the subscription, lean mode):
 Sample: 60 tickets from 2025 onward, 15 each of duplicate / part_of / related / none; 328 judged pairs per model.
 Truth = maintainer links in Apache Jira (a floor: maintainers miss real duplicates).
 
+**Caveat (found in review by a teammate):** when search missed the true target, `judge_eval.py` inserted it into
+the shortlist (`injected: true` on those rows), and the classes were balanced 15/15/15/15. Both make these numbers
+diagnostic only: they are not the precision the agent would have on the real ticket stream.
+
 | Model | Pair accuracy | Duplicate P / R | Part_of P / R | Related P | None P / R |
 |---|---|---|---|---|---|
 | Haiku 4.5 | 53.4% | 66.7 / 66.7 | 57.9 / 68.8 | 8.4% (n=143) | 94.0 / 50.5 |

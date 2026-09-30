@@ -13,6 +13,8 @@ from typing import Sequence
 
 import numpy as np
 
+from .bounds import lower_bound, upper_bound
+
 __all__ = ["compare_models"]
 
 _CHUNK = 256  # bootstrap resamples drawn per batch (bounds memory use)
@@ -48,7 +50,11 @@ def compare_models(pairs: Sequence[dict], margin: float = 0.02, alpha: float = 0
       quality = acc_B - acc_A                      (fraction; *_pp fields x100)
       cost    = sum(cost_B) / sum(cost_A) - 1      (relative change, <0 = cheaper)
 
-    One-sided (1 - alpha) bounds are the alpha and 1 - alpha percentiles.
+    One-sided (1 - alpha) bounds are the alpha and 1 - alpha percentiles. The
+    quality interval is widened by a conservative exact matched-pair safeguard:
+    simultaneous binomial bounds on B-only-right and A-only-right rates. This
+    prevents a small sample with no observed disagreements from producing a
+    zero-width quality interval.
 
     Verdict:
       "CERTIFY"      quality lower bound > -margin  AND  cost upper bound < 0
@@ -72,6 +78,7 @@ def compare_models(pairs: Sequence[dict], margin: float = 0.02, alpha: float = 0
     out = {
         "verdict": "INSUFFICIENT", "n": n, "margin": margin, "alpha": alpha,
         "method": "paired bootstrap", "n_boot": n_boot,
+        "quality_safeguard": "exact matched-pair bounds (Bonferroni)",
         "acc_a": None, "acc_b": None,
         "b_only_right": int(((b == 1) & (a == 0)).sum()),  # B fixes what A got wrong
         "a_only_right": int(((a == 1) & (b == 0)).sum()),  # B breaks what A got right
@@ -104,7 +111,16 @@ def compare_models(pairs: Sequence[dict], margin: float = 0.02, alpha: float = 0
                 c_boot.append(cb[idx].sum(axis=1) / ca[idx].sum(axis=1) - 1.0)
         done += m
     q_boot = np.concatenate(q_boot)
-    q_lo, q_hi = (float(x) for x in np.quantile(q_boot, [alpha, 1.0 - alpha]))
+    q_boot_lo, q_boot_hi = (float(x) for x in np.quantile(q_boot, [alpha, 1.0 - alpha]))
+    fixes = out["b_only_right"]
+    breaks = out["a_only_right"]
+    # q = P(B fixes A) - P(B breaks A). Bound both terms simultaneously,
+    # spending alpha/2 on each side, then keep the wider of this exact interval
+    # and the bootstrap interval. With zero disagreements this still expresses
+    # uncertainty about disagreements that have not appeared in the sample.
+    q_exact_lo = lower_bound(fixes, n, alpha / 2) - upper_bound(breaks, n, alpha / 2)
+    q_exact_hi = upper_bound(fixes, n, alpha / 2) - lower_bound(breaks, n, alpha / 2)
+    q_lo, q_hi = min(q_boot_lo, q_exact_lo), max(q_boot_hi, q_exact_hi)
     out.update(quality_pp=100 * q_hat, quality_lo_pp=100 * q_lo, quality_hi_pp=100 * q_hi)
     if cost_known:
         c_boot = np.concatenate(c_boot)

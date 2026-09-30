@@ -21,6 +21,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from assay_triage.judge import judge  # noqa: E402
+from assay_triage.judge import configuration
+from assay_triage.identity import digest, resume_key
 from assay_triage.retrieve import DATA, load  # noqa: E402
 
 
@@ -61,6 +63,7 @@ def main(argv=None):
     ap.add_argument("--workers", type=int, default=3)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--prompt", choices=["v1", "v2", "bad"], default="v1")
     a = ap.parse_args(argv)
     tickets, jobs = plan(a.n, a.k, a.seed)
     models = a.models.split(",")
@@ -70,13 +73,23 @@ def main(argv=None):
     if a.dry_run:
         return
     out = DATA / "judgments.jsonl"
-    done = {(r["key"], r["model"]) for r in load("judgments.jsonl")}
-    todo = [(j, m) for j in jobs for m in models if (j["key"], m) not in done]
+    def identity(job, model):
+        cfg = configuration(model, a.backend, a.prompt, len(job["shortlist"]))
+        plan_id = digest({"job": job, "inputs": [tickets[job["key"]]] + [tickets[c] for c in job["shortlist"]]})
+        return resume_key(job["key"], cfg["config_id"], plan_id)
+    existing = load("judgments.jsonl")
+    done = {}
+    for r in existing:
+        if r.get("run_id") and r.get("parsed"):
+            done.setdefault(r["run_id"], set()).add(r["candidate"])
+    todo = [(j, m) for j in jobs for m in models
+            if done.get(identity(j, m), set()) != set(j["shortlist"])]
 
     def run(job, model):
         t = tickets[job["key"]]
-        rows = judge(t, [tickets[c] for c in job["shortlist"]], model, a.backend)
+        rows = judge(t, [tickets[c] for c in job["shortlist"]], model, a.backend, a.prompt)
         for r in rows:
+            r["run_id"] = identity(job, model)
             r["truth"] = job["truth"][r["candidate"]]
             r["correct"] = r["relation"] == r["truth"]
             r["injected"] = r["candidate"] in job["injected"]

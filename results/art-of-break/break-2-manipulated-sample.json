@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "break": "outcome-selected-evaluation-sample",
+  "claim": "An evaluation chosen with knowledge of outcomes can make unsafe autonomy look proven.",
+  "method": "deterministic synthetic population; no model calls and no Jira data",
+  "population": {
+    "tasks": 200,
+    "correct": 50,
+    "precision": 0.25
+  },
+  "enriched_attack": {
+    "selection": "all 50 known successes",
+    "n": 50,
+    "k": 50,
+    "precision": 1.0,
+    "lower": 0.9213761685145376,
+    "decision": "auto",
+    "unsafe": true
+  },
+  "outcome_blind_example": {
+    "seed": 0,
+    "n": 50,
+    "k": 10,
+    "precision": 0.2,
+    "lower": 0.09404968150154279,
+    "decision": "quiet",
+    "plan_id": "6f6255799e3ad3149d00c5c039c7e67ea5db46db472f6d8eceab4889eddd0b0b"
+  },
+  "outcome_blind_trials": {
+    "trials": 100,
+    "false_auto": 0,
+    "auto_rate": 0.0,
+    "min_correct": 7,
+    "max_correct": 19
+  },
+  "passed": true,
+  "lesson": "Define and hash the deployment-like stream before outcomes; never certify on an enriched sample."
+}

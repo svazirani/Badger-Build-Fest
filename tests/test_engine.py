@@ -278,11 +278,21 @@ def test_compare_is_paired_and_deterministic():
     rng = np.random.default_rng(4)
     pairs = make_pairs(rng, 400, 0.8, 0.8)
     assert compare_models(pairs, seed=5) == compare_models(pairs, seed=5)
-    # Identical models: every resample gives exactly 0 difference (only a paired
-    # bootstrap can see this; independent resampling would give a wide interval).
+    # A percentile bootstrap alone gives a false zero-width interval here. The
+    # exact matched-pair safeguard keeps uncertainty about unseen disagreements.
     same = [dict(p, correct_b=p["correct_a"]) for p in pairs]
     res = compare_models(same)
-    assert res["quality_lo_pp"] == 0.0 == res["quality_hi_pp"]
+    assert res["quality_lo_pp"] < 0 < res["quality_hi_pp"]
+    assert res["quality_safeguard"] == "exact matched-pair bounds (Bonferroni)"
+
+
+def test_compare_does_not_certify_small_identical_sample():
+    pairs = [{"item": i, "correct_a": True, "correct_b": True, "cost_a": 1.0, "cost_b": .4}
+             for i in range(30)]
+    res = compare_models(pairs)
+    assert res["verdict"] == "INSUFFICIENT"
+    assert res["quality_lo_pp"] < -2.0 < res["quality_hi_pp"]
+    assert res["need_n"] and res["need_n"] > 0
 
 
 # --------------------------------------------------------------------------- gate

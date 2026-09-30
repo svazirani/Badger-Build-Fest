@@ -1,0 +1,173 @@
+{
+  "generated_at": "2026-09-27T09:03:53.210791+00:00",
+  "pytest_exit_code": 1,
+  "scope": "Local code and ASGI routes; synthetic model replies and database spies; no external calls",
+  "summary": {
+    "PASS": 17,
+    "FAIL": 6,
+    "SKIP": 0
+  },
+  "tests": [
+    {
+      "test": "tests/test_security.py::test_simulated_output_with_only_an_unknown_candidate_is_rejected",
+      "result": "PASS",
+      "phase": "call",
+      "seconds": 0.0004,
+      "failure": null
+    },
+    {
+      "test": "tests/test_security.py::test_injected_high_confidence_answer_cannot_act_without_a_receipt",
+      "result": "PASS",
+      "phase": "call",
+      "seconds": 0.0002,
+      "failure": null
+    },
+    {
+      "test": "tests/test_security.py::test_receipt_edit_without_rehashing_fails_closed[mode-auto]",
+      "result": "PASS",
+      "phase": "call",
+      "seconds": 0.0004,
+      "failure": null
+    },
+    {
+      "test": "tests/test_security.py::test_receipt_edit_without_rehashing_fails_closed[threshold-0.0]",
+      "result": "PASS",
+      "phase": "call",
+      "seconds": 0.0003,
+      "failure": null
+    },
+    {
+      "test": "tests/test_security.py::test_receipt_edit_without_rehashing_fails_closed[n-999999]",
+      "result": "PASS",
+      "phase": "call",
+      "seconds": 0.0003,
+      "failure": null
+    },
+    {
+      "test": "tests/test_security.py::test_receipt_edit_without_rehashing_fails_closed[lower-1.0]",
+      "result": "PASS",
+      "phase": "call",
+      "seconds": 0.0003,
+      "failure": null
+    },
+    {
+      "test": "tests/test_security.py::test_attacker_cannot_rehash_a_forged_permission_receipt",
+      "result": "FAIL",
+      "phase": "call",
+      "seconds": 0.0005,
+      "failure": "tests\\test_security.py:132: in test_attacker_cannot_rehash_a_forged_permission_receipt\n    assert mode == \"suggest\", f\"Forgery was accepted: actual mode={mode}\"\nE   AssertionError: Forgery was accepted: actual mode=auto\nE   assert 'auto' == 'suggest'\nE     \nE     - suggest\nE     + auto"
+    },
+    {
+      "test": "tests/test_security.py::test_receipt_replay_for_another_config_or_after_expiry_fails_closed",
+      "result": "PASS",
+      "phase": "call",
+      "seconds": 0.002,
+      "failure": null
+    },
+    {
+      "test": "tests/test_security.py::test_live_model_endpoint_is_off_without_explicit_enable",
+      "result": "PASS",
+      "phase": "call",
+      "seconds": 0.0198,
+      "failure": null
+    },
+    {
+      "test": "tests/test_security.py::test_review_write_uses_sql_parameters_not_string_interpolation",
+      "result": "PASS",
+      "phase": "call",
+      "seconds": 0.0024,
+      "failure": null
+    },
+    {
+      "test": "tests/test_security.py::test_review_endpoint_rejects_an_unknown_action",
+      "result": "FAIL",
+      "phase": "call",
+      "seconds": 0.003,
+      "failure": "tests\\test_security.py:187: in test_review_endpoint_rejects_an_unknown_action\n    assert status in (403, 404) and not writes, (\nE   AssertionError: Fabricated review accepted: HTTP 200, attempted database writes=1\nE   assert (200 in (403, 404))"
+    },
+    {
+      "test": "tests/test_security.py::test_direct_backend_requires_identity_before_review_mutations[/api/answer]",
+      "result": "FAIL",
+      "phase": "call",
+      "seconds": 0.0022,
+      "failure": "tests\\test_security.py:244: in test_direct_backend_requires_identity_before_review_mutations\n    assert status in (401, 403) and not writes, (\nE   AssertionError: Direct backend allowed an unidentified caller: HTTP 200, writes=1\nE   assert (200 in (401, 403))"
+    },
+    {
+      "test": "tests/test_security.py::test_direct_backend_requires_identity_before_review_mutations[/api/undo]",
+      "result": "FAIL",
+      "phase": "call",
+      "seconds": 0.0028,
+      "failure": "tests\\test_security.py:244: in test_direct_backend_requires_identity_before_review_mutations\n    assert status in (401, 403) and not writes, (\nE   AssertionError: Direct backend allowed an unidentified caller: HTTP 200, writes=1\nE   assert (200 in (401, 403))"
+    },
+    {
+      "test": "tests/test_security.py::test_http_known_review_control_still_writes",
+      "result": "PASS",
+      "phase": "call",
+      "seconds": 0.0023,
+      "failure": null
+    },
+    {
+      "test": "tests/test_security.py::test_permission_boundary_rejects_impossible_confidence[1.01]",
+      "result": "FAIL",
+      "phase": "call",
+      "seconds": 0.0022,
+      "failure": "tests\\test_security.py:268: in test_permission_boundary_rejects_impossible_confidence\n    assert mode != \"auto\", f\"Impossible confidence {confidence} was authorized as AUTO\"\nE   AssertionError: Impossible confidence 1.01 was authorized as AUTO\nE   assert 'auto' != 'auto'"
+    },
+    {
+      "test": "tests/test_security.py::test_permission_boundary_rejects_impossible_confidence[inf]",
+      "result": "FAIL",
+      "phase": "call",
+      "seconds": 0.002,
+      "failure": "tests\\test_security.py:268: in test_permission_boundary_rejects_impossible_confidence\n    assert mode != \"auto\", f\"Impossible confidence {confidence} was authorized as AUTO\"\nE   AssertionError: Impossible confidence inf was authorized as AUTO\nE   assert 'auto' != 'auto'"
+    },
+    {
+      "test": "tests/test_security.py::test_model_parser_rejects_invalid_confidence[-1]",
+      "result": "PASS",
+      "phase": "call",
+      "seconds": 0.0003,
+      "failure": null
+    },
+    {
+      "test": "tests/test_security.py::test_model_parser_rejects_invalid_confidence[1.01]",
+      "result": "PASS",
+      "phase": "call",
+      "seconds": 0.0002,
+      "failure": null
+    },
+    {
+      "test": "tests/test_security.py::test_model_parser_rejects_invalid_confidence[NaN]",
+      "result": "PASS",
+      "phase": "call",
+      "seconds": 0.0002,
+      "failure": null
+    },
+    {
+      "test": "tests/test_security.py::test_model_parser_rejects_invalid_confidence[Infinity]",
+      "result": "PASS",
+      "phase": "call",
+      "seconds": 0.0002,
+      "failure": null
+    },
+    {
+      "test": "tests/test_security.py::test_live_route_caps_requested_batch_size",
+      "result": "PASS",
+      "phase": "call",
+      "seconds": 0.0024,
+      "failure": null
+    },
+    {
+      "test": "tests/test_security.py::test_http_invalid_decision_does_not_write",
+      "result": "PASS",
+      "phase": "call",
+      "seconds": 0.0008,
+      "failure": null
+    },
+    {
+      "test": "tests/test_security.py::test_simulated_compromised_model_only_creates_a_proposal_in_live_workflow",
+      "result": "PASS",
+      "phase": "call",
+      "seconds": 0.001,
+      "failure": null
+    }
+  ]
+}

@@ -1,0 +1,341 @@
+{
+  "target": 0.9,
+  "decisions": 97,
+  "sources": {
+    "ai": 77,
+    "human": 18,
+    "maintainer": 2
+  },
+  "memory": {
+    "part_of/siblings": {
+      "relation": "part_of",
+      "kind": "siblings",
+      "kind_text": "two sub-tasks of the same parent",
+      "n": 7,
+      "agree": 5,
+      "answer": "reject",
+      "lower": 0.3413,
+      "target": 0.9,
+      "alpha": 0.05,
+      "enabled": false,
+      "needs_more": null,
+      "sources": {
+        "human": 0,
+        "maintainer": 0,
+        "ai": 7
+      },
+      "examples": [
+        "FLINK-37796->FLINK-37795",
+        "FLINK-39236->FLINK-39233",
+        "KAFKA-18519->KAFKA-18431",
+        "FLINK-40577->FLINK-39380",
+        "SPARK-50941->SPARK-50925",
+        "SPARK-56501->SPARK-54810"
+      ]
+    },
+    "related/siblings": {
+      "relation": "related",
+      "kind": "siblings",
+      "kind_text": "two sub-tasks of the same parent",
+      "n": 9,
+      "agree": 8,
+      "answer": "accept",
+      "lower": 0.5709,
+      "target": 0.9,
+      "alpha": 0.05,
+      "enabled": false,
+      "needs_more": null,
+      "sources": {
+        "human": 2,
+        "maintainer": 0,
+        "ai": 7
+      },
+      "examples": [
+        "FLINK-39236->FLINK-39233",
+        "SPARK-53135->SPARK-53073",
+        "SPARK-54811->SPARK-53777",
+        "SPARK-57307->SPARK-57305",
+        "FLINK-37796->FLINK-37795",
+        "SPARK-53135->SPARK-53057"
+      ]
+    },
+    "related/other": {
+      "relation": "related",
+      "kind": "other",
+      "kind_text": "no recognised pattern",
+      "n": 13,
+      "agree": 9,
+      "answer": "accept",
+      "lower": 0.4274,
+      "target": 0.9,
+      "alpha": 0.05,
+      "enabled": false,
+      "needs_more": null,
+      "sources": {
+        "human": 3,
+        "maintainer": 0,
+        "ai": 10
+      },
+      "examples": [
+        "HIVE-29751->HIVE-29205",
+        "SPARK-51301->SPARK-43294",
+        "SPARK-58192->SPARK-58187",
+        "SPARK-51301->SPARK-42409",
+        "SPARK-52066->SPARK-49383",
+        "SPARK-58192->SPARK-55757"
+      ]
+    },
+    "duplicate/other": {
+      "relation": "duplicate",
+      "kind": "other",
+      "kind_text": "no recognised pattern",
+      "n": 14,
+      "agree": 11,
+      "answer": "reject",
+      "lower": 0.5343,
+      "target": 0.9,
+      "alpha": 0.05,
+      "enabled": false,
+      "needs_more": null,
+      "sources": {
+        "human": 4,
+        "maintainer": 0,
+        "ai": 10
+      },
+      "examples": [
+        "SPARK-52066->SPARK-49383",
+        "SPARK-58010->SPARK-57421",
+        "FLINK-39459->FLINK-38673",
+        "HIVE-28732->HIVE-28729",
+        "KAFKA-19439->KAFKA-19246",
+        "SPARK-50973->SPARK-45667"
+      ]
+    },
+    "related/bump-same-lib-diff-version": {
+      "relation": "related",
+      "kind": "bump-same-lib-diff-version",
+      "kind_text": "a version upgrade vs an earlier upgrade of the same library to a different version",
+      "n": 12,
+      "agree": 8,
+      "answer": "accept",
+      "lower": 0.3909,
+      "target": 0.9,
+      "alpha": 0.05,
+      "enabled": false,
+      "needs_more": null,
+      "sources": {
+        "human": 2,
+        "maintainer": 0,
+        "ai": 10
+      },
+      "examples": [
+        "SPARK-53946->SPARK-41938",
+        "SPARK-53757->SPARK-51703",
+        "SPARK-54447->SPARK-47944",
+        "SPARK-54677->SPARK-52137",
+        "SPARK-55083->SPARK-48433",
+        "SPARK-55233->SPARK-53962"
+      ]
+    },
+    "part_of/other": {
+      "relation": "part_of",
+      "kind": "other",
+      "kind_text": "no recognised pattern",
+      "n": 7,
+      "agree": 4,
+      "answer": "accept",
+      "lower": 0.2253,
+      "target": 0.9,
+      "alpha": 0.05,
+      "enabled": false,
+      "needs_more": null,
+      "sources": {
+        "human": 2,
+        "maintainer": 0,
+        "ai": 5
+      },
+      "examples": [
+        "SPARK-58010->SPARK-57421",
+        "SPARK-58740->SPARK-44790",
+        "SPARK-57307->SPARK-44842",
+        "HIVE-28911->HIVE-28675",
+        "KAFKA-18526->KAFKA-18213",
+        "KAFKA-20116->KAFKA-17125"
+      ]
+    },
+    "duplicate/siblings": {
+      "relation": "duplicate",
+      "kind": "siblings",
+      "kind_text": "two sub-tasks of the same parent",
+      "n": 5,
+      "agree": 4,
+      "answer": "reject",
+      "lower": 0.3426,
+      "target": 0.9,
+      "alpha": 0.05,
+      "enabled": false,
+      "needs_more": null,
+      "sources": {
+        "human": 0,
+        "maintainer": 0,
+        "ai": 5
+      },
+      "examples": [
+        "SPARK-58196->SPARK-58141",
+        "SPARK-54811->SPARK-53777",
+        "SPARK-50922->SPARK-50919",
+        "SPARK-51138->SPARK-51137",
+        "SPARK-53370->SPARK-52913"
+      ]
+    },
+    "duplicate/same-title": {
+      "relation": "duplicate",
+      "kind": "same-title",
+      "kind_text": "two tickets with the same title",
+      "n": 4,
+      "agree": 2,
+      "answer": "reject",
+      "lower": 0.0976,
+      "target": 0.9,
+      "alpha": 0.05,
+      "enabled": false,
+      "needs_more": null,
+      "sources": {
+        "human": 1,
+        "maintainer": 0,
+        "ai": 3
+      },
+      "examples": [
+        "FLINK-37607->FLINK-37606",
+        "FLINK-39886->FLINK-39885",
+        "SPARK-52714->SPARK-52713",
+        "FLINK-38875->SPARK-54964"
+      ]
+    },
+    "related/both-test-failures": {
+      "relation": "related",
+      "kind": "both-test-failures",
+      "kind_text": "two failing or flaky test reports",
+      "n": 1,
+      "agree": 1,
+      "answer": "accept",
+      "lower": 0.05,
+      "target": 0.9,
+      "alpha": 0.05,
+      "enabled": false,
+      "needs_more": 28,
+      "sources": {
+        "human": 0,
+        "maintainer": 0,
+        "ai": 1
+      },
+      "examples": [
+        "FLINK-38361->FLINK-35803"
+      ]
+    },
+    "duplicate/both-test-failures": {
+      "relation": "duplicate",
+      "kind": "both-test-failures",
+      "kind_text": "two failing or flaky test reports",
+      "n": 1,
+      "agree": 1,
+      "answer": "reject",
+      "lower": 0.05,
+      "target": 0.9,
+      "alpha": 0.05,
+      "enabled": false,
+      "needs_more": 28,
+      "sources": {
+        "human": 0,
+        "maintainer": 0,
+        "ai": 1
+      },
+      "examples": [
+        "FLINK-39315->FLINK-39207"
+      ]
+    },
+    "duplicate/bump-same-lib-diff-version": {
+      "relation": "duplicate",
+      "kind": "bump-same-lib-diff-version",
+      "kind_text": "a version upgrade vs an earlier upgrade of the same library to a different version",
+      "n": 21,
+      "agree": 21,
+      "answer": "reject",
+      "lower": 0.8671,
+      "target": 0.9,
+      "alpha": 0.05,
+      "enabled": false,
+      "needs_more": 8,
+      "sources": {
+        "human": 4,
+        "maintainer": 0,
+        "ai": 17
+      },
+      "examples": [
+        "SPARK-52357->SPARK-51951",
+        "SPARK-53894->SPARK-47205",
+        "SPARK-54983->SPARK-53787",
+        "SPARK-56156->SPARK-48198",
+        "SPARK-56571->SPARK-55329",
+        "SPARK-53468->SPARK-51894"
+      ]
+    },
+    "part_of/candidate-is-parent": {
+      "relation": "part_of",
+      "kind": "candidate-is-parent",
+      "kind_text": "the earlier ticket is already the new ticket's parent",
+      "n": 2,
+      "agree": 2,
+      "answer": "accept",
+      "lower": 0.2236,
+      "target": 0.9,
+      "alpha": 0.05,
+      "enabled": false,
+      "needs_more": 27,
+      "sources": {
+        "human": 0,
+        "maintainer": 2,
+        "ai": 0
+      },
+      "examples": [
+        "SPARK-52593->SPARK-52556",
+        "SPARK-58173->SPARK-58092"
+      ]
+    },
+    "duplicate/bump-same-lib-same-version": {
+      "relation": "duplicate",
+      "kind": "bump-same-lib-same-version",
+      "kind_text": "two upgrades of the same library to the same version",
+      "n": 1,
+      "agree": 1,
+      "answer": "accept",
+      "lower": 0.05,
+      "target": 0.9,
+      "alpha": 0.05,
+      "enabled": false,
+      "needs_more": 28,
+      "sources": {
+        "human": 0,
+        "maintainer": 0,
+        "ai": 1
+      },
+      "examples": [
+        "SPARK-53468->SPARK-53464"
+      ]
+    }
+  },
+  "leave_one_out": {
+    "target": 0.9,
+    "decisions": 97,
+    "auto_resolved": 0,
+    "right": 0,
+    "precision": null,
+    "lower_95": null,
+    "misses": []
+  },
+  "unreviewed_proposals": 175,
+  "outcomes": {
+    "ask": 175
+  },
+  "auto_examples": []
+}

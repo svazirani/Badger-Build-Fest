@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "kind": "permission-receipt",
+  "config_id": "daae2894016b81486b7ce7ed6b30d10fba4aab1644a1d6dad17d9896bf277d70",
+  "policy": {
+    "unit": "one deterministic action per ticket; one representative per part-of umbrella",
+    "part_of_target": "precision across sampled predicted umbrellas",
+    "cutoff": 0.95,
+    "target": 0.9,
+    "family_alpha": 0.05,
+    "multiplicity": "Bonferroni across three relations",
+    "labels": "independent adjudication; unknown excluded"
+  },
+  "computed_at": "2026-09-26T23:38:55.397670+00:00",
+  "valid_until": "2026-09-27T23:38:55.397670+00:00",
+  "sources": {
+    "judgments_sha256": "bde8db3e9418a52438576687251346e63ab306a5ab5ca73831ed73f2b5b621a7",
+    "labels_sha256": "0c39c77acd531b8a0abaf8c4ef239e21d95243807028a772c1a2273734c61d79"
+  },
+  "decisions": [
+    {
+      "relation": "duplicate",
+      "mode": "suggest",
+      "threshold": 0.95,
+      "n": 2,
+      "k": 1,
+      "needs_more": null,
+      "precision": 0.5,
+      "lower": 0.008368347957098874,
+      "target": 0.9,
+      "alpha": 0.016666666666666666,
+      "evidence_action_ids": [
+        "73faea3da4234897acc33510a5ed5a9c874aa9287bc2bb4705183baa38de42ad",
+        "60d709caa04b03e9b7002f8ab56bdf4cb07245b0437f3a99eeea07c842b4d60d"
+      ],
+      "excluded": {
+        "unknown_or_missing_label": 0,
+        "dependent_sibling_action": 0,
+        "below_threshold_or_other_action": 88
+      }
+    },
+    {
+      "relation": "part_of",
+      "mode": "suggest",
+      "threshold": 0.95,
+      "n": 1,
+      "k": 1,
+      "needs_more": 38,
+      "precision": 1.0,
+      "lower": 0.016666666666666666,
+      "target": 0.9,
+      "alpha": 0.016666666666666666,
+      "evidence_action_ids": [
+        "6bb066dc904f252254d69734e39d7d34970317b2b747aae3aa7dd32e6f8d19e9"
+      ],
+      "excluded": {
+        "unknown_or_missing_label": 0,
+        "dependent_sibling_action": 0,
+        "below_threshold_or_other_action": 89
+      }
+    },
+    {
+      "relation": "related",
+      "mode": "suggest",
+      "threshold": 0.95,
+      "n": 0,
+      "k": 0,
+      "needs_more": null,
+      "precision": null,
+      "lower": 0.0,
+      "target": 0.9,
+      "alpha": 0.016666666666666666,
+      "evidence_action_ids": [],
+      "excluded": {
+        "unknown_or_missing_label": 0,
+        "dependent_sibling_action": 0,
+        "below_threshold_or_other_action": 90
+      }
+    }
+  ],
+  "receipt_id": "38f2d4558cddc254f8a16197a2757fa50ef2af58b50e773b093627fe8cbff69f"
+}

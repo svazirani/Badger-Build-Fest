@@ -1,0 +1,7 @@
+gpt-oss-20b: 296 to run (227 done)
+llama-3-3-70b-instruct: 351 to run (172 done)
+gpt-oss-120b: 281 to run (242 done)
+gpt-oss-120b: bad_output 17, busy 2, ok 262
+gpt-oss-20b: bad_output 13, busy 1, ok 282
+llama-3-3-70b-instruct: busy 6, ok 345
+all models finished

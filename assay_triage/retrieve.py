@@ -34,7 +34,10 @@ class Index:
         self.pos = {k: i for i, k in enumerate(self.keys)}
         self.created = np.array([t["created"] for t in tickets])
         self.parent = [t.get("parent") for t in tickets]
-        self.vec = TfidfVectorizer(sublinear_tf=True, min_df=2, max_df=0.5, ngram_range=(1, 2), stop_words="english")
+        small = len(tickets) < 10
+        self.vec = TfidfVectorizer(sublinear_tf=True, min_df=1 if small else 2,
+                                   max_df=1.0 if small else 0.5,
+                                   ngram_range=(1, 2), stop_words="english")
         self.X = self.vec.fit_transform([doc(t) for t in tickets])
 
     def _top(self, sims: np.ndarray, k: int, mask: np.ndarray | None = None):
@@ -77,13 +80,43 @@ def search(text: str, k: int = 10) -> list[dict]:
     return _INDEX.search(text, k)
 
 
+def all_candidates(tickets: list[dict], since: str = "2025-01-01", k: int = 5,
+                   chunk_size: int = 128) -> list[dict]:
+    """Retrieve for every eligible ticket without selecting on its outcome."""
+    idx = Index(tickets)
+    keys = sorted((t["key"] for t in tickets if t["created"] >= since),
+                  key=lambda key: (idx.created[idx.pos[key]], key))
+    rows = []
+    for start in range(0, len(keys), chunk_size):
+        batch = keys[start:start + chunk_size]
+        positions = [idx.pos[key] for key in batch]
+        similarities = (idx.X @ idx.X[positions].T).toarray()
+        for column, (key, position) in enumerate(zip(batch, positions)):
+            mask = idx.created < idx.created[position]
+            rows.append({"key": key, "candidates": idx._top(similarities[:, column], k, mask)})
+    return rows
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--since", default="2025-01-01", help="evaluate tickets created on/after this date")
     ap.add_argument("--k", type=int, default=10)
+    ap.add_argument("--all", action="store_true", help="retrieve every eligible ticket; do not select using truth")
+    ap.add_argument("--out", type=Path)
     a = ap.parse_args(argv)
     tickets = load("tickets.jsonl")
     truth = load("truth.jsonl")
+    if a.all:
+        rows = all_candidates(tickets, a.since, a.k)
+        out = a.out or (DATA / "candidates_all.jsonl")
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text("".join(json.dumps(r) + "\n" for r in rows), encoding="utf-8")
+        scores = np.array([r["candidates"][0]["score"] for r in rows if r["candidates"]])
+        quantiles = {f"q{int(q * 100)}": round(float(np.quantile(scores, q)), 4)
+                     for q in (0, .25, .5, .75, .9, 1)} if scores.size else {}
+        print(json.dumps({"tickets": len(rows), "with_candidates": int(scores.size),
+                          "top_score_quantiles": quantiles, "out": str(out)}, indent=2))
+        return
     idx = Index(tickets)
     by = {t["key"]: t for t in tickets}
     # evaluation set: every eval-period ticket that has a truth relation, plus an equal number without one

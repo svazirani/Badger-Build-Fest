@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "break": "invalid-small-sample-cost-certificate",
+  "claim": "No observed disagreement is not proof of equal quality.",
+  "method": "deterministic synthetic matched pairs; no model calls",
+  "red_test": {
+    "expected": "INSUFFICIENT",
+    "actual": "CERTIFY",
+    "exit_code": 1,
+    "assertion": "unsafe certificate: CERTIFY"
+  },
+  "before_hardening": {
+    "n": 30,
+    "quality_pp": 0.0,
+    "quality_lo_pp": 0.0,
+    "quality_hi_pp": 0.0,
+    "cost_rel": -0.6,
+    "cost_lo": -0.6,
+    "cost_hi": -0.6,
+    "verdict": "CERTIFY",
+    "failure": "zero-width quality interval from a degenerate percentile bootstrap"
+  },
+  "after_hardening": {
+    "verdict": "INSUFFICIENT",
+    "n": 30,
+    "margin": 0.02,
+    "alpha": 0.05,
+    "method": "paired bootstrap",
+    "n_boot": 2000,
+    "quality_safeguard": "exact matched-pair bounds (Bonferroni)",
+    "acc_a": 1.0,
+    "acc_b": 1.0,
+    "b_only_right": 0,
+    "a_only_right": 0,
+    "quality_pp": 0.0,
+    "quality_lo_pp": -11.570330822202779,
+    "quality_hi_pp": 11.570330822202779,
+    "cost_a": 30.0,
+    "cost_b": 12.000000000000004,
+    "cost_rel": -0.5999999999999999,
+    "cost_lo": -0.5999999999999999,
+    "cost_hi": -0.5999999999999999,
+    "need_n": 975,
+    "reason": "intervals too wide to decide"
+  },
+  "sample_size_sweep": [
+    {
+      "n": 30,
+      "verdict": "INSUFFICIENT",
+      "quality_lo_pp": -11.570330822202779
+    },
+    {
+      "n": 60,
+      "verdict": "INSUFFICIENT",
+      "quality_lo_pp": -5.962949228616691
+    },
+    {
+      "n": 100,
+      "verdict": "INSUFFICIENT",
+      "quality_lo_pp": -3.6216692645176405
+    },
+    {
+      "n": 150,
+      "verdict": "INSUFFICIENT",
+      "quality_lo_pp": -2.429259716610854
+    },
+    {
+      "n": 400,
+      "verdict": "CERTIFY",
+      "quality_lo_pp": -0.917980458366526
+    }
+  ],
+  "passed": true,
+  "lesson": "A bootstrap can collapse on identical observations; certification needs a non-degenerate exact safeguard."
+}

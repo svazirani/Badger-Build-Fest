@@ -1,0 +1,11 @@
+llama-3-3-70b-instruct: 163 to run (118 done)
+qwen3-next-80b-a3b-instruct: 163 to run (172 done)
+gpt-oss-120b: 163 to run (74 done)
+gemma-3-12b: 163 to run (217 done)
+llama-3-1-8b-instruct: 163 to run (270 done)
+llama-4-maverick: 163 to run (310 done)
+gpt-oss-20b: 163 to run (93 done)
+llama-4-maverick: bad_output 1, busy 1, ok 161
+llama-3-1-8b-instruct: bad_output 14, busy 7, ok 142
+qwen3-next-80b-a3b-instruct: bad_output 6, busy 11, ok 146
+gemma-3-12b: bad_output 2, busy 14, ok 147

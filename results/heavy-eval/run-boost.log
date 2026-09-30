@@ -1,0 +1,15 @@
+gpt-oss-20b: 339 to run (999 done)
+llama-4-maverick: 0 to run (1360 done)
+qwen3-next-80b-a3b-instruct: 22 to run (1311 done)
+llama-3-3-70b-instruct: 0 to run (1362 done)
+gemma-3-12b: 1 to run (1358 done)
+llama-3-1-8b-instruct: 21 to run (1303 done)
+llama-3-3-70b-instruct: 
+gpt-oss-120b: 339 to run (984 done)
+llama-4-maverick: 
+gemma-3-12b: ok 1
+llama-3-1-8b-instruct: busy 1, ok 20
+qwen3-next-80b-a3b-instruct: bad_output 9, ok 13
+gpt-oss-120b: bad_output 29, ok 310
+gpt-oss-20b: bad_output 15, busy 2, error 1, ok 321
+all models finished

@@ -27,6 +27,9 @@ from .bounds import (
 )
 from .compare import compare_models
 from .gate import gate_change
+from .learning import build_gate
+from .permissions import build_receipt, can_act, validate_receipt
+from .policy import label_template, scored_actions, select_action
 from . import report
 
 __all__ = [
@@ -34,5 +37,6 @@ __all__ = [
     "auto_threshold", "auto_threshold_by_relation", "extra_needed",
     "precision_bands", "precision_bands_by_relation",
     "clopper_pearson_interval", "wilson_interval", "lower_bound", "upper_bound", "proportion_interval",
-    "compare_models", "gate_change", "report",
+    "compare_models", "gate_change", "build_gate", "build_receipt", "can_act", "validate_receipt",
+    "label_template", "scored_actions", "select_action", "report",
 ]

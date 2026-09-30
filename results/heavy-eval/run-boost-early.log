@@ -1,0 +1,7 @@
+llama-3-3-70b-instruct: 339 to run (1023 done)
+llama-3-1-8b-instruct: 339 to run (985 done)
+llama-4-maverick: 339 to run (1021 done)
+llama-4-maverick: ok 339
+llama-3-3-70b-instruct: ok 339
+llama-3-1-8b-instruct: bad_output 21, ok 318
+all models finished
