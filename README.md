@@ -20,6 +20,7 @@ and whether a change actually helped. Built on Databricks.**
 
 [**Devpost**](https://devpost.com/software/undecided-dsevk2) ·
 [**Demo video**](https://www.youtube.com/watch?v=Xhl1AXFDvE8) ·
+[**Try the preview**](https://huggingface.co/spaces/mohithnikesh/assaydemo) ·
 [**Live dashboard**](https://assay-manager-7474654480147366.aws.databricksapps.com) ·
 [**Final handoff**](docs/FINAL_HANDOFF.md) ·
 [**Full report**](docs/ASSAY_REPORT.md) ·
@@ -29,6 +30,11 @@ and whether a change actually helped. Built on Databricks.**
 <a href="https://www.youtube.com/watch?v=Xhl1AXFDvE8"><img src="https://img.youtube.com/vi/Xhl1AXFDvE8/hqdefault.jpg" alt="Watch the Assay demo video on YouTube" width="480"></a>
 
 </div>
+
+> **Note:** the [Hugging Face Space](https://huggingface.co/spaces/mohithnikesh/assaydemo) is only a preview: a static
+> snapshot of the evaluation that runs in your browser, saves nothing, and simulates the model's answer in the demo.
+> The actual build is the **Live dashboard** on Databricks, which has to be turned on in the Databricks workspace
+> before it can be opened (Free Edition apps stop 24 hours after they are started).
 
 ---
 
